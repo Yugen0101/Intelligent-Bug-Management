@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Darken grays for better contrast */
+  --color-gray-400: #64748b;
+  /* slate-500 equivalent for better visibility */
+  --color-gray-500: #475569;
+  /* slate-600 equivalent */
+  --color-gray-600: #334155;
+  /* slate-700 equivalent */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Improve form element contrast */
+input::placeholder,
+textarea::placeholder {
+  color: #64748b !important;
+  opacity: 1 !important;
+}
+
+input,
+textarea,
+select {
+  color: #1e293b !important;
+}
+
+select option {
+  color: #1e293b !important;
+  background: white !important;
+}
+
+/* Dropdown hover states */
+select option:hover,
+select option:focus {
+  background: #f1f5f9 !important;
+}

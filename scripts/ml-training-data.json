@@ -1,0 +1,6002 @@
+[
+  {
+    "id": 1,
+    "text": "Color mismatch in the Dashboard when updating the profile.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 2,
+    "text": "Duplicate product details entries found in Search Bar.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 3,
+    "text": "The Dashboard takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 4,
+    "text": "Duplicate search results entries found in Settings Panel.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 5,
+    "text": "Responsive layout breaks on Safari for Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 6,
+    "text": "API timeout when connecting Login Page to external service.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 7,
+    "text": "Data mismatch between User Profile and the dashboard.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 8,
+    "text": "Incorrect calculation in the Dashboard during scrolling.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 9,
+    "text": "Clicking the User Profile results in no action.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 10,
+    "text": "Incorrect fallback logic for session token in Settings Panel.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 11,
+    "text": "Incorrect calculation in the Search Bar during updating the profile.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 12,
+    "text": "Webhook failure for user data in Login Page.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 13,
+    "text": "Broken authentication in Dashboard for invoice.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 14,
+    "text": "The Payment Gateway takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 15,
+    "text": "Null pointer exception in User Profile when user data is empty.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 16,
+    "text": "Responsive layout breaks on iPhone 13 for User Profile.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 17,
+    "text": "Color mismatch in the Settings Panel when scrolling.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 18,
+    "text": "Broken authentication in Search Bar for search results.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 19,
+    "text": "API timeout when connecting User Profile to external service.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 20,
+    "text": "Incorrect fallback logic for session token in Login Page.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 21,
+    "text": "The Dashboard is not aligned correctly on Safari.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 22,
+    "text": "Incorrect fallback logic for user data in Search Bar.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 23,
+    "text": "Jerky animations in Search Bar on Chrome Browser.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 24,
+    "text": "API timeout when connecting Login Page to external service.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 25,
+    "text": "Incorrect calculation in the Search Bar during initial loading.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 26,
+    "text": "Broken authentication in Payment Gateway for search results.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 27,
+    "text": "Button text is overflowing in the User Profile.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 28,
+    "text": "Data mismatch between Payment Gateway and the dashboard.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 29,
+    "text": "Jerky animations in Settings Panel on iPhone 13.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 30,
+    "text": "Schema mismatch between Settings Panel and the third-party provider.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 31,
+    "text": "SQL injection vulnerability detected in Search Bar.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 32,
+    "text": "Null pointer exception in Settings Panel when invoice is empty.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 33,
+    "text": "API timeout when connecting User Profile to external service.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 34,
+    "text": "Button text is overflowing in the Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 35,
+    "text": "Cross-site scripting (XSS) possible via Settings Panel.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 36,
+    "text": "Color mismatch in the Settings Panel when updating the profile.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 37,
+    "text": "High memory usage when scrolling in Search Bar.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 38,
+    "text": "Null pointer exception in Settings Panel when product details is empty.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 39,
+    "text": "SQL injection vulnerability detected in Settings Panel.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 40,
+    "text": "Incorrect calculation in the Settings Panel during submitting the form.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 41,
+    "text": "Jerky animations in Login Page on Desktop View.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 42,
+    "text": "The Payment Gateway throws a 500 error when initial loading.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 43,
+    "text": "Color mismatch in the Payment Gateway when submitting the form.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 44,
+    "text": "Jerky animations in Login Page on Desktop View.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 45,
+    "text": "Responsive layout breaks on Chrome Browser for Dashboard.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 46,
+    "text": "The Login Page takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 47,
+    "text": "Cross-site scripting (XSS) possible via Payment Gateway.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 48,
+    "text": "The Payment Gateway takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 49,
+    "text": "The User Profile is not aligned correctly on iPhone 13.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 50,
+    "text": "Webhook failure for session token in Settings Panel.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 51,
+    "text": "Duplicate user data entries found in Login Page.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 52,
+    "text": "The Settings Panel is not aligned correctly on Android Tablet.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 53,
+    "text": "SQL injection vulnerability detected in Search Bar.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 54,
+    "text": "Broken authentication in Payment Gateway for session token.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 55,
+    "text": "The Login Page takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 56,
+    "text": "The Login Page is not aligned correctly on Chrome Browser.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 57,
+    "text": "The Search Bar does not save session token correctly.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 58,
+    "text": "Incorrect fallback logic for product details in User Profile.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 59,
+    "text": "Unauthorized access to user data through User Profile.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 60,
+    "text": "Data mismatch between Dashboard and the dashboard.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 61,
+    "text": "Clicking the Login Page results in no action.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 62,
+    "text": "SQL injection vulnerability detected in Search Bar.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 63,
+    "text": "The Dashboard is not aligned correctly on Desktop View.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 64,
+    "text": "Unauthorized access to user data through Payment Gateway.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 65,
+    "text": "Webhook failure for product details in Payment Gateway.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 66,
+    "text": "The Login Page does not save search results correctly.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 67,
+    "text": "Null pointer exception in Login Page when session token is empty.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 68,
+    "text": "Button text is overflowing in the Dashboard.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 69,
+    "text": "Jerky animations in Settings Panel on Desktop View.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 70,
+    "text": "Cross-site scripting (XSS) possible via Payment Gateway.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 71,
+    "text": "Incorrect fallback logic for product details in Login Page.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 72,
+    "text": "Broken authentication in Payment Gateway for session token.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 73,
+    "text": "High memory usage when scrolling in User Profile.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 74,
+    "text": "Failed to synchronize search results across Login Page.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 75,
+    "text": "The Payment Gateway does not save search results correctly.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 76,
+    "text": "Clicking the Payment Gateway results in no action.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 77,
+    "text": "Jerky animations in Search Bar on Chrome Browser.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 78,
+    "text": "Webhook failure for session token in Search Bar.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 79,
+    "text": "Data mismatch between Settings Panel and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 80,
+    "text": "Failed to synchronize product details across Settings Panel.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 81,
+    "text": "Schema mismatch between Search Bar and the third-party provider.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 82,
+    "text": "Unauthorized access to invoice through Settings Panel.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 83,
+    "text": "Unauthorized access to user data through Login Page.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 84,
+    "text": "Incorrect fallback logic for product details in Settings Panel.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 85,
+    "text": "API timeout when connecting Settings Panel to external service.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 86,
+    "text": "API timeout when connecting Settings Panel to external service.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 87,
+    "text": "The Dashboard is not aligned correctly on Chrome Browser.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 88,
+    "text": "Jerky animations in Search Bar on Android Tablet.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 89,
+    "text": "The Settings Panel takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 90,
+    "text": "Clicking the Search Bar results in no action.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 91,
+    "text": "Unauthorized access to session token through Payment Gateway.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 92,
+    "text": "High memory usage when submitting the form in Settings Panel.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 93,
+    "text": "Slow database query in Search Bar when fetching search results.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 94,
+    "text": "Color mismatch in the Dashboard when submitting the form.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 95,
+    "text": "The Login Page throws a 500 error when initial loading.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 96,
+    "text": "API timeout when connecting Login Page to external service.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 97,
+    "text": "Webhook failure for product details in Dashboard.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 98,
+    "text": "Data mismatch between Settings Panel and the dashboard.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 99,
+    "text": "The Search Bar takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 100,
+    "text": "Unauthorized access to user data through Search Bar.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 101,
+    "text": "Slow database query in User Profile when fetching session token.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 102,
+    "text": "Responsive layout breaks on Android Tablet for Dashboard.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 103,
+    "text": "Failed to synchronize invoice across Payment Gateway.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 104,
+    "text": "The Settings Panel does not save search results correctly.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 105,
+    "text": "Cross-site scripting (XSS) possible via Settings Panel.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 106,
+    "text": "The Settings Panel is not aligned correctly on Desktop View.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 107,
+    "text": "High memory usage when updating the profile in User Profile.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 108,
+    "text": "Failed to synchronize user data across User Profile.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 109,
+    "text": "The Search Bar does not save user data correctly.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 110,
+    "text": "SQL injection vulnerability detected in Dashboard.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 111,
+    "text": "The Settings Panel is not aligned correctly on Chrome Browser.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 112,
+    "text": "The Settings Panel does not save invoice correctly.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 113,
+    "text": "SQL injection vulnerability detected in Login Page.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 114,
+    "text": "Responsive layout breaks on Desktop View for Login Page.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 115,
+    "text": "Failed to synchronize session token across Dashboard.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 116,
+    "text": "The Search Bar throws a 500 error when updating the profile.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 117,
+    "text": "API timeout when connecting User Profile to external service.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 118,
+    "text": "The Payment Gateway is not aligned correctly on Chrome Browser.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 119,
+    "text": "Duplicate invoice entries found in User Profile.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 120,
+    "text": "Unauthorized access to session token through Payment Gateway.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 121,
+    "text": "Null pointer exception in Settings Panel when invoice is empty.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 122,
+    "text": "API timeout when connecting User Profile to external service.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 123,
+    "text": "Color mismatch in the Settings Panel when updating the profile.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 124,
+    "text": "Schema mismatch between User Profile and the third-party provider.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 125,
+    "text": "API timeout when connecting Search Bar to external service.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 126,
+    "text": "The Dashboard is not aligned correctly on Android Tablet.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 127,
+    "text": "API timeout when connecting Dashboard to external service.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 128,
+    "text": "The Search Bar does not save product details correctly.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 129,
+    "text": "Slow database query in Payment Gateway when fetching search results.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 130,
+    "text": "The Payment Gateway takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 131,
+    "text": "Slow database query in Settings Panel when fetching invoice.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 132,
+    "text": "Null pointer exception in Payment Gateway when invoice is empty.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 133,
+    "text": "Broken authentication in Settings Panel for search results.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 134,
+    "text": "The Search Bar does not save session token correctly.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 135,
+    "text": "Broken authentication in Login Page for product details.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 136,
+    "text": "Schema mismatch between Dashboard and the third-party provider.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 137,
+    "text": "The Login Page is not aligned correctly on Safari.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 138,
+    "text": "Slow database query in Dashboard when fetching user data.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 139,
+    "text": "API timeout when connecting User Profile to external service.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 140,
+    "text": "Duplicate product details entries found in Dashboard.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 141,
+    "text": "Incorrect fallback logic for invoice in Payment Gateway.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 142,
+    "text": "Webhook failure for session token in User Profile.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 143,
+    "text": "Color mismatch in the User Profile when scrolling.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 144,
+    "text": "Unauthorized access to invoice through Login Page.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 145,
+    "text": "The Payment Gateway does not save product details correctly.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 146,
+    "text": "Failed to synchronize user data across Settings Panel.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 147,
+    "text": "Clicking the Login Page results in no action.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 148,
+    "text": "Duplicate invoice entries found in Dashboard.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 149,
+    "text": "Slow database query in User Profile when fetching product details.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 150,
+    "text": "Incorrect fallback logic for product details in Dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 151,
+    "text": "Data mismatch between Search Bar and the dashboard.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 152,
+    "text": "API timeout when connecting Payment Gateway to external service.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 153,
+    "text": "Null pointer exception in Login Page when session token is empty.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 154,
+    "text": "Responsive layout breaks on Safari for Dashboard.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 155,
+    "text": "High memory usage when initial loading in Payment Gateway.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 156,
+    "text": "Null pointer exception in Login Page when product details is empty.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 157,
+    "text": "Slow database query in Settings Panel when fetching product details.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 158,
+    "text": "Jerky animations in Login Page on Desktop View.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 159,
+    "text": "The Login Page does not save product details correctly.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 160,
+    "text": "Button text is overflowing in the Login Page.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 161,
+    "text": "API timeout when connecting User Profile to external service.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 162,
+    "text": "Jerky animations in Search Bar on Safari.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 163,
+    "text": "Incorrect calculation in the Dashboard during updating the profile.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 164,
+    "text": "High memory usage when submitting the form in Search Bar.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 165,
+    "text": "Color mismatch in the Login Page when submitting the form.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 166,
+    "text": "Unauthorized access to user data through Dashboard.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 167,
+    "text": "Color mismatch in the Dashboard when scrolling.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 168,
+    "text": "Schema mismatch between Search Bar and the third-party provider.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 169,
+    "text": "Color mismatch in the Settings Panel when scrolling.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 170,
+    "text": "High memory usage when scrolling in Login Page.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 171,
+    "text": "Unauthorized access to search results through Payment Gateway.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 172,
+    "text": "Button text is overflowing in the Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 173,
+    "text": "Incorrect calculation in the User Profile during initial loading.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 174,
+    "text": "Jerky animations in Payment Gateway on Chrome Browser.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 175,
+    "text": "Schema mismatch between Login Page and the third-party provider.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 176,
+    "text": "Cross-site scripting (XSS) possible via Dashboard.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 177,
+    "text": "Clicking the Login Page results in no action.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 178,
+    "text": "The Payment Gateway takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 179,
+    "text": "Clicking the Payment Gateway results in no action.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 180,
+    "text": "Incorrect calculation in the Payment Gateway during submitting the form.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 181,
+    "text": "Data mismatch between Payment Gateway and the dashboard.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 182,
+    "text": "Data mismatch between Payment Gateway and the dashboard.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 183,
+    "text": "Cross-site scripting (XSS) possible via Login Page.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 184,
+    "text": "Color mismatch in the Login Page when scrolling.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 185,
+    "text": "Responsive layout breaks on Safari for Search Bar.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 186,
+    "text": "Responsive layout breaks on iPhone 13 for User Profile.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 187,
+    "text": "The Payment Gateway does not save invoice correctly.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 188,
+    "text": "API timeout when connecting Search Bar to external service.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 189,
+    "text": "High memory usage when submitting the form in Dashboard.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 190,
+    "text": "Unauthorized access to search results through User Profile.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 191,
+    "text": "Button text is overflowing in the Login Page.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 192,
+    "text": "API timeout when connecting Settings Panel to external service.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 193,
+    "text": "High memory usage when submitting the form in Payment Gateway.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 194,
+    "text": "Clicking the Login Page results in no action.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 195,
+    "text": "Data mismatch between Settings Panel and the dashboard.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 196,
+    "text": "API timeout when connecting Login Page to external service.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 197,
+    "text": "Data mismatch between User Profile and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 198,
+    "text": "Duplicate user data entries found in Payment Gateway.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 199,
+    "text": "Responsive layout breaks on Chrome Browser for Dashboard.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 200,
+    "text": "Incorrect fallback logic for search results in User Profile.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 201,
+    "text": "API timeout when connecting Login Page to external service.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 202,
+    "text": "Unauthorized access to session token through Login Page.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 203,
+    "text": "Color mismatch in the Dashboard when initial loading.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 204,
+    "text": "SQL injection vulnerability detected in Settings Panel.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 205,
+    "text": "The Settings Panel does not save user data correctly.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 206,
+    "text": "Color mismatch in the Login Page when updating the profile.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 207,
+    "text": "Data mismatch between Payment Gateway and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 208,
+    "text": "SQL injection vulnerability detected in Payment Gateway.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 209,
+    "text": "SQL injection vulnerability detected in User Profile.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 210,
+    "text": "Webhook failure for search results in Payment Gateway.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 211,
+    "text": "SQL injection vulnerability detected in Search Bar.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 212,
+    "text": "SQL injection vulnerability detected in Search Bar.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 213,
+    "text": "Jerky animations in Payment Gateway on iPhone 13.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 214,
+    "text": "Failed to synchronize product details across Payment Gateway.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 215,
+    "text": "API timeout when connecting Payment Gateway to external service.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 216,
+    "text": "Null pointer exception in Payment Gateway when user data is empty.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 217,
+    "text": "Slow database query in Settings Panel when fetching user data.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 218,
+    "text": "Broken authentication in Payment Gateway for search results.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 219,
+    "text": "The Dashboard is not aligned correctly on Chrome Browser.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 220,
+    "text": "Unauthorized access to product details through Settings Panel.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 221,
+    "text": "Duplicate invoice entries found in Login Page.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 222,
+    "text": "Broken authentication in User Profile for user data.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 223,
+    "text": "Button text is overflowing in the User Profile.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 224,
+    "text": "Unauthorized access to user data through Payment Gateway.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 225,
+    "text": "The Settings Panel does not save search results correctly.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 226,
+    "text": "Responsive layout breaks on Chrome Browser for Login Page.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 227,
+    "text": "Broken authentication in Settings Panel for user data.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 228,
+    "text": "Broken authentication in User Profile for session token.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 229,
+    "text": "Incorrect fallback logic for session token in Payment Gateway.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 230,
+    "text": "Broken authentication in Settings Panel for session token.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 231,
+    "text": "Broken authentication in Payment Gateway for invoice.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 232,
+    "text": "Clicking the User Profile results in no action.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 233,
+    "text": "Broken authentication in Dashboard for user data.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 234,
+    "text": "Null pointer exception in Payment Gateway when user data is empty.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 235,
+    "text": "Duplicate user data entries found in Search Bar.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 236,
+    "text": "Button text is overflowing in the User Profile.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 237,
+    "text": "Button text is overflowing in the Dashboard.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 238,
+    "text": "Slow database query in Dashboard when fetching product details.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 239,
+    "text": "Duplicate search results entries found in Settings Panel.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 240,
+    "text": "API timeout when connecting Login Page to external service.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 241,
+    "text": "Null pointer exception in Settings Panel when search results is empty.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 242,
+    "text": "Slow database query in Dashboard when fetching product details.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 243,
+    "text": "Failed to synchronize invoice across Dashboard.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 244,
+    "text": "Slow database query in Login Page when fetching invoice.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 245,
+    "text": "Button text is overflowing in the Search Bar.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 246,
+    "text": "The User Profile is not aligned correctly on Chrome Browser.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 247,
+    "text": "Slow database query in Search Bar when fetching invoice.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 248,
+    "text": "Button text is overflowing in the Login Page.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 249,
+    "text": "High memory usage when submitting the form in Dashboard.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 250,
+    "text": "Incorrect calculation in the User Profile during initial loading.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 251,
+    "text": "Jerky animations in Payment Gateway on Chrome Browser.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 252,
+    "text": "Clicking the Settings Panel results in no action.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 253,
+    "text": "The User Profile throws a 500 error when submitting the form.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 254,
+    "text": "Webhook failure for product details in Settings Panel.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 255,
+    "text": "Clicking the Login Page results in no action.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 256,
+    "text": "High memory usage when scrolling in Dashboard.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 257,
+    "text": "Incorrect fallback logic for invoice in Settings Panel.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 258,
+    "text": "Incorrect fallback logic for user data in Search Bar.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 259,
+    "text": "Color mismatch in the Search Bar when scrolling.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 260,
+    "text": "Color mismatch in the Login Page when updating the profile.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 261,
+    "text": "Null pointer exception in Search Bar when user data is empty.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 262,
+    "text": "Color mismatch in the User Profile when updating the profile.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 263,
+    "text": "API timeout when connecting Payment Gateway to external service.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 264,
+    "text": "Webhook failure for product details in User Profile.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 265,
+    "text": "Broken authentication in User Profile for search results.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 266,
+    "text": "High memory usage when updating the profile in Login Page.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 267,
+    "text": "Responsive layout breaks on Safari for Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 268,
+    "text": "Cross-site scripting (XSS) possible via Settings Panel.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 269,
+    "text": "Cross-site scripting (XSS) possible via Search Bar.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 270,
+    "text": "Color mismatch in the User Profile when initial loading.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 271,
+    "text": "API timeout when connecting User Profile to external service.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 272,
+    "text": "The Settings Panel throws a 500 error when scrolling.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 273,
+    "text": "Failed to synchronize session token across Payment Gateway.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 274,
+    "text": "Data mismatch between Dashboard and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 275,
+    "text": "The Dashboard is not aligned correctly on iPhone 13.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 276,
+    "text": "Clicking the Dashboard results in no action.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 277,
+    "text": "Null pointer exception in Payment Gateway when product details is empty.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 278,
+    "text": "Slow database query in Dashboard when fetching invoice.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 279,
+    "text": "Unauthorized access to invoice through User Profile.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 280,
+    "text": "Incorrect calculation in the Dashboard during updating the profile.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 281,
+    "text": "The Settings Panel does not save product details correctly.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 282,
+    "text": "Cross-site scripting (XSS) possible via Dashboard.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 283,
+    "text": "The Settings Panel does not save user data correctly.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 284,
+    "text": "Unauthorized access to user data through Search Bar.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 285,
+    "text": "Webhook failure for user data in User Profile.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 286,
+    "text": "Failed to synchronize session token across User Profile.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 287,
+    "text": "Data mismatch between Search Bar and the dashboard.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 288,
+    "text": "Color mismatch in the Dashboard when submitting the form.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 289,
+    "text": "Duplicate invoice entries found in Search Bar.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 290,
+    "text": "Duplicate session token entries found in Search Bar.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 291,
+    "text": "Unauthorized access to search results through Payment Gateway.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 292,
+    "text": "Incorrect calculation in the Dashboard during scrolling.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 293,
+    "text": "The Login Page does not save user data correctly.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 294,
+    "text": "Schema mismatch between Settings Panel and the third-party provider.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 295,
+    "text": "Schema mismatch between Login Page and the third-party provider.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 296,
+    "text": "Duplicate product details entries found in Login Page.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 297,
+    "text": "Unauthorized access to product details through Settings Panel.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 298,
+    "text": "The Settings Panel does not save session token correctly.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 299,
+    "text": "Unauthorized access to session token through Dashboard.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 300,
+    "text": "Cross-site scripting (XSS) possible via User Profile.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 301,
+    "text": "Incorrect calculation in the Settings Panel during scrolling.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 302,
+    "text": "Responsive layout breaks on Chrome Browser for Search Bar.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 303,
+    "text": "Data mismatch between Settings Panel and the dashboard.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 304,
+    "text": "High memory usage when updating the profile in Dashboard.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 305,
+    "text": "API timeout when connecting User Profile to external service.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 306,
+    "text": "Schema mismatch between Login Page and the third-party provider.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 307,
+    "text": "Slow database query in Dashboard when fetching search results.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 308,
+    "text": "Color mismatch in the User Profile when updating the profile.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 309,
+    "text": "Slow database query in Payment Gateway when fetching session token.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 310,
+    "text": "Incorrect fallback logic for invoice in Settings Panel.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 311,
+    "text": "Button text is overflowing in the Dashboard.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 312,
+    "text": "Duplicate invoice entries found in Search Bar.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 313,
+    "text": "Responsive layout breaks on Chrome Browser for Dashboard.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 314,
+    "text": "Data mismatch between Payment Gateway and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 315,
+    "text": "Responsive layout breaks on Safari for User Profile.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 316,
+    "text": "Schema mismatch between Payment Gateway and the third-party provider.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 317,
+    "text": "High memory usage when initial loading in Search Bar.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 318,
+    "text": "Clicking the Dashboard results in no action.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 319,
+    "text": "SQL injection vulnerability detected in Settings Panel.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 320,
+    "text": "The Login Page does not save user data correctly.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 321,
+    "text": "Button text is overflowing in the Settings Panel.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 322,
+    "text": "The User Profile does not save session token correctly.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 323,
+    "text": "Responsive layout breaks on Android Tablet for Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 324,
+    "text": "Cross-site scripting (XSS) possible via Settings Panel.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 325,
+    "text": "The Dashboard takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 326,
+    "text": "Color mismatch in the Settings Panel when updating the profile.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 327,
+    "text": "Incorrect fallback logic for search results in User Profile.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 328,
+    "text": "Data mismatch between User Profile and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 329,
+    "text": "Null pointer exception in Dashboard when user data is empty.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 330,
+    "text": "API timeout when connecting Search Bar to external service.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 331,
+    "text": "Jerky animations in Login Page on Android Tablet.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 332,
+    "text": "API timeout when connecting Payment Gateway to external service.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 333,
+    "text": "Data mismatch between Login Page and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 334,
+    "text": "Null pointer exception in Login Page when search results is empty.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 335,
+    "text": "The Settings Panel throws a 500 error when initial loading.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 336,
+    "text": "Clicking the User Profile results in no action.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 337,
+    "text": "High memory usage when submitting the form in Search Bar.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 338,
+    "text": "Responsive layout breaks on Safari for Settings Panel.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 339,
+    "text": "The Settings Panel takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 340,
+    "text": "Cross-site scripting (XSS) possible via Settings Panel.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 341,
+    "text": "High memory usage when initial loading in Login Page.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 342,
+    "text": "The Payment Gateway does not save user data correctly.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 343,
+    "text": "The Settings Panel is not aligned correctly on iPhone 13.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 344,
+    "text": "Cross-site scripting (XSS) possible via Settings Panel.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 345,
+    "text": "Cross-site scripting (XSS) possible via Dashboard.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 346,
+    "text": "Broken authentication in Dashboard for user data.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 347,
+    "text": "Button text is overflowing in the Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 348,
+    "text": "Button text is overflowing in the Dashboard.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 349,
+    "text": "Unauthorized access to session token through Login Page.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 350,
+    "text": "Incorrect calculation in the User Profile during updating the profile.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 351,
+    "text": "Incorrect fallback logic for session token in Search Bar.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 352,
+    "text": "Data mismatch between User Profile and the dashboard.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 353,
+    "text": "Cross-site scripting (XSS) possible via Settings Panel.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 354,
+    "text": "Slow database query in Dashboard when fetching product details.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 355,
+    "text": "Cross-site scripting (XSS) possible via Settings Panel.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 356,
+    "text": "Failed to synchronize user data across Login Page.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 357,
+    "text": "Schema mismatch between Search Bar and the third-party provider.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 358,
+    "text": "Cross-site scripting (XSS) possible via Dashboard.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 359,
+    "text": "Failed to synchronize product details across Login Page.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 360,
+    "text": "SQL injection vulnerability detected in Search Bar.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 361,
+    "text": "Clicking the Dashboard results in no action.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 362,
+    "text": "Schema mismatch between User Profile and the third-party provider.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 363,
+    "text": "Incorrect calculation in the Settings Panel during initial loading.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 364,
+    "text": "Responsive layout breaks on Desktop View for Login Page.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 365,
+    "text": "Incorrect fallback logic for session token in User Profile.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 366,
+    "text": "The User Profile takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 367,
+    "text": "Slow database query in User Profile when fetching product details.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 368,
+    "text": "Jerky animations in Search Bar on Chrome Browser.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 369,
+    "text": "Jerky animations in Payment Gateway on Android Tablet.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 370,
+    "text": "Button text is overflowing in the Login Page.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 371,
+    "text": "The Dashboard is not aligned correctly on Desktop View.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 372,
+    "text": "The Settings Panel is not aligned correctly on iPhone 13.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 373,
+    "text": "Cross-site scripting (XSS) possible via Login Page.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 374,
+    "text": "Null pointer exception in Search Bar when user data is empty.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 375,
+    "text": "Incorrect fallback logic for user data in Search Bar.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 376,
+    "text": "Failed to synchronize search results across Payment Gateway.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 377,
+    "text": "Webhook failure for product details in Search Bar.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 378,
+    "text": "Responsive layout breaks on Chrome Browser for Dashboard.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 379,
+    "text": "Webhook failure for search results in Login Page.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 380,
+    "text": "SQL injection vulnerability detected in Search Bar.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 381,
+    "text": "Cross-site scripting (XSS) possible via Payment Gateway.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 382,
+    "text": "API timeout when connecting Search Bar to external service.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 383,
+    "text": "Failed to synchronize user data across Settings Panel.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 384,
+    "text": "Webhook failure for product details in Dashboard.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 385,
+    "text": "Broken authentication in Payment Gateway for invoice.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 386,
+    "text": "Slow database query in Dashboard when fetching invoice.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 387,
+    "text": "SQL injection vulnerability detected in Settings Panel.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 388,
+    "text": "API timeout when connecting Search Bar to external service.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 389,
+    "text": "API timeout when connecting Login Page to external service.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 390,
+    "text": "The Login Page is not aligned correctly on Chrome Browser.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 391,
+    "text": "Webhook failure for product details in Settings Panel.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 392,
+    "text": "High memory usage when updating the profile in Search Bar.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 393,
+    "text": "Incorrect fallback logic for product details in User Profile.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 394,
+    "text": "Button text is overflowing in the Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 395,
+    "text": "Broken authentication in Settings Panel for invoice.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 396,
+    "text": "The Search Bar throws a 500 error when scrolling.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 397,
+    "text": "Cross-site scripting (XSS) possible via Dashboard.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 398,
+    "text": "The Search Bar throws a 500 error when initial loading.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 399,
+    "text": "Responsive layout breaks on Safari for Login Page.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 400,
+    "text": "Color mismatch in the Payment Gateway when initial loading.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 401,
+    "text": "Clicking the Search Bar results in no action.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 402,
+    "text": "Broken authentication in Settings Panel for search results.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 403,
+    "text": "Broken authentication in Payment Gateway for product details.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 404,
+    "text": "Null pointer exception in Dashboard when search results is empty.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 405,
+    "text": "Schema mismatch between Settings Panel and the third-party provider.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 406,
+    "text": "The Dashboard takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 407,
+    "text": "Slow database query in Payment Gateway when fetching search results.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 408,
+    "text": "Null pointer exception in Search Bar when invoice is empty.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 409,
+    "text": "The Login Page throws a 500 error when submitting the form.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 410,
+    "text": "Duplicate user data entries found in Payment Gateway.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 411,
+    "text": "Schema mismatch between User Profile and the third-party provider.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 412,
+    "text": "Failed to synchronize search results across Search Bar.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 413,
+    "text": "Data mismatch between Settings Panel and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 414,
+    "text": "High memory usage when initial loading in Search Bar.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 415,
+    "text": "Schema mismatch between User Profile and the third-party provider.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 416,
+    "text": "Null pointer exception in Dashboard when product details is empty.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 417,
+    "text": "Schema mismatch between Dashboard and the third-party provider.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 418,
+    "text": "Failed to synchronize user data across Payment Gateway.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 419,
+    "text": "Null pointer exception in User Profile when product details is empty.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 420,
+    "text": "Data mismatch between Search Bar and the dashboard.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 421,
+    "text": "Unauthorized access to search results through Dashboard.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 422,
+    "text": "Webhook failure for invoice in Settings Panel.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 423,
+    "text": "Webhook failure for product details in Login Page.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 424,
+    "text": "Slow database query in Dashboard when fetching user data.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 425,
+    "text": "The Login Page does not save session token correctly.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 426,
+    "text": "Incorrect calculation in the Login Page during submitting the form.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 427,
+    "text": "Webhook failure for user data in Login Page.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 428,
+    "text": "The Payment Gateway takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 429,
+    "text": "Responsive layout breaks on Android Tablet for Settings Panel.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 430,
+    "text": "Slow database query in User Profile when fetching search results.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 431,
+    "text": "High memory usage when scrolling in Search Bar.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 432,
+    "text": "Incorrect fallback logic for invoice in Login Page.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 433,
+    "text": "Cross-site scripting (XSS) possible via User Profile.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 434,
+    "text": "Incorrect calculation in the Login Page during updating the profile.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 435,
+    "text": "Webhook failure for product details in Dashboard.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 436,
+    "text": "Responsive layout breaks on iPhone 13 for Login Page.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 437,
+    "text": "Broken authentication in Search Bar for search results.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 438,
+    "text": "Failed to synchronize product details across Payment Gateway.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 439,
+    "text": "Data mismatch between Payment Gateway and the dashboard.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 440,
+    "text": "High memory usage when updating the profile in Payment Gateway.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 441,
+    "text": "The Settings Panel throws a 500 error when initial loading.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 442,
+    "text": "Jerky animations in Search Bar on Android Tablet.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 443,
+    "text": "Broken authentication in Login Page for search results.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 444,
+    "text": "Unauthorized access to search results through Search Bar.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 445,
+    "text": "Slow database query in Payment Gateway when fetching user data.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 446,
+    "text": "Webhook failure for user data in Search Bar.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 447,
+    "text": "Data mismatch between Dashboard and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 448,
+    "text": "Failed to synchronize search results across Search Bar.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 449,
+    "text": "The Dashboard takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 450,
+    "text": "Unauthorized access to product details through Settings Panel.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 451,
+    "text": "Color mismatch in the User Profile when submitting the form.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 452,
+    "text": "The User Profile throws a 500 error when scrolling.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 453,
+    "text": "Schema mismatch between User Profile and the third-party provider.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 454,
+    "text": "High memory usage when updating the profile in Settings Panel.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 455,
+    "text": "API timeout when connecting User Profile to external service.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 456,
+    "text": "Duplicate session token entries found in Settings Panel.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 457,
+    "text": "Null pointer exception in User Profile when search results is empty.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 458,
+    "text": "Broken authentication in Payment Gateway for product details.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 459,
+    "text": "Incorrect fallback logic for user data in Payment Gateway.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 460,
+    "text": "The Search Bar takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 461,
+    "text": "Incorrect fallback logic for search results in Search Bar.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 462,
+    "text": "The User Profile throws a 500 error when updating the profile.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 463,
+    "text": "The Dashboard throws a 500 error when scrolling.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 464,
+    "text": "Broken authentication in Payment Gateway for product details.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 465,
+    "text": "Broken authentication in Settings Panel for product details.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 466,
+    "text": "The Login Page does not save session token correctly.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 467,
+    "text": "Responsive layout breaks on Safari for Login Page.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 468,
+    "text": "Null pointer exception in Payment Gateway when product details is empty.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 469,
+    "text": "High memory usage when initial loading in Login Page.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 470,
+    "text": "The Settings Panel throws a 500 error when initial loading.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 471,
+    "text": "Schema mismatch between Search Bar and the third-party provider.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 472,
+    "text": "Cross-site scripting (XSS) possible via Settings Panel.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 473,
+    "text": "Unauthorized access to user data through Settings Panel.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 474,
+    "text": "Null pointer exception in Settings Panel when session token is empty.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 475,
+    "text": "The Search Bar is not aligned correctly on Android Tablet.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 476,
+    "text": "Button text is overflowing in the Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 477,
+    "text": "Button text is overflowing in the Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 478,
+    "text": "Button text is overflowing in the Login Page.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 479,
+    "text": "API timeout when connecting Login Page to external service.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 480,
+    "text": "Jerky animations in Dashboard on Desktop View.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 481,
+    "text": "Unauthorized access to invoice through Payment Gateway.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 482,
+    "text": "Button text is overflowing in the Settings Panel.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 483,
+    "text": "The User Profile is not aligned correctly on Desktop View.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 484,
+    "text": "Slow database query in Login Page when fetching product details.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 485,
+    "text": "Jerky animations in Search Bar on Safari.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 486,
+    "text": "The Login Page takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 487,
+    "text": "The Payment Gateway throws a 500 error when scrolling.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 488,
+    "text": "Cross-site scripting (XSS) possible via Dashboard.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 489,
+    "text": "Cross-site scripting (XSS) possible via Settings Panel.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 490,
+    "text": "Duplicate session token entries found in Payment Gateway.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 491,
+    "text": "Responsive layout breaks on Android Tablet for Login Page.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 492,
+    "text": "Incorrect calculation in the Login Page during submitting the form.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 493,
+    "text": "Jerky animations in User Profile on iPhone 13.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 494,
+    "text": "High memory usage when scrolling in Dashboard.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 495,
+    "text": "Incorrect fallback logic for user data in Dashboard.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 496,
+    "text": "Color mismatch in the Dashboard when updating the profile.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 497,
+    "text": "Responsive layout breaks on Android Tablet for Settings Panel.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 498,
+    "text": "Responsive layout breaks on Desktop View for Login Page.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 499,
+    "text": "Unauthorized access to invoice through Dashboard.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 500,
+    "text": "Color mismatch in the Payment Gateway when submitting the form.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 501,
+    "text": "Color mismatch in the Payment Gateway when scrolling.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 502,
+    "text": "Responsive layout breaks on iPhone 13 for Login Page.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 503,
+    "text": "Failed to synchronize user data across Dashboard.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 504,
+    "text": "High memory usage when submitting the form in Payment Gateway.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 505,
+    "text": "Schema mismatch between Dashboard and the third-party provider.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 506,
+    "text": "The Dashboard does not save user data correctly.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 507,
+    "text": "Schema mismatch between Dashboard and the third-party provider.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 508,
+    "text": "Webhook failure for session token in User Profile.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 509,
+    "text": "Cross-site scripting (XSS) possible via Dashboard.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 510,
+    "text": "SQL injection vulnerability detected in Dashboard.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 511,
+    "text": "Clicking the User Profile results in no action.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 512,
+    "text": "Schema mismatch between Search Bar and the third-party provider.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 513,
+    "text": "Jerky animations in Settings Panel on Android Tablet.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 514,
+    "text": "Incorrect fallback logic for session token in Settings Panel.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 515,
+    "text": "Broken authentication in User Profile for product details.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 516,
+    "text": "Responsive layout breaks on Chrome Browser for Dashboard.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 517,
+    "text": "Failed to synchronize invoice across Settings Panel.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 518,
+    "text": "The Login Page throws a 500 error when initial loading.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 519,
+    "text": "Responsive layout breaks on Android Tablet for Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 520,
+    "text": "Schema mismatch between Login Page and the third-party provider.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 521,
+    "text": "Incorrect fallback logic for user data in Login Page.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 522,
+    "text": "Clicking the Settings Panel results in no action.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 523,
+    "text": "Jerky animations in User Profile on Safari.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 524,
+    "text": "The Payment Gateway throws a 500 error when scrolling.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 525,
+    "text": "Unauthorized access to user data through Dashboard.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 526,
+    "text": "The Login Page is not aligned correctly on Desktop View.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 527,
+    "text": "SQL injection vulnerability detected in Login Page.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 528,
+    "text": "SQL injection vulnerability detected in Dashboard.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 529,
+    "text": "Null pointer exception in Dashboard when product details is empty.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 530,
+    "text": "Schema mismatch between Settings Panel and the third-party provider.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 531,
+    "text": "Incorrect calculation in the Settings Panel during updating the profile.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 532,
+    "text": "The User Profile is not aligned correctly on Safari.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 533,
+    "text": "Jerky animations in Payment Gateway on Chrome Browser.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 534,
+    "text": "Data mismatch between Login Page and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 535,
+    "text": "The Login Page throws a 500 error when scrolling.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 536,
+    "text": "The Login Page throws a 500 error when submitting the form.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 537,
+    "text": "Slow database query in User Profile when fetching session token.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 538,
+    "text": "Button text is overflowing in the Settings Panel.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 539,
+    "text": "The Search Bar is not aligned correctly on Android Tablet.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 540,
+    "text": "Cross-site scripting (XSS) possible via Login Page.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 541,
+    "text": "API timeout when connecting Search Bar to external service.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 542,
+    "text": "Slow database query in Search Bar when fetching product details.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 543,
+    "text": "API timeout when connecting User Profile to external service.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 544,
+    "text": "SQL injection vulnerability detected in Search Bar.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 545,
+    "text": "The Payment Gateway takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 546,
+    "text": "API timeout when connecting Settings Panel to external service.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 547,
+    "text": "Color mismatch in the Search Bar when updating the profile.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 548,
+    "text": "Unauthorized access to product details through Payment Gateway.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 549,
+    "text": "Schema mismatch between Settings Panel and the third-party provider.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 550,
+    "text": "Schema mismatch between Search Bar and the third-party provider.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 551,
+    "text": "Button text is overflowing in the Login Page.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 552,
+    "text": "Cross-site scripting (XSS) possible via Dashboard.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 553,
+    "text": "Null pointer exception in Login Page when user data is empty.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 554,
+    "text": "Broken authentication in Settings Panel for session token.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 555,
+    "text": "API timeout when connecting Search Bar to external service.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 556,
+    "text": "Broken authentication in User Profile for search results.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 557,
+    "text": "Null pointer exception in Payment Gateway when session token is empty.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 558,
+    "text": "SQL injection vulnerability detected in Settings Panel.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 559,
+    "text": "Schema mismatch between Login Page and the third-party provider.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 560,
+    "text": "Color mismatch in the User Profile when initial loading.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 561,
+    "text": "Jerky animations in Settings Panel on Safari.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 562,
+    "text": "Jerky animations in Payment Gateway on Android Tablet.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 563,
+    "text": "Clicking the Settings Panel results in no action.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 564,
+    "text": "Schema mismatch between Payment Gateway and the third-party provider.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 565,
+    "text": "Schema mismatch between Login Page and the third-party provider.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 566,
+    "text": "Duplicate invoice entries found in Search Bar.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 567,
+    "text": "Button text is overflowing in the Search Bar.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 568,
+    "text": "Duplicate user data entries found in Search Bar.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 569,
+    "text": "Unauthorized access to product details through Settings Panel.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 570,
+    "text": "Null pointer exception in Payment Gateway when session token is empty.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 571,
+    "text": "Webhook failure for user data in Login Page.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 572,
+    "text": "The Dashboard takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 573,
+    "text": "The Login Page takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 574,
+    "text": "Button text is overflowing in the User Profile.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 575,
+    "text": "Responsive layout breaks on Chrome Browser for User Profile.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 576,
+    "text": "Cross-site scripting (XSS) possible via Search Bar.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 577,
+    "text": "Unauthorized access to session token through Dashboard.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 578,
+    "text": "Null pointer exception in Login Page when product details is empty.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 579,
+    "text": "Clicking the Payment Gateway results in no action.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 580,
+    "text": "API timeout when connecting Login Page to external service.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 581,
+    "text": "Color mismatch in the Login Page when submitting the form.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 582,
+    "text": "Schema mismatch between Settings Panel and the third-party provider.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 583,
+    "text": "Duplicate invoice entries found in Dashboard.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 584,
+    "text": "Button text is overflowing in the Dashboard.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 585,
+    "text": "Jerky animations in Login Page on iPhone 13.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 586,
+    "text": "Responsive layout breaks on Desktop View for User Profile.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 587,
+    "text": "The Settings Panel throws a 500 error when initial loading.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 588,
+    "text": "Failed to synchronize invoice across Payment Gateway.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 589,
+    "text": "API timeout when connecting User Profile to external service.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 590,
+    "text": "Broken authentication in Payment Gateway for session token.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 591,
+    "text": "Responsive layout breaks on Chrome Browser for Dashboard.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 592,
+    "text": "Webhook failure for search results in User Profile.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 593,
+    "text": "Incorrect fallback logic for product details in Login Page.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 594,
+    "text": "Data mismatch between Payment Gateway and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 595,
+    "text": "The Settings Panel takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 596,
+    "text": "Broken authentication in Dashboard for session token.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 597,
+    "text": "Unauthorized access to search results through Search Bar.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 598,
+    "text": "Clicking the Dashboard results in no action.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 599,
+    "text": "The Settings Panel is not aligned correctly on Safari.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 600,
+    "text": "Cross-site scripting (XSS) possible via Search Bar.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 601,
+    "text": "The Settings Panel is not aligned correctly on Chrome Browser.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 602,
+    "text": "Incorrect fallback logic for invoice in Dashboard.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 603,
+    "text": "The Settings Panel throws a 500 error when initial loading.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 604,
+    "text": "Clicking the Payment Gateway results in no action.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 605,
+    "text": "Duplicate product details entries found in Settings Panel.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 606,
+    "text": "Clicking the Settings Panel results in no action.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 607,
+    "text": "Duplicate user data entries found in Settings Panel.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 608,
+    "text": "Data mismatch between Settings Panel and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 609,
+    "text": "The User Profile throws a 500 error when initial loading.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 610,
+    "text": "The Login Page takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 611,
+    "text": "API timeout when connecting Search Bar to external service.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 612,
+    "text": "API timeout when connecting Login Page to external service.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 613,
+    "text": "The Dashboard is not aligned correctly on Chrome Browser.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 614,
+    "text": "Data mismatch between Payment Gateway and the dashboard.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 615,
+    "text": "Incorrect calculation in the Dashboard during submitting the form.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 616,
+    "text": "The User Profile throws a 500 error when initial loading.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 617,
+    "text": "Color mismatch in the Payment Gateway when scrolling.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 618,
+    "text": "Responsive layout breaks on Chrome Browser for Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 619,
+    "text": "Button text is overflowing in the Settings Panel.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 620,
+    "text": "Data mismatch between Payment Gateway and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 621,
+    "text": "Failed to synchronize session token across Login Page.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 622,
+    "text": "Button text is overflowing in the Dashboard.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 623,
+    "text": "High memory usage when initial loading in User Profile.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 624,
+    "text": "Null pointer exception in User Profile when user data is empty.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 625,
+    "text": "Duplicate session token entries found in Search Bar.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 626,
+    "text": "Null pointer exception in Payment Gateway when invoice is empty.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 627,
+    "text": "Clicking the Settings Panel results in no action.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 628,
+    "text": "Button text is overflowing in the Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 629,
+    "text": "Slow database query in Login Page when fetching product details.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 630,
+    "text": "Responsive layout breaks on Safari for Dashboard.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 631,
+    "text": "Unauthorized access to search results through Search Bar.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 632,
+    "text": "Button text is overflowing in the User Profile.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 633,
+    "text": "API timeout when connecting User Profile to external service.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 634,
+    "text": "Incorrect calculation in the Dashboard during updating the profile.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 635,
+    "text": "Jerky animations in User Profile on Desktop View.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 636,
+    "text": "Responsive layout breaks on Android Tablet for User Profile.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 637,
+    "text": "Schema mismatch between Dashboard and the third-party provider.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 638,
+    "text": "SQL injection vulnerability detected in Settings Panel.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 639,
+    "text": "Failed to synchronize session token across Search Bar.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 640,
+    "text": "Schema mismatch between Settings Panel and the third-party provider.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 641,
+    "text": "Button text is overflowing in the User Profile.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 642,
+    "text": "High memory usage when scrolling in Search Bar.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 643,
+    "text": "The Settings Panel does not save product details correctly.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 644,
+    "text": "SQL injection vulnerability detected in Payment Gateway.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 645,
+    "text": "Duplicate session token entries found in Payment Gateway.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 646,
+    "text": "SQL injection vulnerability detected in Login Page.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 647,
+    "text": "Webhook failure for invoice in Search Bar.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 648,
+    "text": "The Settings Panel takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 649,
+    "text": "Button text is overflowing in the Login Page.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 650,
+    "text": "Schema mismatch between Login Page and the third-party provider.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 651,
+    "text": "Webhook failure for invoice in Payment Gateway.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 652,
+    "text": "The Settings Panel throws a 500 error when updating the profile.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 653,
+    "text": "Failed to synchronize invoice across Search Bar.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 654,
+    "text": "Responsive layout breaks on Safari for User Profile.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 655,
+    "text": "The Search Bar does not save search results correctly.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 656,
+    "text": "Slow database query in User Profile when fetching user data.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 657,
+    "text": "Broken authentication in Search Bar for session token.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 658,
+    "text": "Schema mismatch between Dashboard and the third-party provider.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 659,
+    "text": "Webhook failure for invoice in User Profile.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 660,
+    "text": "Schema mismatch between Payment Gateway and the third-party provider.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 661,
+    "text": "High memory usage when submitting the form in Settings Panel.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 662,
+    "text": "Incorrect calculation in the Payment Gateway during scrolling.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 663,
+    "text": "The Search Bar is not aligned correctly on Safari.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 664,
+    "text": "Incorrect fallback logic for session token in User Profile.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 665,
+    "text": "SQL injection vulnerability detected in Login Page.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 666,
+    "text": "SQL injection vulnerability detected in Login Page.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 667,
+    "text": "Incorrect fallback logic for user data in User Profile.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 668,
+    "text": "Webhook failure for search results in Settings Panel.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 669,
+    "text": "The Payment Gateway throws a 500 error when updating the profile.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 670,
+    "text": "Slow database query in Payment Gateway when fetching search results.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 671,
+    "text": "Jerky animations in Dashboard on Android Tablet.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 672,
+    "text": "The Login Page is not aligned correctly on Android Tablet.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 673,
+    "text": "The Payment Gateway takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 674,
+    "text": "Incorrect fallback logic for user data in User Profile.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 675,
+    "text": "The Search Bar throws a 500 error when updating the profile.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 676,
+    "text": "Responsive layout breaks on Chrome Browser for Search Bar.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 677,
+    "text": "Broken authentication in Payment Gateway for search results.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 678,
+    "text": "Incorrect calculation in the Settings Panel during updating the profile.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 679,
+    "text": "Slow database query in Search Bar when fetching search results.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 680,
+    "text": "Button text is overflowing in the Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 681,
+    "text": "The User Profile is not aligned correctly on Chrome Browser.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 682,
+    "text": "Null pointer exception in Dashboard when product details is empty.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 683,
+    "text": "The Payment Gateway is not aligned correctly on Safari.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 684,
+    "text": "Webhook failure for invoice in Search Bar.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 685,
+    "text": "Unauthorized access to invoice through User Profile.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 686,
+    "text": "Incorrect fallback logic for invoice in Search Bar.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 687,
+    "text": "Unauthorized access to search results through Payment Gateway.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 688,
+    "text": "Schema mismatch between User Profile and the third-party provider.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 689,
+    "text": "Null pointer exception in Settings Panel when search results is empty.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 690,
+    "text": "Responsive layout breaks on Android Tablet for Dashboard.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 691,
+    "text": "Responsive layout breaks on Chrome Browser for Settings Panel.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 692,
+    "text": "Cross-site scripting (XSS) possible via User Profile.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 693,
+    "text": "Button text is overflowing in the Dashboard.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 694,
+    "text": "The Payment Gateway is not aligned correctly on Safari.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 695,
+    "text": "Incorrect fallback logic for invoice in Payment Gateway.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 696,
+    "text": "Clicking the Search Bar results in no action.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 697,
+    "text": "The Settings Panel is not aligned correctly on Desktop View.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 698,
+    "text": "Duplicate session token entries found in User Profile.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 699,
+    "text": "Data mismatch between Search Bar and the dashboard.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 700,
+    "text": "Cross-site scripting (XSS) possible via Settings Panel.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 701,
+    "text": "The User Profile throws a 500 error when initial loading.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 702,
+    "text": "The Dashboard takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 703,
+    "text": "Duplicate invoice entries found in Search Bar.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 704,
+    "text": "Failed to synchronize product details across User Profile.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 705,
+    "text": "Button text is overflowing in the Settings Panel.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 706,
+    "text": "The Payment Gateway takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 707,
+    "text": "Incorrect calculation in the Dashboard during scrolling.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 708,
+    "text": "Incorrect fallback logic for invoice in Login Page.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 709,
+    "text": "Clicking the Settings Panel results in no action.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 710,
+    "text": "Webhook failure for session token in Search Bar.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 711,
+    "text": "Failed to synchronize session token across Payment Gateway.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 712,
+    "text": "Unauthorized access to invoice through Dashboard.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 713,
+    "text": "Schema mismatch between Payment Gateway and the third-party provider.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 714,
+    "text": "Broken authentication in Payment Gateway for session token.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 715,
+    "text": "Webhook failure for session token in Payment Gateway.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 716,
+    "text": "Clicking the User Profile results in no action.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 717,
+    "text": "Schema mismatch between Payment Gateway and the third-party provider.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 718,
+    "text": "Broken authentication in User Profile for session token.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 719,
+    "text": "High memory usage when updating the profile in Payment Gateway.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 720,
+    "text": "SQL injection vulnerability detected in Login Page.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 721,
+    "text": "Null pointer exception in User Profile when product details is empty.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 722,
+    "text": "Slow database query in Dashboard when fetching product details.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 723,
+    "text": "SQL injection vulnerability detected in Search Bar.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 724,
+    "text": "Webhook failure for search results in Payment Gateway.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 725,
+    "text": "Schema mismatch between Login Page and the third-party provider.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 726,
+    "text": "Broken authentication in Search Bar for invoice.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 727,
+    "text": "The Login Page throws a 500 error when scrolling.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 728,
+    "text": "Duplicate product details entries found in Login Page.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 729,
+    "text": "The Payment Gateway is not aligned correctly on Chrome Browser.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 730,
+    "text": "Slow database query in User Profile when fetching session token.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 731,
+    "text": "Unauthorized access to session token through Settings Panel.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 732,
+    "text": "Jerky animations in Dashboard on Android Tablet.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 733,
+    "text": "Color mismatch in the User Profile when updating the profile.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 734,
+    "text": "Null pointer exception in User Profile when product details is empty.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 735,
+    "text": "The User Profile does not save invoice correctly.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 736,
+    "text": "Responsive layout breaks on Desktop View for User Profile.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 737,
+    "text": "Button text is overflowing in the Search Bar.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 738,
+    "text": "The Settings Panel is not aligned correctly on Desktop View.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 739,
+    "text": "Webhook failure for session token in Login Page.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 740,
+    "text": "The Dashboard throws a 500 error when updating the profile.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 741,
+    "text": "Schema mismatch between Login Page and the third-party provider.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 742,
+    "text": "Color mismatch in the Dashboard when updating the profile.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 743,
+    "text": "High memory usage when updating the profile in Login Page.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 744,
+    "text": "Webhook failure for session token in Dashboard.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 745,
+    "text": "High memory usage when scrolling in Search Bar.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 746,
+    "text": "Incorrect fallback logic for user data in Settings Panel.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 747,
+    "text": "Incorrect calculation in the Login Page during initial loading.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 748,
+    "text": "Responsive layout breaks on Desktop View for Login Page.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 749,
+    "text": "Incorrect fallback logic for invoice in Payment Gateway.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 750,
+    "text": "Duplicate user data entries found in Dashboard.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 751,
+    "text": "Incorrect fallback logic for user data in Search Bar.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 752,
+    "text": "Color mismatch in the User Profile when updating the profile.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 753,
+    "text": "Data mismatch between Search Bar and the dashboard.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 754,
+    "text": "Button text is overflowing in the Search Bar.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 755,
+    "text": "The Dashboard does not save session token correctly.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 756,
+    "text": "Webhook failure for search results in Dashboard.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 757,
+    "text": "Schema mismatch between Search Bar and the third-party provider.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 758,
+    "text": "Duplicate search results entries found in Settings Panel.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 759,
+    "text": "API timeout when connecting Dashboard to external service.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 760,
+    "text": "Duplicate session token entries found in Search Bar.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 761,
+    "text": "Webhook failure for user data in Settings Panel.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 762,
+    "text": "Incorrect calculation in the Dashboard during updating the profile.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 763,
+    "text": "Null pointer exception in Dashboard when user data is empty.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 764,
+    "text": "The Dashboard is not aligned correctly on Desktop View.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 765,
+    "text": "High memory usage when initial loading in User Profile.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 766,
+    "text": "Webhook failure for invoice in Settings Panel.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 767,
+    "text": "The Dashboard throws a 500 error when submitting the form.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 768,
+    "text": "Jerky animations in Login Page on Chrome Browser.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 769,
+    "text": "Responsive layout breaks on Chrome Browser for Dashboard.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 770,
+    "text": "Incorrect calculation in the Login Page during updating the profile.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 771,
+    "text": "SQL injection vulnerability detected in Dashboard.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 772,
+    "text": "Button text is overflowing in the Login Page.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 773,
+    "text": "Responsive layout breaks on Safari for Dashboard.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 774,
+    "text": "The Login Page is not aligned correctly on Desktop View.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 775,
+    "text": "Broken authentication in User Profile for user data.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 776,
+    "text": "Duplicate product details entries found in Dashboard.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 777,
+    "text": "Button text is overflowing in the Login Page.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 778,
+    "text": "Color mismatch in the Payment Gateway when initial loading.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 779,
+    "text": "Slow database query in Dashboard when fetching invoice.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 780,
+    "text": "SQL injection vulnerability detected in Settings Panel.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 781,
+    "text": "Clicking the User Profile results in no action.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 782,
+    "text": "The Dashboard takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 783,
+    "text": "Responsive layout breaks on Safari for Settings Panel.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 784,
+    "text": "Incorrect calculation in the Dashboard during scrolling.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 785,
+    "text": "The Payment Gateway takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 786,
+    "text": "Null pointer exception in Dashboard when search results is empty.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 787,
+    "text": "Null pointer exception in Dashboard when search results is empty.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 788,
+    "text": "The Login Page is not aligned correctly on iPhone 13.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 789,
+    "text": "The Dashboard takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 790,
+    "text": "SQL injection vulnerability detected in Search Bar.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 791,
+    "text": "The Search Bar does not save search results correctly.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 792,
+    "text": "Slow database query in Login Page when fetching product details.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 793,
+    "text": "Webhook failure for product details in Dashboard.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 794,
+    "text": "Webhook failure for search results in User Profile.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 795,
+    "text": "Failed to synchronize invoice across Payment Gateway.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 796,
+    "text": "Failed to synchronize product details across Login Page.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 797,
+    "text": "High memory usage when submitting the form in Payment Gateway.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 798,
+    "text": "SQL injection vulnerability detected in User Profile.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 799,
+    "text": "Color mismatch in the User Profile when initial loading.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 800,
+    "text": "API timeout when connecting Search Bar to external service.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 801,
+    "text": "Broken authentication in Settings Panel for invoice.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 802,
+    "text": "Slow database query in Login Page when fetching session token.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 803,
+    "text": "Jerky animations in User Profile on Safari.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 804,
+    "text": "Null pointer exception in Settings Panel when session token is empty.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 805,
+    "text": "Null pointer exception in Settings Panel when session token is empty.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 806,
+    "text": "Data mismatch between User Profile and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 807,
+    "text": "Slow database query in Dashboard when fetching user data.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 808,
+    "text": "The Search Bar throws a 500 error when initial loading.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 809,
+    "text": "Responsive layout breaks on Safari for Login Page.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 810,
+    "text": "Unauthorized access to session token through Login Page.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 811,
+    "text": "High memory usage when submitting the form in Settings Panel.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 812,
+    "text": "API timeout when connecting Login Page to external service.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 813,
+    "text": "Webhook failure for invoice in User Profile.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 814,
+    "text": "Incorrect fallback logic for product details in Dashboard.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 815,
+    "text": "Schema mismatch between Payment Gateway and the third-party provider.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 816,
+    "text": "Failed to synchronize product details across Dashboard.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 817,
+    "text": "Broken authentication in User Profile for user data.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 818,
+    "text": "Schema mismatch between Dashboard and the third-party provider.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 819,
+    "text": "Unauthorized access to invoice through Search Bar.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 820,
+    "text": "Incorrect fallback logic for user data in Payment Gateway.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 821,
+    "text": "Cross-site scripting (XSS) possible via Login Page.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 822,
+    "text": "The Settings Panel is not aligned correctly on Safari.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 823,
+    "text": "API timeout when connecting User Profile to external service.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 824,
+    "text": "The Dashboard throws a 500 error when submitting the form.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 825,
+    "text": "Slow database query in User Profile when fetching user data.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 826,
+    "text": "Incorrect calculation in the User Profile during submitting the form.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 827,
+    "text": "The Dashboard does not save search results correctly.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 828,
+    "text": "SQL injection vulnerability detected in Settings Panel.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 829,
+    "text": "Incorrect calculation in the Search Bar during initial loading.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 830,
+    "text": "The User Profile does not save user data correctly.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 831,
+    "text": "SQL injection vulnerability detected in Dashboard.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 832,
+    "text": "Incorrect fallback logic for invoice in Payment Gateway.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 833,
+    "text": "Schema mismatch between User Profile and the third-party provider.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 834,
+    "text": "Jerky animations in User Profile on iPhone 13.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 835,
+    "text": "Schema mismatch between User Profile and the third-party provider.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 836,
+    "text": "Responsive layout breaks on iPhone 13 for User Profile.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 837,
+    "text": "Jerky animations in Payment Gateway on Chrome Browser.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 838,
+    "text": "Responsive layout breaks on Desktop View for Dashboard.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 839,
+    "text": "Failed to synchronize invoice across Login Page.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 840,
+    "text": "Unauthorized access to search results through User Profile.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 841,
+    "text": "The Settings Panel does not save session token correctly.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 842,
+    "text": "Duplicate user data entries found in Dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 843,
+    "text": "The Login Page does not save session token correctly.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 844,
+    "text": "The Login Page takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 845,
+    "text": "Color mismatch in the Settings Panel when scrolling.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 846,
+    "text": "Responsive layout breaks on iPhone 13 for Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 847,
+    "text": "Color mismatch in the Payment Gateway when scrolling.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 848,
+    "text": "Broken authentication in Settings Panel for product details.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 849,
+    "text": "Webhook failure for session token in User Profile.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 850,
+    "text": "Jerky animations in User Profile on iPhone 13.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 851,
+    "text": "The Settings Panel is not aligned correctly on Safari.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 852,
+    "text": "Jerky animations in Login Page on Desktop View.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 853,
+    "text": "Schema mismatch between Login Page and the third-party provider.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 854,
+    "text": "Button text is overflowing in the User Profile.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 855,
+    "text": "The Payment Gateway takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 856,
+    "text": "Incorrect calculation in the Dashboard during updating the profile.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 857,
+    "text": "The Dashboard throws a 500 error when scrolling.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 858,
+    "text": "Broken authentication in User Profile for invoice.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 859,
+    "text": "The Settings Panel throws a 500 error when updating the profile.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 860,
+    "text": "High memory usage when initial loading in Search Bar.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 861,
+    "text": "High memory usage when scrolling in Dashboard.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 862,
+    "text": "The Login Page is not aligned correctly on Safari.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 863,
+    "text": "The Settings Panel takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 864,
+    "text": "Slow database query in Payment Gateway when fetching product details.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 865,
+    "text": "Unauthorized access to invoice through Settings Panel.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 866,
+    "text": "Null pointer exception in Payment Gateway when search results is empty.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 867,
+    "text": "Button text is overflowing in the Login Page.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 868,
+    "text": "Schema mismatch between User Profile and the third-party provider.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 869,
+    "text": "API timeout when connecting Payment Gateway to external service.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 870,
+    "text": "Slow database query in Payment Gateway when fetching search results.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 871,
+    "text": "The Dashboard does not save search results correctly.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 872,
+    "text": "Null pointer exception in Login Page when user data is empty.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 873,
+    "text": "The Login Page is not aligned correctly on Safari.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 874,
+    "text": "Color mismatch in the User Profile when scrolling.",
+    "category": "ui_ux",
+    "severity": "high"
+  },
+  {
+    "id": 875,
+    "text": "Color mismatch in the User Profile when scrolling.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 876,
+    "text": "SQL injection vulnerability detected in Settings Panel.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 877,
+    "text": "The Search Bar takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 878,
+    "text": "Responsive layout breaks on Android Tablet for Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 879,
+    "text": "High memory usage when initial loading in Search Bar.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 880,
+    "text": "The User Profile throws a 500 error when submitting the form.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 881,
+    "text": "Slow database query in User Profile when fetching invoice.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 882,
+    "text": "Jerky animations in Login Page on Safari.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 883,
+    "text": "The Settings Panel is not aligned correctly on iPhone 13.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 884,
+    "text": "The Login Page takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 885,
+    "text": "Clicking the Search Bar results in no action.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 886,
+    "text": "Cross-site scripting (XSS) possible via User Profile.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 887,
+    "text": "API timeout when connecting Settings Panel to external service.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 888,
+    "text": "Cross-site scripting (XSS) possible via Settings Panel.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 889,
+    "text": "Incorrect calculation in the Login Page during updating the profile.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 890,
+    "text": "Jerky animations in Payment Gateway on Android Tablet.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 891,
+    "text": "Color mismatch in the Search Bar when submitting the form.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 892,
+    "text": "Unauthorized access to user data through Search Bar.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 893,
+    "text": "Schema mismatch between Dashboard and the third-party provider.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 894,
+    "text": "The Payment Gateway throws a 500 error when scrolling.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 895,
+    "text": "Jerky animations in Payment Gateway on Android Tablet.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 896,
+    "text": "Data mismatch between User Profile and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 897,
+    "text": "Unauthorized access to product details through Settings Panel.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 898,
+    "text": "The Payment Gateway takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 899,
+    "text": "Cross-site scripting (XSS) possible via User Profile.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 900,
+    "text": "Slow database query in Login Page when fetching search results.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 901,
+    "text": "The Payment Gateway takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 902,
+    "text": "SQL injection vulnerability detected in Payment Gateway.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 903,
+    "text": "Failed to synchronize session token across Dashboard.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 904,
+    "text": "Jerky animations in Login Page on Android Tablet.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 905,
+    "text": "The Dashboard throws a 500 error when submitting the form.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 906,
+    "text": "Slow database query in User Profile when fetching session token.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 907,
+    "text": "Duplicate session token entries found in Search Bar.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 908,
+    "text": "Webhook failure for user data in Payment Gateway.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 909,
+    "text": "Responsive layout breaks on Chrome Browser for Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 910,
+    "text": "Schema mismatch between Search Bar and the third-party provider.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 911,
+    "text": "Clicking the Search Bar results in no action.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 912,
+    "text": "Data mismatch between Login Page and the dashboard.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 913,
+    "text": "Broken authentication in Settings Panel for user data.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 914,
+    "text": "Incorrect fallback logic for session token in Login Page.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 915,
+    "text": "The Payment Gateway is not aligned correctly on Desktop View.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 916,
+    "text": "Button text is overflowing in the Settings Panel.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 917,
+    "text": "The Settings Panel does not save session token correctly.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 918,
+    "text": "SQL injection vulnerability detected in User Profile.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 919,
+    "text": "Clicking the Search Bar results in no action.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 920,
+    "text": "Slow database query in Search Bar when fetching search results.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 921,
+    "text": "The Payment Gateway does not save user data correctly.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 922,
+    "text": "Incorrect fallback logic for search results in Settings Panel.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 923,
+    "text": "Data mismatch between Payment Gateway and the dashboard.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 924,
+    "text": "Webhook failure for product details in User Profile.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 925,
+    "text": "Incorrect fallback logic for search results in User Profile.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 926,
+    "text": "Button text is overflowing in the Dashboard.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 927,
+    "text": "The Settings Panel is not aligned correctly on iPhone 13.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 928,
+    "text": "Incorrect calculation in the Dashboard during scrolling.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 929,
+    "text": "Incorrect calculation in the Payment Gateway during scrolling.",
+    "category": "functional",
+    "severity": "critical"
+  },
+  {
+    "id": 930,
+    "text": "Button text is overflowing in the Login Page.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 931,
+    "text": "Slow database query in Dashboard when fetching session token.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 932,
+    "text": "Slow database query in Dashboard when fetching invoice.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 933,
+    "text": "The Search Bar takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 934,
+    "text": "High memory usage when initial loading in Dashboard.",
+    "category": "performance",
+    "severity": "high"
+  },
+  {
+    "id": 935,
+    "text": "Incorrect calculation in the Login Page during submitting the form.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 936,
+    "text": "Clicking the Search Bar results in no action.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 937,
+    "text": "The Payment Gateway is not aligned correctly on Desktop View.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 938,
+    "text": "Incorrect calculation in the Settings Panel during submitting the form.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 939,
+    "text": "Button text is overflowing in the Settings Panel.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 940,
+    "text": "Data mismatch between Search Bar and the dashboard.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 941,
+    "text": "Color mismatch in the Payment Gateway when submitting the form.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 942,
+    "text": "Duplicate invoice entries found in Settings Panel.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 943,
+    "text": "Button text is overflowing in the User Profile.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 944,
+    "text": "SQL injection vulnerability detected in Search Bar.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 945,
+    "text": "Responsive layout breaks on iPhone 13 for Payment Gateway.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 946,
+    "text": "API timeout when connecting Dashboard to external service.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 947,
+    "text": "Cross-site scripting (XSS) possible via Search Bar.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 948,
+    "text": "The Dashboard does not save session token correctly.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 949,
+    "text": "Responsive layout breaks on Safari for User Profile.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 950,
+    "text": "Duplicate user data entries found in User Profile.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 951,
+    "text": "Duplicate search results entries found in Login Page.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 952,
+    "text": "Button text is overflowing in the Login Page.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 953,
+    "text": "Null pointer exception in User Profile when session token is empty.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 954,
+    "text": "SQL injection vulnerability detected in User Profile.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 955,
+    "text": "SQL injection vulnerability detected in User Profile.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 956,
+    "text": "Incorrect fallback logic for search results in Login Page.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 957,
+    "text": "The Settings Panel throws a 500 error when initial loading.",
+    "category": "functional",
+    "severity": "medium"
+  },
+  {
+    "id": 958,
+    "text": "Cross-site scripting (XSS) possible via Dashboard.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 959,
+    "text": "Data mismatch between Login Page and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 960,
+    "text": "Incorrect fallback logic for product details in Payment Gateway.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 961,
+    "text": "Broken authentication in Login Page for invoice.",
+    "category": "security",
+    "severity": "high"
+  },
+  {
+    "id": 962,
+    "text": "API timeout when connecting Settings Panel to external service.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 963,
+    "text": "The User Profile is not aligned correctly on Android Tablet.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 964,
+    "text": "Incorrect fallback logic for product details in Login Page.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 965,
+    "text": "The Payment Gateway is not aligned correctly on iPhone 13.",
+    "category": "ui_ux",
+    "severity": "low"
+  },
+  {
+    "id": 966,
+    "text": "Broken authentication in Settings Panel for invoice.",
+    "category": "security",
+    "severity": "medium"
+  },
+  {
+    "id": 967,
+    "text": "Jerky animations in Search Bar on Safari.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 968,
+    "text": "Button text is overflowing in the Search Bar.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 969,
+    "text": "The Search Bar takes more than 5 seconds to load.",
+    "category": "performance",
+    "severity": "medium"
+  },
+  {
+    "id": 970,
+    "text": "API timeout when connecting Dashboard to external service.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 971,
+    "text": "Data mismatch between Search Bar and the dashboard.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 972,
+    "text": "Webhook failure for session token in Login Page.",
+    "category": "integration",
+    "severity": "medium"
+  },
+  {
+    "id": 973,
+    "text": "Data mismatch between Settings Panel and the dashboard.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 974,
+    "text": "Incorrect calculation in the Login Page during submitting the form.",
+    "category": "functional",
+    "severity": "high"
+  },
+  {
+    "id": 975,
+    "text": "Webhook failure for product details in Search Bar.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 976,
+    "text": "The Login Page does not save session token correctly.",
+    "category": "functional",
+    "severity": "low"
+  },
+  {
+    "id": 977,
+    "text": "The Settings Panel is not aligned correctly on Desktop View.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 978,
+    "text": "Schema mismatch between Settings Panel and the third-party provider.",
+    "category": "integration",
+    "severity": "critical"
+  },
+  {
+    "id": 979,
+    "text": "Null pointer exception in Login Page when search results is empty.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 980,
+    "text": "Data mismatch between Login Page and the dashboard.",
+    "category": "data_logic",
+    "severity": "high"
+  },
+  {
+    "id": 981,
+    "text": "Schema mismatch between Dashboard and the third-party provider.",
+    "category": "integration",
+    "severity": "low"
+  },
+  {
+    "id": 982,
+    "text": "Button text is overflowing in the Dashboard.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 983,
+    "text": "SQL injection vulnerability detected in Login Page.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 984,
+    "text": "Duplicate search results entries found in Payment Gateway.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 985,
+    "text": "Button text is overflowing in the Settings Panel.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 986,
+    "text": "Jerky animations in Payment Gateway on iPhone 13.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 987,
+    "text": "Null pointer exception in Search Bar when product details is empty.",
+    "category": "data_logic",
+    "severity": "critical"
+  },
+  {
+    "id": 988,
+    "text": "The User Profile is not aligned correctly on Chrome Browser.",
+    "category": "ui_ux",
+    "severity": "critical"
+  },
+  {
+    "id": 989,
+    "text": "Data mismatch between Login Page and the dashboard.",
+    "category": "data_logic",
+    "severity": "medium"
+  },
+  {
+    "id": 990,
+    "text": "Null pointer exception in User Profile when product details is empty.",
+    "category": "data_logic",
+    "severity": "low"
+  },
+  {
+    "id": 991,
+    "text": "Jerky animations in User Profile on iPhone 13.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 992,
+    "text": "High memory usage when initial loading in User Profile.",
+    "category": "performance",
+    "severity": "critical"
+  },
+  {
+    "id": 993,
+    "text": "Cross-site scripting (XSS) possible via Search Bar.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 994,
+    "text": "SQL injection vulnerability detected in Search Bar.",
+    "category": "security",
+    "severity": "low"
+  },
+  {
+    "id": 995,
+    "text": "Unauthorized access to product details through Dashboard.",
+    "category": "security",
+    "severity": "critical"
+  },
+  {
+    "id": 996,
+    "text": "Webhook failure for product details in Payment Gateway.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 997,
+    "text": "API timeout when connecting Login Page to external service.",
+    "category": "integration",
+    "severity": "high"
+  },
+  {
+    "id": 998,
+    "text": "Jerky animations in Dashboard on Android Tablet.",
+    "category": "performance",
+    "severity": "low"
+  },
+  {
+    "id": 999,
+    "text": "Color mismatch in the Dashboard when updating the profile.",
+    "category": "ui_ux",
+    "severity": "medium"
+  },
+  {
+    "id": 1000,
+    "text": "Jerky animations in Search Bar on Android Tablet.",
+    "category": "performance",
+    "severity": "critical"
+  }
+]

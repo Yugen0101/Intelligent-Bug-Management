@@ -1,0 +1,90 @@
+import Link from 'next/link'
+
+export default function HomePage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+      {/* Hero Section */}
+      <div className="container mx-auto px-4 py-16">
+        <div className="text-center max-w-4xl mx-auto">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+            AI-Powered Bug Management
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-600 mb-8">
+            Intelligent bug tracking with NLP classification, duplicate detection,
+            and decision-support insights
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            <Link
+              href="/auth/signup"
+              className="px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors shadow-lg"
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/auth/login"
+              className="px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold text-lg hover:bg-gray-50 transition-colors shadow-lg border-2 border-blue-600"
+            >
+              Sign In
+            </Link>
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid md:grid-cols-3 gap-8 mt-20">
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <div className="text-4xl mb-4">🤖</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">AI Classification</h3>
+              <p className="text-gray-600">
+                Automatically categorize bugs and predict severity using machine learning
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <div className="text-4xl mb-4">🔍</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Duplicate Detection</h3>
+              <p className="text-gray-600">
+                Find similar bugs instantly using vector similarity search
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <div className="text-4xl mb-4">📊</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Smart Insights</h3>
+              <p className="text-gray-600">
+                Get actionable recommendations and analytics for better decision-making
+              </p>
+            </div>
+          </div>
+
+          {/* Role-Based Features */}
+          <div className="mt-20">
+            <h2 className="text-3xl font-bold text-gray-900 mb-12">Built for Every Role</h2>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border-2 border-green-200">
+                <h3 className="text-xl font-bold text-green-900 mb-2">Testers</h3>
+                <p className="text-green-700">
+                  Submit bugs with AI assistance and real-time duplicate checking
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-xl border-2 border-blue-200">
+                <h3 className="text-xl font-bold text-blue-900 mb-2">Developers</h3>
+                <p className="text-blue-700">
+                  View assigned bugs, track progress, and access similar resolved issues
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border-2 border-purple-200">
+                <h3 className="text-xl font-bold text-purple-900 mb-2">Managers</h3>
+                <p className="text-purple-700">
+                  Access analytics, AI insights, and team performance metrics
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
