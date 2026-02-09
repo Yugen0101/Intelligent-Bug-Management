@@ -9,6 +9,10 @@ export async function createClient() {
 
     const isValid = (val: string) => val && val !== 'undefined' && val !== 'null' && val.length > 10
 
+    if (!isValid(url) || !isValid(key)) {
+        console.warn('⚠️ Server-side Supabase configuration missing. Using placeholders.')
+    }
+
     return createServerClient(
         isValid(url) ? url : 'https://placeholder.supabase.co',
         isValid(key) ? key : 'placeholder',
