@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AI-Powered Bug Management Platform",
+  title: "Bug Mind | AI-Powered Bug Management",
   description: "Intelligent bug tracking with NLP classification, duplicate detection, and decision-support insights",
 };
 

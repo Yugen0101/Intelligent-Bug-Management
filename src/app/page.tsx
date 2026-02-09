@@ -5,13 +5,20 @@ export default function HomePage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-16">
-        <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            AI-Powered Bug Management
+        <div className="text-center max-w-4xl mx-auto flex flex-col items-center">
+          <div className="mb-8 w-32 h-32 bg-white p-4 rounded-3xl shadow-2xl ring-1 ring-black/5 animate-bounce-slow">
+            <img
+              src="/logo.png"
+              alt="Bug Mind Logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <h1 className="text-5xl md:text-7xl font-black text-gray-900 mb-6 tracking-tighter">
+            Bug <span className="text-blue-600">Mind</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-8">
+          <p className="text-xl md:text-2xl text-gray-600 mb-10 font-medium max-w-2xl">
             Intelligent bug tracking with NLP classification, duplicate detection,
-            and decision-support insights
+            and AI-driven decision support.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">

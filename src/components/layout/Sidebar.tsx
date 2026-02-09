@@ -79,13 +79,22 @@ export function Sidebar({ role, isMobile, onNavClick }: SidebarProps) {
             !isMobile && "fixed left-0 top-0 w-64"
         )}>
             <div className="p-6">
-                <Link href="/" className="flex items-center gap-2">
-                    <div className="bg-blue-600 p-1.5 rounded-lg shadow-lg shadow-blue-100">
-                        <AlertCircle className="w-6 h-6 text-white" />
+                <Link href="/" className="flex items-center gap-3 group">
+                    <div className="relative w-10 h-10 bg-white p-1 rounded-xl shadow-lg ring-1 ring-black/5 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                        <img
+                            src="/logo.png"
+                            alt="Bug Mind Logo"
+                            className="w-full h-full object-contain"
+                        />
                     </div>
-                    <span className="text-xl font-black text-gray-900 tracking-tight leading-none pt-1">
-                        BugSense <span className="text-blue-600">AI</span>
-                    </span>
+                    <div className="flex flex-col">
+                        <span className="text-xl font-black text-gray-900 tracking-tighter leading-none">
+                            Bug<span className="text-blue-600">Mind</span>
+                        </span>
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] text-gray-400 mt-0.5">
+                            Intelligent Triage
+                        </span>
+                    </div>
                 </Link>
             </div>
 
