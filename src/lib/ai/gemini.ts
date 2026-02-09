@@ -1,8 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
 export type GeminiAnalysis = {
     root_cause: string;
     steps: string[];
@@ -28,10 +25,24 @@ export type ProjectHealthInsight = {
 };
 
 export class GeminiEngine {
-    async analyzeBug(description: string, category: string, severity: string): Promise<GeminiAnalysis> {
-        if (!process.env.GEMINI_API_KEY || process.env.GEMINI_API_KEY === 'your_gemini_api_key_here') {
+    private genAI: any = null;
+    private model: any = null;
+
+    private initModel() {
+        const apiKey = (process.env.GEMINI_API_KEY || "").trim();
+        if (!apiKey || apiKey === 'your_gemini_api_key_here') {
             throw new Error("Gemini API key not configured");
         }
+
+        if (!this.genAI || !this.model) {
+            this.genAI = new GoogleGenerativeAI(apiKey);
+            this.model = this.genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        }
+        return this.model;
+    }
+
+    async analyzeBug(description: string, category: string, severity: string): Promise<GeminiAnalysis> {
+        const model = this.initModel();
 
         const prompt = `
             You are an expert software engineer and bug triage assistant. 
@@ -58,7 +69,11 @@ export class GeminiEngine {
             // Extract JSON if model wraps it in markdown backticks
             const jsonMatch = text.match(/\{[\s\S]*\}/);
             if (jsonMatch) {
-                return JSON.parse(jsonMatch[0]);
+                try {
+                    return JSON.parse(jsonMatch[0]);
+                } catch (e) {
+                    console.error("Failed to parse matched JSON:", jsonMatch[0]);
+                }
             }
 
             return JSON.parse(text);
@@ -69,9 +84,7 @@ export class GeminiEngine {
     }
 
     async predictBugMetadata(title: string, description: string): Promise<GeminiPrediction> {
-        if (!process.env.GEMINI_API_KEY || process.env.GEMINI_API_KEY === 'your_gemini_api_key_here') {
-            throw new Error("Gemini API key not configured");
-        }
+        const model = this.initModel();
 
         const prompt = `
             You are a senior bug triage specialist. Based on the following bug report, predict the most appropriate category and severity.
@@ -101,7 +114,9 @@ export class GeminiEngine {
 
             const jsonMatch = text.match(/\{[\s\S]*\}/);
             if (jsonMatch) {
-                return JSON.parse(jsonMatch[0]);
+                try {
+                    return JSON.parse(jsonMatch[0]);
+                } catch (e) { }
             }
 
             return JSON.parse(text);
@@ -112,19 +127,21 @@ export class GeminiEngine {
     }
 
     async getAgentResponse(message: string, context: { description: string, comments: any[] }): Promise<string> {
-        const prompt = `
-            You are an AI Triage Agent for a bug management platform. 
-            The user (a developer) is asking: "${message}"
-            
-            Context of the bug being discussed:
-            Description: "${context.description}"
-            Recent comments: ${JSON.stringify(context.comments.slice(-5))}
-            
-            Provide a helpful, professional, and technical response to guide the developer. 
-            Keep it focused on the specific bug context.
-        `;
-
         try {
+            const model = this.initModel();
+
+            const prompt = `
+                You are an AI Triage Agent for a bug management platform. 
+                The user (a developer) is asking: "${message}"
+                
+                Context of the bug being discussed:
+                Description: "${context.description}"
+                Recent comments: ${JSON.stringify(context.comments.slice(-5))}
+                
+                Provide a helpful, professional, and technical response to guide the developer. 
+                Keep it focused on the specific bug context.
+            `;
+
             const result = await model.generateContent(prompt);
             const response = await result.response;
             return response.text();
@@ -135,9 +152,7 @@ export class GeminiEngine {
     }
 
     async generateProjectHealthInsight(stats: any): Promise<ProjectHealthInsight> {
-        if (!process.env.GEMINI_API_KEY || process.env.GEMINI_API_KEY === 'your_gemini_api_key_here') {
-            throw new Error("Gemini API key not configured");
-        }
+        const model = this.initModel();
 
         const prompt = `
             You are a senior project management consultant. Analyze the following bug tracking data and provide an executive summary, recommendations, and risk assessment.
@@ -164,7 +179,9 @@ export class GeminiEngine {
 
             const jsonMatch = text.match(/\{[\s\S]*\}/);
             if (jsonMatch) {
-                return JSON.parse(jsonMatch[0]);
+                try {
+                    return JSON.parse(jsonMatch[0]);
+                } catch (e) { }
             }
 
             return JSON.parse(text);
@@ -175,20 +192,18 @@ export class GeminiEngine {
     }
 
     async generateDuplicateReasoning(newBugDesc: string, existingBugDesc: string): Promise<string> {
-        if (!process.env.GEMINI_API_KEY || process.env.GEMINI_API_KEY === 'your_gemini_api_key_here') {
-            return "Both reports describe similar failure patterns in the same module.";
-        }
-
-        const prompt = `
-            Compare these two bug descriptions and explain in one concise sentence why they appear to be duplicates. Focus on the core functionality failure or symptoms.
-            
-            New Bug: ${newBugDesc}
-            Existing Bug: ${existingBugDesc}
-            
-            Response must be a single, professional sentence (max 25 words).
-        `;
-
         try {
+            const model = this.initModel();
+
+            const prompt = `
+                Compare these two bug descriptions and explain in one concise sentence why they appear to be duplicates. Focus on the core functionality failure or symptoms.
+                
+                New Bug: ${newBugDesc}
+                Existing Bug: ${existingBugDesc}
+                
+                Response must be a single, professional sentence (max 25 words).
+            `;
+
             const result = await model.generateContent(prompt);
             const response = await result.response;
             return response.text().trim();
@@ -200,3 +215,4 @@ export class GeminiEngine {
 }
 
 export const geminiEngine = new GeminiEngine();
+

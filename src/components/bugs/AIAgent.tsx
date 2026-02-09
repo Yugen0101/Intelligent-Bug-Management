@@ -80,16 +80,20 @@ export function AIAgent({ bug, comments }: AIAgentProps) {
             }
 
             setDiagnosis(data)
+
+            const rootCause = data.root_cause || "No clear root cause detected. Analyzing further...";
+            const steps = Array.isArray(data.steps) ? data.steps : ["Verify configuration", "Check server logs", "Review recent changes"];
+
             setMessages([
                 {
                     role: 'ai',
-                    content: `I've analyzed the report. Based on the symptoms, I believe the root cause is: **${data.root_cause}**`
+                    content: `I've analyzed the report. Based on the symptoms, I believe the root cause is: **${rootCause}**`
                 },
                 {
                     role: 'ai',
                     content: "Here are my suggested rectification steps:",
                     type: 'steps',
-                    data: data.steps
+                    data: steps
                 }
             ])
 
