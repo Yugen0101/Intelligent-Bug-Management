@@ -99,72 +99,79 @@ export function BugList({ role, projectId, userId, assignedTo, limit }: BugListP
 
     if (loading) {
         return (
-            <div className="flex flex-col items-center justify-center py-20 gap-4">
-                <Loader2 className="w-10 h-10 text-blue-600 animate-spin" />
-                <p className="text-gray-500 font-medium">Loading bugs...</p>
+            <div className="flex flex-col items-center justify-center py-32 gap-6">
+                <div className="relative">
+                    <div className="w-16 h-16 border-4 border-indigo-500/20 border-t-indigo-500 rounded-full animate-spin" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
+                    </div>
+                </div>
+                <p className="text-gray-500 font-black uppercase tracking-[0.3em] text-xs animate-pulse">Scanning Neural Stream...</p>
             </div>
         )
     }
 
     if (error) {
         return (
-            <div className="p-8 bg-red-50 border border-red-100 rounded-3xl flex flex-col items-center gap-3 text-center">
-                <AlertCircle className="w-10 h-10 text-red-500" />
+            <div className="p-12 glass-card border border-rose-500/20 rounded-[3rem] flex flex-col items-center gap-6 text-center">
+                <div className="p-4 rounded-full bg-rose-500/10 border border-rose-500/20">
+                    <AlertCircle className="w-8 h-8 text-rose-500" />
+                </div>
                 <div>
-                    <h3 className="text-lg font-bold text-red-900">Oops! Something went wrong</h3>
-                    <p className="text-red-700 text-sm">{error}</p>
+                    <h3 className="text-xl font-black text-white uppercase tracking-tighter mb-2">System Compromised</h3>
+                    <p className="text-gray-400 font-medium">{error}</p>
                 </div>
             </div>
         )
     }
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-10">
             {/* Filters & Search */}
             {!limit && (
-                <div className="flex flex-col lg:flex-row gap-4 items-center justify-between bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
-                    <div className="relative w-full lg:max-w-md">
-                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <div className="flex flex-col lg:flex-row gap-6 items-center justify-between glass-card p-6 rounded-[2.5rem] border border-white/5 shadow-2xl">
+                    <div className="relative w-full lg:max-w-lg group">
+                        <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 group-focus-within:text-indigo-400 transition-colors" />
                         <input
                             type="text"
-                            placeholder="Search bugs by title or description..."
-                            className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium text-gray-900"
+                            placeholder="Query neural database for signatures..."
+                            className="w-full pl-12 pr-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-sm placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500/30 transition-all font-medium text-white"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                         />
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
-                        <div className="flex items-center gap-2">
-                            <Filter className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                    <div className="flex flex-wrap items-center gap-4 w-full lg:w-auto">
+                        <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-2 rounded-2xl">
+                            <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-2">Node</span>
                             <select
-                                className="bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-sm font-semibold text-gray-900 outline-none focus:ring-2 focus:ring-blue-500/20"
+                                className="bg-transparent border-none rounded-xl px-2 py-1 text-xs font-black text-white uppercase tracking-widest outline-none cursor-pointer"
                                 value={filter}
                                 onChange={(e) => setFilter(e.target.value as any)}
                             >
-                                <option value="all">All Status</option>
+                                <option value="all">Global</option>
                                 <option value="open">Open</option>
-                                <option value="in_progress">In Progress</option>
+                                <option value="in_progress">Active</option>
                                 <option value="resolved">Resolved</option>
-                                <option value="closed">Closed</option>
-                                <option value="duplicate">Duplicate</option>
+                                <option value="closed">Finalized</option>
+                                <option value="duplicate">Redundant</option>
                             </select>
                         </div>
 
-                        <div className="flex items-center gap-2">
-                            <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Sort:</span>
+                        <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-2 rounded-2xl">
+                            <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-2">Sequence</span>
                             <select
-                                className="bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-sm font-semibold text-gray-900 outline-none focus:ring-2 focus:ring-blue-500/20"
+                                className="bg-transparent border-none rounded-xl px-2 py-1 text-xs font-black text-white uppercase tracking-widest outline-none cursor-pointer"
                                 value={sortBy}
                                 onChange={(e) => setSortBy(e.target.value as any)}
                             >
-                                <option value="created_at">Date</option>
-                                <option value="status">Status</option>
-                                <option value="severity">Severity</option>
+                                <option value="created_at">Temporal</option>
+                                <option value="status">Protocol</option>
+                                <option value="severity">Priority</option>
                             </select>
                             <button
                                 onClick={() => setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc')}
-                                className="p-2 bg-gray-50 border border-gray-200 rounded-xl hover:bg-gray-100 transition-colors"
+                                className="p-2 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all text-white active:scale-90"
                             >
                                 {sortOrder === 'asc' ? '↑' : '↓'}
                             </button>
@@ -175,17 +182,18 @@ export function BugList({ role, projectId, userId, assignedTo, limit }: BugListP
 
             {/* Grid */}
             {bugs.length === 0 ? (
-                <div className="text-center py-20 bg-white rounded-3xl border border-dashed border-gray-200">
-                    <Bug className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                    <h3 className="text-lg font-bold text-gray-900">No bugs found</h3>
-                    <p className="text-gray-500 max-w-xs mx-auto mt-1">
+                <div className="text-center py-32 glass-card rounded-[3rem] border border-dashed border-white/10 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-indigo-500/5 blur-[100px] rounded-full pointer-events-none" />
+                    <Bug className="w-16 h-16 text-gray-700 mx-auto mb-6 opacity-50" />
+                    <h3 className="text-2xl font-black text-white uppercase tracking-tighter mb-2">Null Sector Detected</h3>
+                    <p className="text-gray-500 font-medium max-w-xs mx-auto">
                         {debouncedSearch || filter !== 'all'
-                            ? "We couldn't find any bugs matching your current search or filters."
-                            : "There are no bugs reported yet. Start by reporting a new one!"}
+                            ? "No signatures match your current query parameters."
+                            : "Neural stream is clear. No active anomalies detected in this sector."}
                     </p>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                     {bugs.map((bug) => (
                         <BugCard
                             key={bug.id}

@@ -10,7 +10,8 @@ import {
     AlertTriangle,
     Sparkles,
     Loader2,
-    Info
+    Info,
+    ArrowRight
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
@@ -168,113 +169,115 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
     }
 
     return (
-        <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-8">
-            <div className="space-y-6">
+        <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-12">
+            <div className="space-y-10">
+                {/* Project Selection */}
                 <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">
-                        Project
+                    <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
+                        Deployment Sector (Project)
                     </label>
-                    <select
-                        {...register('project_id')}
-                        className={cn(
-                            "w-full px-4 py-3 bg-gray-50 border rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none",
-                            errors.project_id ? "border-red-300 bg-red-50/30" : "border-gray-200"
-                        )}
-                    >
-                        <option value="">Select a project</option>
-                        {projects.map((p) => (
-                            <option key={p.id} value={p.id}>{p.name}</option>
-                        ))}
-                    </select>
+                    <div className="relative group">
+                        <select
+                            {...register('project_id')}
+                            className={cn(
+                                "w-full px-6 py-4 bg-white/5 border rounded-2xl text-white outline-none transition-all appearance-none cursor-pointer font-bold",
+                                errors.project_id ? "border-rose-500/30 bg-rose-500/5 text-rose-200" : "border-white/10 group-hover:border-white/20"
+                            )}
+                        >
+                            <option value="" className="bg-gray-900">Choose node...</option>
+                            {projects.map((p) => (
+                                <option key={p.id} value={p.id} className="bg-gray-900">{p.name}</option>
+                            ))}
+                        </select>
+                        <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+                            ↓
+                        </div>
+                    </div>
                     {errors.project_id && (
-                        <p className="mt-1.5 text-xs font-medium text-red-600 ml-1">{errors.project_id.message}</p>
+                        <p className="mt-2 text-[10px] font-black text-rose-400 uppercase tracking-widest ml-1">{errors.project_id.message}</p>
                     )}
                 </div>
 
+                {/* Bug Title */}
                 <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">
-                        Bug Title
+                    <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
+                        Anomaly Signature (Title)
                     </label>
                     <input
                         {...register('title')}
-                        placeholder="e.g. Login button unresponsive on mobile"
+                        placeholder="e.g. Protocol fracture in auth gate..."
                         className={cn(
-                            "w-full px-4 py-3 bg-gray-50 border rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none",
-                            errors.title ? "border-red-300 bg-red-50/30" : "border-gray-200"
+                            "w-full px-6 py-4 bg-white/5 border rounded-2xl text-white outline-none transition-all font-bold placeholder:text-gray-700",
+                            errors.title ? "border-rose-500/30 bg-rose-500/5 text-rose-200" : "border-white/10 focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10"
                         )}
                     />
                     {errors.title && (
-                        <p className="mt-1.5 text-xs font-medium text-red-600 ml-1">{errors.title.message}</p>
+                        <p className="mt-2 text-[10px] font-black text-rose-400 uppercase tracking-widest ml-1">{errors.title.message}</p>
                     )}
                 </div>
 
+                {/* Description & AI Block */}
                 <div className="relative">
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">
-                        Description
+                    <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
+                        Diagnostic Data (Description)
                     </label>
                     <textarea
                         {...register('description')}
                         rows={6}
-                        placeholder="Describe what happened, steps to reproduce, and expected vs actual behavior..."
+                        placeholder="Detailed log of the anomaly sequence..."
                         className={cn(
-                            "w-full px-4 py-3 bg-gray-50 border rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none resize-none",
-                            errors.description ? "border-red-300 bg-red-50/30" : "border-gray-200"
+                            "w-full px-6 py-4 bg-white/5 border rounded-2xl text-white outline-none transition-all font-medium placeholder:text-gray-700 resize-none",
+                            errors.description ? "border-rose-500/30 bg-rose-500/5 text-rose-200" : "border-white/10 focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10"
                         )}
                     />
                     {errors.description && (
-                        <p className="mt-1.5 text-xs font-medium text-red-600 ml-1">{errors.description.message}</p>
+                        <p className="mt-2 text-[10px] font-black text-rose-400 uppercase tracking-widest ml-1">{errors.description.message}</p>
                     )}
 
                     {(isPredicting || prediction) && (
-                        <div className="mt-4 p-5 bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-100 rounded-3xl animate-in fade-in slide-in-from-top-2 duration-500 shadow-sm relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                <Sparkles className="w-12 h-12 text-indigo-600" />
-                            </div>
+                        <div className="mt-6 p-8 bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent border border-white/10 rounded-[2.5rem] animate-in fade-in slide-in-from-top-4 duration-700 relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 blur-[60px] rounded-full -mr-16 -mt-16 group-hover:bg-indigo-500/20 transition-all duration-1000" />
 
-                            <div className="flex items-center gap-2 mb-4">
-                                <Sparkles className="w-5 h-5 text-indigo-600 animate-pulse" />
-                                <span className="text-sm font-black text-indigo-900 uppercase tracking-widest">AI Intelligence</span>
-                                {prediction && (
-                                    <Badge variant="outline" className="ml-auto bg-white/50 text-indigo-700 border-indigo-200">
-                                        ML v4.0 Active
-                                    </Badge>
-                                )}
+                            <div className="flex items-center gap-3 mb-8">
+                                <div className="p-2 bg-indigo-500/20 rounded-xl">
+                                    <Sparkles className="w-5 h-5 text-indigo-400 animate-pulse" />
+                                </div>
+                                <div>
+                                    <span className="text-xs font-black text-white uppercase tracking-[0.2em] block">Neural Insight active</span>
+                                    <span className="text-[10px] font-bold text-gray-500">Synthetic Reasoning Layer v4.0</span>
+                                </div>
                             </div>
 
                             {isPredicting ? (
-                                <div className="flex items-center gap-3 text-indigo-600/70 p-2">
-                                    <Loader2 className="w-5 h-5 animate-spin" />
-                                    <span className="text-sm font-bold italic tracking-wide">Classifying bug pattern...</span>
+                                <div className="flex items-center gap-4 text-indigo-400/80 p-4 bg-white/5 rounded-2xl border border-white/5">
+                                    <div className="w-2 h-2 bg-indigo-500 rounded-full animate-ping" />
+                                    <span className="text-sm font-black uppercase tracking-widest italic animate-pulse">Scanning patterns...</span>
                                 </div>
                             ) : (
-                                <div className="space-y-4">
-                                    <div className="flex flex-wrap gap-4">
-                                        <div className="bg-white/60 p-3 rounded-2xl border border-white/50 backdrop-blur-sm flex-1 min-w-[140px]">
-                                            <p className="text-[10px] uppercase tracking-wider font-extrabold text-indigo-400 mb-1.5 flex justify-between">
-                                                Category
-                                            </p>
-                                            <div className="flex items-center justify-between gap-2">
-                                                <span className="text-sm font-black text-indigo-900 capitalize block truncate">
-                                                    {prediction?.category.replace('_', '/')}
+                                <div className="space-y-6">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div className="bg-white/5 p-4 rounded-2xl border border-white/5 backdrop-blur-md">
+                                            <p className="text-[9px] uppercase tracking-[0.3em] font-black text-indigo-400 mb-2">Category Vector</p>
+                                            <div className="flex items-center justify-between gap-3">
+                                                <span className="text-lg font-black text-white capitalize tracking-tighter">
+                                                    {prediction?.category.replace('_', ' ')}
                                                 </span>
                                                 <ConfidenceBadge
                                                     score={prediction.confidence.category}
-                                                    label="Conf"
+                                                    label="Prob"
                                                     onClick={() => setIsReasoningOpen(true)}
                                                 />
                                             </div>
                                         </div>
-                                        <div className="bg-white/60 p-3 rounded-2xl border border-white/50 backdrop-blur-sm flex-1 min-w-[140px]">
-                                            <p className="text-[10px] uppercase tracking-wider font-extrabold text-purple-400 mb-1.5 flex justify-between">
-                                                Severity
-                                            </p>
-                                            <div className="flex items-center justify-between gap-2">
-                                                <span className="text-sm font-black text-purple-900 capitalize block truncate">
+                                        <div className="bg-white/5 p-4 rounded-2xl border border-white/5 backdrop-blur-md">
+                                            <p className="text-[9px] uppercase tracking-[0.3em] font-black text-purple-400 mb-2">Severity Impact</p>
+                                            <div className="flex items-center justify-between gap-3">
+                                                <span className="text-lg font-black text-white capitalize tracking-tighter">
                                                     {prediction?.severity}
                                                 </span>
                                                 <ConfidenceBadge
                                                     score={prediction.confidence.severity}
-                                                    label="Conf"
+                                                    label="Prob"
                                                     onClick={() => setIsReasoningOpen(true)}
                                                 />
                                             </div>
@@ -283,24 +286,26 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
 
                                     <div
                                         onClick={() => setIsReasoningOpen(true)}
-                                        className="bg-indigo-600/5 p-3 rounded-2xl border border-indigo-600/10 cursor-help hover:bg-indigo-600/10 transition-colors"
+                                        className="bg-white/5 p-5 rounded-3xl border border-white/5 cursor-help hover:bg-white/10 transition-all group/reason"
                                     >
-                                        <p className="text-[10px] uppercase tracking-wider font-black text-indigo-500 mb-1 flex justify-between items-center">
-                                            AI Reasoning
-                                            <span className="text-[8px] opacity-50 font-medium">Click for details</span>
-                                        </p>
-                                        <p className="text-xs text-indigo-900/80 leading-relaxed font-medium line-clamp-2">
-                                            {prediction.explanation}
+                                        <div className="flex items-center justify-between mb-3">
+                                            <p className="text-[9px] uppercase tracking-[0.3em] font-black text-gray-500">Core Logic Matrix</p>
+                                            <div className="text-[8px] font-black text-indigo-400 uppercase tracking-widest opacity-0 group-hover/reason:opacity-100 transition-opacity flex items-center gap-1">
+                                                Decode Details <Info className="w-3 h-3" />
+                                            </div>
+                                        </div>
+                                        <p className="text-xs text-gray-300 leading-relaxed font-medium line-clamp-2 italic">
+                                            "{prediction.explanation}"
                                         </p>
                                     </div>
 
                                     <button
                                         type="button"
                                         onClick={applyAISuggestion}
-                                        className="w-full py-2.5 bg-indigo-600 text-white text-xs font-black uppercase tracking-widest rounded-xl hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-200 flex items-center justify-center gap-2 mt-2"
+                                        className="w-full py-4 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-2xl hover:bg-indigo-500 transition-all shadow-[0_0_30px_rgba(79,70,229,0.3)] active:scale-[0.98] flex items-center justify-center gap-3 mt-2"
                                     >
-                                        <Sparkles className="w-3.5 h-3.5" />
-                                        Apply AI Suggestion
+                                        <Sparkles className="w-4 h-4" />
+                                        Finalize Predictions
                                     </button>
 
                                     <ReasoningModal
@@ -319,37 +324,38 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                     )}
                 </div>
 
-                <div className="grid grid-cols-2 gap-6 pt-4 border-t border-gray-100">
+                {/* Manual Selects */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-white/5">
                     <div>
-                        <label className="block text-sm font-semibold text-gray-900 mb-2 uppercase tracking-wide opacity-60">
-                            Manual Category
+                        <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
+                            Override Category
                         </label>
                         <select
                             {...register('category')}
-                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all text-sm font-bold"
+                            className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white outline-none transition-all font-bold appearance-none cursor-pointer"
                         >
-                            <option value="">Choose...</option>
-                            <option value="ui_ux">UI/UX</option>
-                            <option value="functional">Functional</option>
-                            <option value="performance">Performance</option>
-                            <option value="security">Security</option>
-                            <option value="data_logic">Data/Logic</option>
-                            <option value="integration">Integration</option>
+                            <option value="" className="bg-gray-900">Choose...</option>
+                            <option value="ui_ux" className="bg-gray-900">UI/UX</option>
+                            <option value="functional" className="bg-gray-900">Functional</option>
+                            <option value="performance" className="bg-gray-900">Performance</option>
+                            <option value="security" className="bg-gray-900">Security</option>
+                            <option value="data_logic" className="bg-gray-900">Data/Logic</option>
+                            <option value="integration" className="bg-gray-900">Integration</option>
                         </select>
                     </div>
                     <div>
-                        <label className="block text-sm font-semibold text-gray-900 mb-2 uppercase tracking-wide opacity-60">
-                            Manual Severity
+                        <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
+                            Override Severity
                         </label>
                         <select
                             {...register('severity')}
-                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all text-sm font-bold"
+                            className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white outline-none transition-all font-bold appearance-none cursor-pointer"
                         >
-                            <option value="">Choose...</option>
-                            <option value="critical">Critical</option>
-                            <option value="high">High</option>
-                            <option value="medium">Medium</option>
-                            <option value="low">Low</option>
+                            <option value="" className="bg-gray-900">Choose...</option>
+                            <option value="critical" className="bg-gray-900">Critical</option>
+                            <option value="high" className="bg-gray-900">High</option>
+                            <option value="medium" className="bg-gray-900">Medium</option>
+                            <option value="low" className="bg-gray-900">Low</option>
                         </select>
                     </div>
                 </div>
@@ -358,25 +364,32 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
             <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-gray-900 text-white py-4 rounded-2xl font-bold text-lg hover:bg-black transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-xl shadow-gray-200 active:scale-[0.98] flex items-center justify-center gap-2"
+                className="w-full bg-white text-black py-5 rounded-[2rem] font-black text-sm uppercase tracking-[0.3em] hover:bg-gray-100 transition-all disabled:opacity-20 disabled:cursor-not-allowed shadow-[0_0_50px_rgba(255,255,255,0.1)] active:scale-[0.98] flex items-center justify-center gap-4 group"
             >
-                {isLoading && <Loader2 className="w-5 h-5 animate-spin" />}
-                {isLoading ? 'Wait a moment...' : submitLabel}
+                {isLoading ? (
+                    <div className="w-10 h-1 border-2 border-black/20 border-t-black rounded-full animate-spin" />
+                ) : (
+                    <>
+                        {submitLabel}
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                    </>
+                )}
             </button>
 
+            {/* Duplicates Section */}
             {duplicates.length > 0 && !initialData && (
-                <div className="mt-8 space-y-6 pt-8 border-t border-gray-100">
-                    <div className="flex items-center gap-3">
-                        <div className="p-2 shadow-sm rounded-xl bg-amber-50">
-                            <AlertTriangle className="w-5 h-5 text-amber-600 animate-bounce" />
+                <div className="mt-12 space-y-8 pt-12 border-t border-white/5">
+                    <div className="flex items-center gap-4">
+                        <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-2xl">
+                            <AlertTriangle className="w-6 h-6 text-amber-500 animate-pulse" />
                         </div>
                         <div>
-                            <h3 className="text-sm font-black text-gray-900 uppercase tracking-widest">Similar Bugs Detected</h3>
-                            <p className="text-[10px] font-bold text-gray-500 italic">We found existing reports that look similar to yours. Please review them.</p>
+                            <h3 className="text-xs font-black text-white uppercase tracking-[0.2em] mb-1">Collision Detected</h3>
+                            <p className="text-[10px] font-bold text-gray-500">Neural footprints match existing reports. Review for redundancy.</p>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-4">
+                    <div className="grid grid-cols-1 gap-6">
                         {duplicates.map((dup) => (
                             <DuplicateBugCard
                                 key={dup.id}
@@ -390,22 +403,22 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                     </div>
 
                     {duplicateOf && (
-                        <div className="p-4 bg-amber-50 border-2 border-dashed border-amber-200 rounded-3xl flex items-center justify-between animate-in slide-in-from-bottom-2">
-                            <div className="flex items-center gap-3">
-                                <div className="p-2 bg-amber-600 rounded-xl">
-                                    <Info className="w-3.5 h-3.5 text-white" />
+                        <div className="p-6 bg-amber-500/5 border border-dashed border-amber-500/20 rounded-3xl flex items-center justify-between animate-in slide-in-from-bottom-4 backdrop-blur-sm">
+                            <div className="flex items-center gap-4">
+                                <div className="p-2 bg-amber-500/20 rounded-xl">
+                                    <Info className="w-4 h-4 text-amber-500" />
                                 </div>
                                 <div>
-                                    <p className="text-[10px] font-black text-amber-900 uppercase tracking-widest">Duplicate Link Prepared</p>
-                                    <p className="text-[10px] font-medium text-amber-700">This bug will be linked and status set to 'Duplicate'</p>
+                                    <p className="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">Link Protocol Prepared</p>
+                                    <p className="text-[10px] font-medium text-gray-400">Anomaly status will be set to 'Redundant'</p>
                                 </div>
                             </div>
                             <button
                                 type="button"
                                 onClick={() => setDuplicateOf(null)}
-                                className="text-[10px] font-bold text-amber-600 hover:text-amber-800 underline uppercase tracking-tighter"
+                                className="text-[10px] font-black text-rose-500 hover:text-rose-400 transition-colors uppercase tracking-widest border border-rose-500/20 px-4 py-2 rounded-xl bg-rose-500/5"
                             >
-                                Cancel Link
+                                Abort Link
                             </button>
                         </div>
                     )}

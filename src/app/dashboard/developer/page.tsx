@@ -18,7 +18,6 @@ export default function DeveloperDashboard() {
             if (!user) return
             setUserId(user.id)
 
-            // Fetch bugs assigned to this developer
             const { data: assignments } = await supabase
                 .from('bug_assignments')
                 .select('bug_id')
@@ -45,36 +44,44 @@ export default function DeveloperDashboard() {
 
     return (
         <DashboardLayout role="developer">
-            <div className="space-y-8">
-                <div>
-                    <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Developer Dashboard</h1>
-                    <p className="text-gray-500 font-medium">Focus on your assigned issues and track your progress.</p>
+            <div className="space-y-12">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div>
+                        <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-4 leading-tight">
+                            Developer <span className="text-indigo-500">Node</span>
+                        </h1>
+                        <p className="text-gray-400 font-medium max-w-xl">
+                            Active task stream. Monitoring assigned anomalies and resolution progress.
+                        </p>
+                    </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <StatCard
-                        title="Assigned to Me"
+                        title="Active Assignments"
                         value={stats.assigned}
-                        icon={<Bug className="w-6 h-6 text-indigo-600" />}
+                        icon={<Bug className="w-6 h-6" />}
                         color="indigo"
                     />
                     <StatCard
-                        title="In Progress"
+                        title="Processing"
                         value={stats.inProgress}
-                        icon={<Clock className="w-6 h-6 text-purple-600" />}
+                        icon={<Clock className="w-6 h-6" />}
                         color="purple"
                     />
                     <StatCard
-                        title="Resolved"
+                        title="Resolved Core"
                         value={stats.resolvedToday}
-                        icon={<CheckCircle className="w-6 h-6 text-emerald-600" />}
+                        icon={<CheckCircle className="w-6 h-6" />}
                         color="emerald"
                     />
                 </div>
 
-                <div className="space-y-4">
-                    <h2 className="text-xl font-bold text-gray-900">Your Assigned Tasks</h2>
-                    {userId && <BugList role="developer" assignedTo={userId} limit={10} />}
+                <div className="space-y-6">
+                    <h2 className="text-xl font-black text-white uppercase tracking-tighter">My Task Queue</h2>
+                    <div className="glass-card rounded-[2.5rem] border border-white/5 overflow-hidden">
+                        {userId && <BugList role="developer" assignedTo={userId} limit={10} />}
+                    </div>
                 </div>
             </div>
         </DashboardLayout>
@@ -82,30 +89,36 @@ export default function DeveloperDashboard() {
 }
 
 function StatCard({ title, value, icon, color }: { title: string, value: number, icon: React.ReactNode, color: string }) {
-    const shadowColors: Record<string, string> = {
-        indigo: 'shadow-indigo-50',
-        purple: 'shadow-purple-50',
-        emerald: 'shadow-emerald-50'
+    const iconColors: Record<string, string> = {
+        indigo: 'text-indigo-400',
+        purple: 'text-purple-400',
+        emerald: 'text-emerald-400'
     }
 
-    const bgColors: Record<string, string> = {
-        indigo: 'bg-indigo-50',
-        purple: 'bg-purple-50',
-        emerald: 'bg-emerald-50'
+    const glowColors: Record<string, string> = {
+        indigo: 'shadow-indigo-500/20',
+        purple: 'shadow-purple-500/20',
+        emerald: 'shadow-emerald-500/20'
     }
 
     return (
         <div className={cn(
-            "p-6 bg-white rounded-3xl border border-gray-100 shadow-xl transition-all hover:scale-[1.02] duration-300",
-            shadowColors[color]
+            "glass-card p-10 rounded-[3rem] border border-white/10 shadow-2xl transition-all hover:scale-[1.05] duration-500 relative overflow-hidden group",
+            glowColors[color]
         )}>
-            <div className="flex items-center justify-between mb-4">
-                <div className={cn("p-3 rounded-2xl", bgColors[color])}>
-                    {icon}
+            <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 blur-[40px] rounded-full -mr-12 -mt-12 group-hover:bg-white/10 transition-colors" />
+
+            <div className="flex items-center justify-between mb-8 relative z-10">
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 group-hover:border-white/20 transition-colors">
+                    <div className={iconColors[color]}>
+                        {icon}
+                    </div>
                 </div>
-                <span className="text-2xl font-black text-gray-900">{value}</span>
+                <span className="text-4xl font-black text-white tracking-tighter">
+                    {value}
+                </span>
             </div>
-            <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider">{title}</h3>
+            <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] ml-1">{title}</h3>
         </div>
     )
 }
