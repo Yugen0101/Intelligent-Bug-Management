@@ -8,9 +8,14 @@ export async function middleware(request: NextRequest) {
         },
     })
 
+    const url = (process.env.NEXT_PUBLIC_SUPABASE_URL || '').trim()
+    const key = (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '').trim()
+
+    const isValid = (val: string) => val && val !== 'undefined' && val !== 'null' && val.length > 10
+
     const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co',
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder',
+        isValid(url) ? url : 'https://placeholder.supabase.co',
+        isValid(key) ? key : 'placeholder',
         {
             cookies: {
                 getAll() {
