@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 
 export default function HomePage() {
   return (
@@ -32,7 +32,7 @@ export default function HomePage() {
           {/* Features Grid */}
           <div className="grid md:grid-cols-3 gap-8 mt-20">
             <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <div className="text-4xl mb-4">🤖</div>
+              <div className="text-4xl mb-4">≡ƒñû</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">AI Classification</h3>
               <p className="text-gray-600">
                 Automatically categorize bugs and predict severity using machine learning
@@ -40,7 +40,7 @@ export default function HomePage() {
             </div>
 
             <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <div className="text-4xl mb-4">🔍</div>
+              <div className="text-4xl mb-4">≡ƒöì</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Duplicate Detection</h3>
               <p className="text-gray-600">
                 Find similar bugs instantly using vector similarity search
@@ -48,7 +48,7 @@ export default function HomePage() {
             </div>
 
             <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <div className="text-4xl mb-4">📊</div>
+              <div className="text-4xl mb-4">≡ƒôè</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Smart Insights</h3>
               <p className="text-gray-600">
                 Get actionable recommendations and analytics for better decision-making

@@ -51,27 +51,26 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-black relative overflow-hidden px-4 selection:bg-indigo-500/30">
-            {/* Immersive Neural Background */}
+        <div className="min-h-screen flex items-center justify-center bg-gray-50 relative overflow-hidden px-4 selection:bg-blue-500/30">
+            {/* Subtle Light Pattern */}
             <div className="fixed inset-0 pointer-events-none">
-                <div className="absolute inset-0 mesh-gradient opacity-40" />
-                <div className="absolute bottom-[-15%] left-[-10%] w-[50%] h-[50%] bg-blue-600/10 blur-[150px] rounded-full animate-pulse delay-700" />
+                <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-40" />
             </div>
 
             <div className="max-w-md w-full relative z-10 scale-95 md:scale-100">
-                <div className="glass-card rounded-[3.5rem] p-10 md:p-12 border border-white/10 shadow-[0_32px_128px_-16px_rgba(0,0,0,0.5)]">
+                <div className="bg-white rounded-[3rem] p-10 md:p-12 border border-gray-200 shadow-2xl shadow-gray-200/50">
                     <div className="text-center mb-10">
-                        <div className="inline-flex p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 mb-6 group hover:scale-110 transition-transform">
-                            <LogIn className="w-8 h-8 text-indigo-400" />
+                        <div className="inline-flex p-4 rounded-2xl bg-blue-50 border border-blue-100 mb-6 group hover:scale-110 transition-transform">
+                            <LogIn className="w-8 h-8 text-blue-600" />
                         </div>
-                        <h1 className="text-4xl font-black text-white tracking-tighter mb-3 leading-tight">
-                            Neural <span className="text-indigo-500">Access</span>
+                        <h1 className="text-4xl font-black text-gray-900 tracking-tighter mb-3 leading-tight">
+                            BugMaster <span className="text-blue-600">Login</span>
                         </h1>
-                        <p className="text-gray-400 font-medium">Identify yourself to the Bug Mind hub</p>
+                        <p className="text-gray-500 font-medium tracking-tight">Sign in to manage your bugs</p>
                     </div>
 
                     {error && (
-                        <div className="mb-8 p-4 bg-red-500/10 border border-red-200/20 rounded-2xl text-red-400 text-sm font-medium animate-shake">
+                        <div className="mb-8 p-4 bg-red-50 border border-red-100 rounded-2xl text-red-600 text-sm font-medium animate-shake">
                             {error}
                         </div>
                     )}
@@ -80,14 +79,14 @@ export default function LoginPage() {
                         <div className="space-y-2">
                             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">Universal ID</label>
                             <div className="relative group">
-                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-indigo-400 transition-colors" />
+                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-blue-600 transition-colors" />
                                 <input
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
-                                    className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all font-medium"
-                                    placeholder="your@neural.net"
+                                    className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/30 transition-all font-medium"
+                                    placeholder="your@email.com"
                                 />
                             </div>
                         </div>
@@ -95,13 +94,13 @@ export default function LoginPage() {
                         <div className="space-y-2">
                             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">Access Key</label>
                             <div className="relative group">
-                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-indigo-400 transition-colors" />
+                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-blue-600 transition-colors" />
                                 <input
                                     type="password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
-                                    className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all font-medium"
+                                    className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/30 transition-all font-medium"
                                     placeholder="••••••••"
                                 />
                             </div>
@@ -110,7 +109,7 @@ export default function LoginPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full py-5 bg-white text-black font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-gray-100 transition-all shadow-xl shadow-white/5 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed mt-4 group overflow-hidden relative"
+                            className="w-full py-5 bg-gray-900 text-white font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-black transition-all shadow-xl shadow-gray-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed mt-4 group overflow-hidden relative"
                         >
                             <span className="relative z-10 flex items-center justify-center gap-3">
                                 {loading ? 'Authorizing...' : 'Initialize Access'}
@@ -120,9 +119,9 @@ export default function LoginPage() {
                     </form>
 
                     <p className="mt-10 text-center text-sm font-medium text-gray-500">
-                        New entity?{' '}
-                        <Link href="/auth/signup" className="text-white hover:text-indigo-400 transition-colors font-black uppercase tracking-widest text-[10px]">
-                            Generate Identity
+                        New user?{' '}
+                        <Link href="/auth/signup" className="text-blue-600 hover:text-blue-700 transition-colors font-black uppercase tracking-widest text-[10px]">
+                            Create Account
                         </Link>
                     </p>
                 </div>

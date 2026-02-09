@@ -15,12 +15,10 @@ export function DashboardLayout({ children, role }: DashboardLayoutProps) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
     return (
-        <div className="min-h-screen bg-black flex overflow-x-hidden relative">
-            {/* Global Neural Background */}
+        <div className="min-h-screen bg-gray-50 flex overflow-x-hidden relative">
+            {/* Subtle Light Background Grain/Noise or simple clear bg */}
             <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="absolute inset-0 mesh-gradient opacity-30" />
-                <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-indigo-600/10 blur-[120px] rounded-full" />
-                <div className="absolute bottom-[-10%] left-[-5%] w-[40%] h-[40%] bg-blue-600/5 blur-[120px] rounded-full" />
+                <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-40" />
             </div>
 
             {/* Desktop Sidebar */}
@@ -38,13 +36,13 @@ export function DashboardLayout({ children, role }: DashboardLayoutProps) {
 
             {/* Mobile Sidebar */}
             <div className={cn(
-                "fixed inset-y-0 left-0 w-72 bg-black z-50 lg:hidden transition-transform duration-500 ease-in-out transform border-r border-white/10",
+                "fixed inset-y-0 left-0 w-72 bg-white z-50 lg:hidden transition-transform duration-500 ease-in-out transform border-r border-gray-200",
                 isSidebarOpen ? "translate-x-0" : "-translate-x-full"
             )}>
                 <div className="absolute top-4 right-4 lg:hidden z-[60]">
                     <button
                         onClick={() => setIsSidebarOpen(false)}
-                        className="p-3 text-gray-500 hover:text-white transition-all bg-white/5 rounded-xl border border-white/10"
+                        className="p-3 text-gray-500 hover:text-gray-900 transition-all bg-gray-50 rounded-xl border border-gray-200"
                     >
                         <X className="w-6 h-6" />
                     </button>

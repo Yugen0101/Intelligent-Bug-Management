@@ -76,25 +76,21 @@ export function Sidebar({ role, isMobile, onNavClick }: SidebarProps) {
 
     return (
         <aside className={cn(
-            "h-full w-full bg-black/95 backdrop-blur-3xl border-r border-white/5 flex flex-col z-30 transition-all",
+            "h-full w-full bg-white border-r border-gray-200 flex flex-col z-30 transition-all",
             !isMobile && "fixed left-0 top-0 w-64"
         )}>
             {/* Brand Identity */}
             <div className="p-8">
                 <Link href="/" className="flex items-center gap-3 group">
-                    <div className="relative w-10 h-10 bg-white p-1.5 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.1)] group-hover:scale-110 transition-transform duration-500 overflow-hidden">
-                        <img
-                            src="/logo.png"
-                            alt="Bug Mind"
-                            className="w-full h-full object-contain"
-                        />
+                    <div className="w-10 h-10 bg-blue-600 flex items-center justify-center rounded-2xl group-hover:scale-110 transition-transform duration-500">
+                        <Bug className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-xl font-black text-white tracking-tighter leading-none">
-                            Bug<span className="text-indigo-500">Mind</span>
+                        <span className="text-xl font-bold text-gray-900 tracking-tight leading-none">
+                            Bug<span className="text-blue-600">Master</span>
                         </span>
-                        <span className="text-[8px] font-black uppercase tracking-[0.3em] text-gray-500 mt-1">
-                            Neural Node
+                        <span className="text-[10px] font-bold text-gray-500 mt-1 uppercase tracking-wider">
+                            {role} Panel
                         </span>
                     </div>
                 </Link>
@@ -108,10 +104,10 @@ export function Sidebar({ role, isMobile, onNavClick }: SidebarProps) {
                         href={item.href}
                         onClick={onNavClick}
                         className={cn(
-                            "flex items-center gap-3 px-4 py-3.5 rounded-2xl text-sm font-black uppercase tracking-widest transition-all duration-300 group",
+                            "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all duration-200 group",
                             item.active
-                                ? "bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 shadow-[0_0_15px_rgba(99,102,241,0.05)]"
-                                : "text-gray-500 hover:text-gray-300 hover:bg-white/5"
+                                ? "bg-blue-50 text-blue-600"
+                                : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
                         )}
                     >
                         <item.icon className={cn(
@@ -127,21 +123,21 @@ export function Sidebar({ role, isMobile, onNavClick }: SidebarProps) {
             </nav>
 
             {/* System Actions */}
-            <div className="p-4 mt-auto border-t border-white/5 space-y-2">
+            <div className="p-4 mt-auto border-t border-gray-100 space-y-2">
                 <button
                     onClick={handleSignOut}
-                    className="w-full flex items-center gap-3 px-4 py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 hover:text-red-400 hover:bg-red-500/5 transition-all group"
+                    className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-gray-500 hover:text-red-600 hover:bg-red-50 transition-all group"
                 >
                     <LogOut className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                    Logout Sequence
+                    Logout
                 </button>
 
-                <div className="p-4 rounded-3xl bg-gradient-to-br from-indigo-500/10 to-transparent border border-white/5 mt-4">
-                    <p className="text-[8px] font-black text-indigo-400 uppercase tracking-widest mb-2 flex items-center gap-1.5">
-                        <Sparkles className="w-2.5 h-2.5" /> Neural Health
+                <div className="p-4 rounded-2xl bg-gray-50 border border-gray-100 mt-4">
+                    <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-2">
+                        System Online
                     </p>
-                    <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                        <div className="w-4/5 h-full bg-indigo-500 animate-pulse" />
+                    <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                        <div className="w-full h-full bg-green-500" />
                     </div>
                 </div>
             </div>

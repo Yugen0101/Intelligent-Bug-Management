@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { NotificationDropdown } from './NotificationDropdown'
 import type { Profile } from '@/types/database'
+import { ThemeToggle } from './ThemeToggle'
 
 interface HeaderProps {
     onMenuClick?: () => void
@@ -28,47 +29,48 @@ export function Header({ onMenuClick }: HeaderProps) {
     }, [])
 
     return (
-        <header className="h-20 bg-black/50 backdrop-blur-3xl border-b border-white/5 flex items-center justify-between px-6 md:px-10 sticky top-0 z-20">
+        <header className="h-20 bg-white/80 backdrop-blur-xl border-b border-gray-200 flex items-center justify-between px-6 md:px-10 sticky top-0 z-20 transition-colors">
             <div className="flex items-center gap-6 flex-1">
                 <button
                     onClick={onMenuClick}
-                    className="p-3 -ml-3 text-gray-500 hover:text-white lg:hidden transition-all rounded-xl hover:bg-white/5"
+                    className="p-3 -ml-3 text-gray-500 hover:text-gray-900 lg:hidden transition-all rounded-xl hover:bg-gray-100"
                 >
                     <Menu className="w-6 h-6" />
                 </button>
 
                 <div className="relative w-full max-w-lg hidden md:block group">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 group-focus-within:text-indigo-400 transition-colors" />
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-blue-600 transition-colors" />
                     <input
                         type="text"
-                        placeholder="Scan neural database for signatures..."
-                        className="w-full pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-sm text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500/30 transition-all font-medium"
+                        placeholder="Search bugs..."
+                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-2xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/30 transition-all font-medium"
                     />
                 </div>
             </div>
 
             <div className="flex items-center gap-4 md:gap-8">
+                {/* ThemeToggle removed as per "no need of dark theme" */}
                 <div className="flex items-center">
                     <NotificationDropdown />
                 </div>
 
-                <div className="h-6 w-[1px] bg-white/10 mx-2 hidden sm:block"></div>
+                <div className="h-6 w-[1px] bg-gray-200 mx-2 hidden sm:block"></div>
 
                 <div className="flex items-center gap-4">
                     <div className="text-right hidden sm:block">
-                        <p className="text-sm font-black text-white leading-none tracking-tight">
+                        <p className="text-sm font-bold text-gray-900 leading-none">
                             {profile?.full_name || 'Loading Core...'}
                         </p>
-                        <p className="text-[9px] text-indigo-400 mt-1.5 capitalize font-black uppercase tracking-[0.2em] opacity-80">
-                            {profile?.role || 'Guest Entity'}
+                        <p className="text-[10px] text-blue-600 mt-1 font-bold uppercase tracking-wider">
+                            {profile?.role || 'Guest'}
                         </p>
                     </div>
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-white/5 rounded-2xl flex items-center justify-center text-white border border-white/10 shadow-[0_0_20px_rgba(255,255,255,0.02)] transition-transform hover:scale-105 cursor-pointer overflow-hidden group">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-gray-700 border border-gray-200 transition-transform hover:scale-105 cursor-pointer overflow-hidden group">
                         {profile?.avatar_url ? (
                             <img src={profile.avatar_url} alt="" className="w-full h-full object-cover transition-transform group-hover:scale-110" />
                         ) : (
-                            <div className="bg-indigo-500/10 w-full h-full flex items-center justify-center group-hover:bg-indigo-500/20 transition-colors">
-                                <User className="w-5 h-5 md:w-6 md:h-6 text-indigo-400" />
+                            <div className="bg-blue-50 w-full h-full flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                                <User className="w-5 h-5 md:w-6 md:h-6 text-blue-600" />
                             </div>
                         )}
                     </div>

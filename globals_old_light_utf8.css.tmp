@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -22,9 +22,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #ffffff;
-    /* Explicitly disable dark mode for this reversion if requested */
-    --foreground: #171717;
+    --background: #0a0a0a;
+    --foreground: #ededed;
   }
 }
 

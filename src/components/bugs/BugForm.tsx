@@ -174,19 +174,19 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                 {/* Project Selection */}
                 <div>
                     <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
-                        Deployment Sector (Project)
+                        Select Project
                     </label>
                     <div className="relative group">
                         <select
                             {...register('project_id')}
                             className={cn(
-                                "w-full px-6 py-4 bg-white/5 border rounded-2xl text-white outline-none transition-all appearance-none cursor-pointer font-bold",
-                                errors.project_id ? "border-rose-500/30 bg-rose-500/5 text-rose-200" : "border-white/10 group-hover:border-white/20"
+                                "w-full px-4 py-3 bg-white border rounded-xl text-gray-900 outline-none transition-all appearance-none cursor-pointer font-medium",
+                                errors.project_id ? "border-red-300 bg-red-50 text-red-900" : "border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10"
                             )}
                         >
-                            <option value="" className="bg-gray-900">Choose node...</option>
+                            <option value="">Select project...</option>
                             {projects.map((p) => (
-                                <option key={p.id} value={p.id} className="bg-gray-900">{p.name}</option>
+                                <option key={p.id} value={p.id}>{p.name}</option>
                             ))}
                         </select>
                         <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
@@ -194,72 +194,70 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                         </div>
                     </div>
                     {errors.project_id && (
-                        <p className="mt-2 text-[10px] font-black text-rose-400 uppercase tracking-widest ml-1">{errors.project_id.message}</p>
+                        <p className="mt-1 text-xs font-bold text-red-500 uppercase tracking-wider ml-1">{errors.project_id.message}</p>
                     )}
                 </div>
 
                 {/* Bug Title */}
                 <div>
                     <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
-                        Anomaly Signature (Title)
+                        Bug Title
                     </label>
                     <input
                         {...register('title')}
-                        placeholder="e.g. Protocol fracture in auth gate..."
+                        placeholder="e.g. Navigation bar is broken..."
                         className={cn(
-                            "w-full px-6 py-4 bg-white/5 border rounded-2xl text-white outline-none transition-all font-bold placeholder:text-gray-700",
-                            errors.title ? "border-rose-500/30 bg-rose-500/5 text-rose-200" : "border-white/10 focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10"
+                            "w-full px-4 py-3 bg-white border rounded-xl text-gray-900 outline-none transition-all font-medium placeholder:text-gray-400",
+                            errors.title ? "border-red-300 bg-red-50 text-red-900" : "border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10"
                         )}
                     />
                     {errors.title && (
-                        <p className="mt-2 text-[10px] font-black text-rose-400 uppercase tracking-widest ml-1">{errors.title.message}</p>
+                        <p className="mt-1 text-xs font-bold text-red-500 uppercase tracking-wider ml-1">{errors.title.message}</p>
                     )}
                 </div>
 
                 {/* Description & AI Block */}
                 <div className="relative">
                     <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
-                        Diagnostic Data (Description)
+                        Bug Description
                     </label>
                     <textarea
                         {...register('description')}
                         rows={6}
-                        placeholder="Detailed log of the anomaly sequence..."
+                        placeholder="Describe the issue in detail..."
                         className={cn(
-                            "w-full px-6 py-4 bg-white/5 border rounded-2xl text-white outline-none transition-all font-medium placeholder:text-gray-700 resize-none",
-                            errors.description ? "border-rose-500/30 bg-rose-500/5 text-rose-200" : "border-white/10 focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10"
+                            "w-full px-4 py-3 bg-white border rounded-xl text-gray-900 outline-none transition-all font-medium placeholder:text-gray-400 resize-none",
+                            errors.description ? "border-red-300 bg-red-50 text-red-900" : "border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10"
                         )}
                     />
                     {errors.description && (
-                        <p className="mt-2 text-[10px] font-black text-rose-400 uppercase tracking-widest ml-1">{errors.description.message}</p>
+                        <p className="mt-1 text-xs font-bold text-red-500 uppercase tracking-wider ml-1">{errors.description.message}</p>
                     )}
 
                     {(isPredicting || prediction) && (
-                        <div className="mt-6 p-8 bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent border border-white/10 rounded-[2.5rem] animate-in fade-in slide-in-from-top-4 duration-700 relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 blur-[60px] rounded-full -mr-16 -mt-16 group-hover:bg-indigo-500/20 transition-all duration-1000" />
-
-                            <div className="flex items-center gap-3 mb-8">
-                                <div className="p-2 bg-indigo-500/20 rounded-xl">
-                                    <Sparkles className="w-5 h-5 text-indigo-400 animate-pulse" />
+                        <div className="mt-6 p-6 bg-blue-50/50 border border-blue-100 rounded-2xl relative overflow-hidden group">
+                            <div className="flex items-center gap-3 mb-6">
+                                <div className="p-2 bg-blue-100 rounded-lg">
+                                    <Sparkles className="w-5 h-5 text-blue-600" />
                                 </div>
                                 <div>
-                                    <span className="text-xs font-black text-white uppercase tracking-[0.2em] block">Neural Insight active</span>
-                                    <span className="text-[10px] font-bold text-gray-500">Synthetic Reasoning Layer v4.0</span>
+                                    <span className="text-xs font-bold text-gray-900 uppercase tracking-wider block">AI Analysis</span>
+                                    <span className="text-[10px] text-gray-500">Intelligent Prediction Layer</span>
                                 </div>
                             </div>
 
                             {isPredicting ? (
-                                <div className="flex items-center gap-4 text-indigo-400/80 p-4 bg-white/5 rounded-2xl border border-white/5">
-                                    <div className="w-2 h-2 bg-indigo-500 rounded-full animate-ping" />
-                                    <span className="text-sm font-black uppercase tracking-widest italic animate-pulse">Scanning patterns...</span>
+                                <div className="flex items-center gap-3 text-blue-600 p-3 bg-white border border-blue-100 rounded-xl">
+                                    <Loader2 className="w-4 h-4 animate-spin" />
+                                    <span className="text-sm font-bold uppercase tracking-wider">Analyzing...</span>
                                 </div>
                             ) : (
                                 <div className="space-y-6">
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <div className="bg-white/5 p-4 rounded-2xl border border-white/5 backdrop-blur-md">
-                                            <p className="text-[9px] uppercase tracking-[0.3em] font-black text-indigo-400 mb-2">Category Vector</p>
-                                            <div className="flex items-center justify-between gap-3">
-                                                <span className="text-lg font-black text-white capitalize tracking-tighter">
+                                        <div className="bg-white p-4 rounded-xl border border-blue-100">
+                                            <p className="text-[9px] uppercase tracking-wider font-bold text-gray-500 mb-1">Predicted Category</p>
+                                            <div className="flex items-center justify-between gap-2">
+                                                <span className="text-lg font-bold text-gray-900 capitalize tracking-tight">
                                                     {prediction?.category.replace('_', ' ')}
                                                 </span>
                                                 <ConfidenceBadge
@@ -269,10 +267,10 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                                                 />
                                             </div>
                                         </div>
-                                        <div className="bg-white/5 p-4 rounded-2xl border border-white/5 backdrop-blur-md">
-                                            <p className="text-[9px] uppercase tracking-[0.3em] font-black text-purple-400 mb-2">Severity Impact</p>
-                                            <div className="flex items-center justify-between gap-3">
-                                                <span className="text-lg font-black text-white capitalize tracking-tighter">
+                                        <div className="bg-white p-4 rounded-xl border border-purple-100">
+                                            <p className="text-[9px] uppercase tracking-wider font-bold text-gray-500 mb-1">Predicted Severity</p>
+                                            <div className="flex items-center justify-between gap-2">
+                                                <span className="text-lg font-bold text-gray-900 capitalize tracking-tight">
                                                     {prediction?.severity}
                                                 </span>
                                                 <ConfidenceBadge
@@ -286,32 +284,32 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
 
                                     <div
                                         onClick={() => setIsReasoningOpen(true)}
-                                        className="bg-white/5 p-5 rounded-3xl border border-white/5 cursor-help hover:bg-white/10 transition-all group/reason"
+                                        className="bg-white p-4 rounded-xl border border-gray-100 cursor-help hover:border-gray-200 transition-all group/reason"
                                     >
-                                        <div className="flex items-center justify-between mb-3">
-                                            <p className="text-[9px] uppercase tracking-[0.3em] font-black text-gray-500">Core Logic Matrix</p>
-                                            <div className="text-[8px] font-black text-indigo-400 uppercase tracking-widest opacity-0 group-hover/reason:opacity-100 transition-opacity flex items-center gap-1">
-                                                Decode Details <Info className="w-3 h-3" />
+                                        <div className="flex items-center justify-between mb-2">
+                                            <p className="text-[9px] uppercase tracking-wider font-bold text-gray-400">AI Explanation</p>
+                                            <div className="text-[8px] font-bold text-blue-600 uppercase tracking-wider opacity-0 group-hover/reason:opacity-100 transition-opacity">
+                                                Details
                                             </div>
                                         </div>
-                                        <p className="text-xs text-gray-300 leading-relaxed font-medium line-clamp-2 italic">
-                                            "{prediction.explanation}"
+                                        <p className="text-xs text-gray-600 leading-relaxed font-medium line-clamp-2">
+                                            {prediction.explanation}
                                         </p>
                                     </div>
 
                                     <button
                                         type="button"
                                         onClick={applyAISuggestion}
-                                        className="w-full py-4 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-2xl hover:bg-indigo-500 transition-all shadow-[0_0_30px_rgba(79,70,229,0.3)] active:scale-[0.98] flex items-center justify-center gap-3 mt-2"
+                                        className="w-full py-3.5 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider rounded-xl hover:bg-blue-700 transition-all shadow-sm active:scale-95 flex items-center justify-center gap-2 mt-2"
                                     >
                                         <Sparkles className="w-4 h-4" />
-                                        Finalize Predictions
+                                        Apply AI Suggestions
                                     </button>
 
                                     <ReasoningModal
                                         isOpen={isReasoningOpen}
                                         onClose={() => setIsReasoningOpen(false)}
-                                        title="AI Logic Breakdown"
+                                        title="AI Analysis Details"
                                         explanation={prediction.explanation}
                                         confidence={{
                                             category: prediction.confidence.category,
@@ -325,22 +323,22 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                 </div>
 
                 {/* Manual Selects */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-white/5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-gray-100">
                     <div>
                         <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
                             Override Category
                         </label>
                         <select
                             {...register('category')}
-                            className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white outline-none transition-all font-bold appearance-none cursor-pointer"
+                            className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-gray-900 outline-none transition-all font-medium appearance-none cursor-pointer"
                         >
-                            <option value="" className="bg-gray-900">Choose...</option>
-                            <option value="ui_ux" className="bg-gray-900">UI/UX</option>
-                            <option value="functional" className="bg-gray-900">Functional</option>
-                            <option value="performance" className="bg-gray-900">Performance</option>
-                            <option value="security" className="bg-gray-900">Security</option>
-                            <option value="data_logic" className="bg-gray-900">Data/Logic</option>
-                            <option value="integration" className="bg-gray-900">Integration</option>
+                            <option value="">Choose...</option>
+                            <option value="ui_ux">UI/UX</option>
+                            <option value="functional">Functional</option>
+                            <option value="performance">Performance</option>
+                            <option value="security">Security</option>
+                            <option value="data_logic">Data/Logic</option>
+                            <option value="integration">Integration</option>
                         </select>
                     </div>
                     <div>
@@ -349,13 +347,13 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                         </label>
                         <select
                             {...register('severity')}
-                            className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white outline-none transition-all font-bold appearance-none cursor-pointer"
+                            className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-gray-900 outline-none transition-all font-medium appearance-none cursor-pointer"
                         >
-                            <option value="" className="bg-gray-900">Choose...</option>
-                            <option value="critical" className="bg-gray-900">Critical</option>
-                            <option value="high" className="bg-gray-900">High</option>
-                            <option value="medium" className="bg-gray-900">Medium</option>
-                            <option value="low" className="bg-gray-900">Low</option>
+                            <option value="">Choose...</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
                         </select>
                     </div>
                 </div>
@@ -364,7 +362,7 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
             <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-white text-black py-5 rounded-[2rem] font-black text-sm uppercase tracking-[0.3em] hover:bg-gray-100 transition-all disabled:opacity-20 disabled:cursor-not-allowed shadow-[0_0_50px_rgba(255,255,255,0.1)] active:scale-[0.98] flex items-center justify-center gap-4 group"
+                className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-blue-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-md active:scale-95 flex items-center justify-center gap-3 group"
             >
                 {isLoading ? (
                     <div className="w-10 h-1 border-2 border-black/20 border-t-black rounded-full animate-spin" />
@@ -378,14 +376,14 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
 
             {/* Duplicates Section */}
             {duplicates.length > 0 && !initialData && (
-                <div className="mt-12 space-y-8 pt-12 border-t border-white/5">
-                    <div className="flex items-center gap-4">
-                        <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-2xl">
-                            <AlertTriangle className="w-6 h-6 text-amber-500 animate-pulse" />
+                <div className="mt-8 space-y-6 pt-8 border-t border-gray-100">
+                    <div className="flex items-center gap-3">
+                        <div className="p-2 bg-amber-50 border border-amber-200 rounded-lg">
+                            <AlertTriangle className="w-5 h-5 text-amber-600" />
                         </div>
                         <div>
-                            <h3 className="text-xs font-black text-white uppercase tracking-[0.2em] mb-1">Collision Detected</h3>
-                            <p className="text-[10px] font-bold text-gray-500">Neural footprints match existing reports. Review for redundancy.</p>
+                            <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-0.5">Potential Duplicates</h3>
+                            <p className="text-[10px] text-gray-500">Existing reports found with similar descriptions.</p>
                         </div>
                     </div>
 
@@ -403,22 +401,22 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                     </div>
 
                     {duplicateOf && (
-                        <div className="p-6 bg-amber-500/5 border border-dashed border-amber-500/20 rounded-3xl flex items-center justify-between animate-in slide-in-from-bottom-4 backdrop-blur-sm">
-                            <div className="flex items-center gap-4">
-                                <div className="p-2 bg-amber-500/20 rounded-xl">
-                                    <Info className="w-4 h-4 text-amber-500" />
+                        <div className="p-4 bg-amber-50 border border-dashed border-amber-200 rounded-xl flex items-center justify-between animate-in slide-in-from-bottom-2">
+                            <div className="flex items-center gap-3">
+                                <div className="p-2 bg-amber-100 rounded-lg">
+                                    <Info className="w-4 h-4 text-amber-600" />
                                 </div>
                                 <div>
-                                    <p className="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">Link Protocol Prepared</p>
-                                    <p className="text-[10px] font-medium text-gray-400">Anomaly status will be set to 'Redundant'</p>
+                                    <p className="text-[10px] font-bold text-amber-700 uppercase tracking-wider mb-0.5">Linking to Existing Bug</p>
+                                    <p className="text-[10px] text-gray-500">This report will be marked as a duplicate.</p>
                                 </div>
                             </div>
                             <button
                                 type="button"
                                 onClick={() => setDuplicateOf(null)}
-                                className="text-[10px] font-black text-rose-500 hover:text-rose-400 transition-colors uppercase tracking-widest border border-rose-500/20 px-4 py-2 rounded-xl bg-rose-500/5"
+                                className="text-[10px] font-bold text-red-600 hover:text-red-700 transition-colors uppercase tracking-wider border border-red-200 px-3 py-1.5 rounded-lg bg-white"
                             >
-                                Abort Link
+                                Cancel
                             </button>
                         </div>
                     )}

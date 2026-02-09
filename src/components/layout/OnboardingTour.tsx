@@ -20,7 +20,7 @@ import {
 
 const STEPS = [
     {
-        title: "Welcome to Bug Mind",
+        title: "Welcome to Brainwave",
         description: "Welcome to your new AI-powered bug management command center. Let's show you how to forge a better workflow.",
         icon: Sparkles,
         color: "text-indigo-600 bg-indigo-50",
@@ -54,7 +54,7 @@ export function OnboardingTour() {
     const [currentStep, setCurrentStep] = useState(0)
 
     useEffect(() => {
-        const hasSeenTour = localStorage.getItem('bugmind_onboarding_seen')
+        const hasSeenTour = localStorage.getItem('brainwave_onboarding_seen')
         if (!hasSeenTour) {
             const timer = setTimeout(() => setIsOpen(true), 1500)
             return () => clearTimeout(timer)
@@ -71,7 +71,7 @@ export function OnboardingTour() {
 
     const handleComplete = () => {
         setIsOpen(false)
-        localStorage.setItem('bugmind_onboarding_seen', 'true')
+        localStorage.setItem('brainwave_onboarding_seen', 'true')
     }
 
     const step = STEPS[currentStep]

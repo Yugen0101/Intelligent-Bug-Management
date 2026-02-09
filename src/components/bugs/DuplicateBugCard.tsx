@@ -22,14 +22,14 @@ export function DuplicateBugCard({ bug, onLink }: DuplicateBugCardProps) {
     const similarityPercent = (bug.similarity * 100).toFixed(0);
 
     return (
-        <div className="bg-white border-2 border-amber-100 rounded-3xl p-4 shadow-sm hover:shadow-md transition-all group animate-in zoom-in-95 duration-300">
+        <div className="bg-card border-2 border-amber-100/20 rounded-3xl p-4 shadow-sm hover:shadow-md transition-all group animate-in zoom-in-95 duration-300">
             <div className="flex items-start justify-between gap-4 mb-3">
                 <div className="flex items-center gap-2">
                     <div className="p-2 bg-amber-50 rounded-xl">
                         <AlertTriangle className="w-4 h-4 text-amber-600" />
                     </div>
                     <div>
-                        <h4 className="text-sm font-black text-gray-900 group-hover:text-amber-700 transition-colors line-clamp-1">{bug.title}</h4>
+                        <h4 className="text-sm font-black text-white group-hover:text-amber-500 transition-colors line-clamp-1">{bug.title}</h4>
                         <div className="flex items-center gap-2 mt-0.5">
                             <ConfidenceBadge
                                 label="Similarity"
@@ -49,8 +49,8 @@ export function DuplicateBugCard({ bug, onLink }: DuplicateBugCardProps) {
             </p>
 
             {bug.reasoning && (
-                <div className="mb-4 p-3 bg-amber-50/50 rounded-xl border border-amber-100/50">
-                    <p className="text-[10px] font-bold text-amber-900 leading-tight">
+                <div className="mb-4 p-3 bg-amber-500/10 rounded-xl border border-amber-500/20">
+                    <p className="text-[10px] font-bold text-amber-500 leading-tight">
                         <span className="opacity-50 mr-1">AI LOGIC:</span>
                         {bug.reasoning}
                     </p>
@@ -68,7 +68,7 @@ export function DuplicateBugCard({ bug, onLink }: DuplicateBugCardProps) {
                 </button>
                 <button
                     onClick={() => setIsModalOpen(true)}
-                    className="p-2 bg-white text-amber-600 rounded-xl hover:bg-amber-50 transition-all border border-amber-100"
+                    className="p-2 bg-white/5 text-amber-500 rounded-xl hover:bg-amber-500/10 transition-all border border-amber-500/20"
                     title="AI Reasoning"
                 >
                     <Info className="w-3.5 h-3.5" />
@@ -76,7 +76,7 @@ export function DuplicateBugCard({ bug, onLink }: DuplicateBugCardProps) {
                 <a
                     href={`/dashboard/tester/bugs/${bug.id}`}
                     target="_blank"
-                    className="p-2 bg-gray-50 text-gray-400 rounded-xl hover:bg-gray-100 transition-all border border-gray-100"
+                    className="p-2 bg-white/5 text-gray-400 rounded-xl hover:bg-white/10 transition-all border border-white/10"
                     title="View Original Bug"
                 >
                     <ExternalLink className="w-3.5 h-3.5" />

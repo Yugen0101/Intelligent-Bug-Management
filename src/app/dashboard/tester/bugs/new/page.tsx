@@ -74,17 +74,14 @@ export default function NewBugPage() {
     if (success) {
         return (
             <DashboardLayout role="tester">
-                <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-8 animate-in fade-in zoom-in duration-700">
-                    <div className="relative">
-                        <div className="w-24 h-24 bg-emerald-500/10 border border-emerald-500/20 rounded-full flex items-center justify-center shadow-[0_0_50px_rgba(16,185,129,0.1)]">
-                            <CheckCircle2 className="w-12 h-12 text-emerald-500" />
-                        </div>
-                        <div className="absolute -inset-4 border border-emerald-500/10 rounded-full animate-ping opacity-20" />
+                <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-6">
+                    <div className="w-20 h-20 bg-emerald-50 border border-emerald-100 rounded-full flex items-center justify-center shadow-sm">
+                        <CheckCircle2 className="w-10 h-10 text-emerald-600" />
                     </div>
                     <div className="text-center">
-                        <h1 className="text-3xl font-black text-white uppercase tracking-tighter mb-3">Anomaly Cataloged</h1>
-                        <p className="text-gray-500 font-medium">
-                            Neural submission complete. Redirecting to core node...
+                        <h1 className="text-2xl font-bold text-gray-900 tracking-tight mb-2">Bug Reported Successfully</h1>
+                        <p className="text-gray-600 font-medium">
+                            Your report has been cataloged. Redirecting to dashboard...
                         </p>
                     </div>
                 </div>
@@ -97,44 +94,41 @@ export default function NewBugPage() {
             <div className="max-w-4xl mx-auto py-12 px-6">
                 <Link
                     href="/dashboard/tester"
-                    className="group inline-flex items-center gap-3 text-gray-500 hover:text-white mb-12 transition-all font-black uppercase tracking-widest text-[10px]"
+                    className="group inline-flex items-center gap-2 text-gray-500 hover:text-gray-900 mb-8 transition-all font-bold uppercase tracking-wider text-[10px]"
                 >
                     <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                    Recall Protocol
+                    Back to Dashboard
                 </Link>
 
-                <div className="glass-card rounded-[3rem] border border-white/10 shadow-2xl overflow-hidden relative">
-                    {/* Header Glow */}
-                    <div className="absolute top-0 left-0 w-full h-[300px] bg-gradient-to-b from-indigo-500/10 to-transparent pointer-events-none" />
-
-                    <div className="p-12 border-b border-white/5 relative z-10">
-                        <div className="flex items-center gap-4 mb-4">
-                            <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-2xl">
-                                <Sparkles className="w-6 h-6 text-indigo-400" />
+                <div className="bg-white rounded-3xl border border-gray-200 shadow-sm overflow-hidden relative">
+                    <div className="p-10 border-b border-gray-100">
+                        <div className="flex items-center gap-4 mb-2">
+                            <div className="p-3 bg-blue-50 border border-blue-100 rounded-2xl">
+                                <Sparkles className="w-5 h-5 text-blue-600" />
                             </div>
-                            <h1 className="text-4xl font-black text-white tracking-tighter uppercase">Emission <span className="text-indigo-500">Report</span></h1>
+                            <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Report <span className="text-blue-600">New Bug</span></h1>
                         </div>
-                        <p className="text-gray-400 font-medium max-w-xl leading-relaxed">
-                            Input anomaly signatures. Neural analysis will initiate upon protocol submission to classify priority vectors.
+                        <p className="text-gray-600 font-medium max-w-xl leading-relaxed">
+                            Provide details about the issue. AI analysis will help classify the category and severity.
                         </p>
                     </div>
 
-                    <div className="p-12 relative z-10">
+                    <div className="p-10">
                         {error && (
-                            <div className="mb-10 p-6 bg-rose-500/10 border border-rose-500/20 rounded-3xl flex gap-4 text-rose-400">
-                                <AlertCircle className="w-6 h-6 shrink-0" />
+                            <div className="mb-8 p-4 bg-red-50 border border-red-100 rounded-2xl flex gap-3 text-red-600">
+                                <AlertCircle className="w-5 h-5 shrink-0" />
                                 <div>
-                                    <p className="text-sm font-black uppercase tracking-widest mb-1">Upload Interrupted</p>
-                                    <p className="text-xs font-medium opacity-80">{error}</p>
+                                    <p className="text-xs font-bold uppercase tracking-wider mb-1">Error Submitting Report</p>
+                                    <p className="text-[11px] font-medium opacity-80">{error}</p>
                                 </div>
                             </div>
                         )}
 
-                        <div className="bg-white/5 rounded-[2rem] border border-white/5 p-8">
+                        <div className="bg-gray-50 rounded-2xl border border-gray-100 p-8 shadow-inner">
                             <BugForm
                                 onSubmit={onSubmit}
                                 isLoading={loading}
-                                submitLabel="Initialize Analysis & Catalog"
+                                submitLabel="Submit Bug Report"
                             />
                         </div>
                     </div>

@@ -97,32 +97,32 @@ export default function InsightsPage() {
                                 <div className="text-xs font-black text-gray-400 uppercase tracking-widest">Calculated Risk Level</div>
                             </div>
 
-                            <div className="md:col-span-2 p-8 bg-indigo-600 text-white rounded-[2rem] shadow-2xl relative overflow-hidden">
+                            <div className="md:col-span-2 p-8 bg-blue-50 text-blue-900 rounded-[2rem] border border-blue-100 shadow-xl relative overflow-hidden">
                                 <div className="relative z-10">
-                                    <h3 className="text-lg font-bold mb-2 flex items-center gap-2">
-                                        <Lightbulb className="w-5 h-5 text-amber-300" />
+                                    <h3 className="text-lg font-bold mb-2 flex items-center gap-2 text-blue-600">
+                                        <Lightbulb className="w-5 h-5 text-amber-500" />
                                         Executive Summary
                                     </h3>
-                                    <p className="text-indigo-50 font-medium leading-relaxed">
+                                    <p className="text-blue-800/80 font-medium leading-relaxed">
                                         {insight.summary}
                                     </p>
                                 </div>
-                                <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-white/10 blur-[60px] rounded-full"></div>
+                                <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-blue-100/50 blur-[60px] rounded-full"></div>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                            <section className="p-8 bg-gray-900 text-white rounded-[2.5rem] shadow-2xl overflow-hidden relative group">
+                            <section className="p-8 bg-white rounded-[2.5rem] border border-gray-100 shadow-xl overflow-hidden relative group">
                                 <div className="relative z-10">
-                                    <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-rose-400">
+                                    <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-rose-500">
                                         <ShieldAlert className="w-7 h-7" />
                                         Risk Areas & Anomalies
                                     </h2>
                                     <div className="space-y-4">
                                         {insight.anomalies.map((anomaly: string, i: number) => (
-                                            <div key={i} className="p-5 bg-white/5 rounded-2xl border border-white/10 flex gap-4 items-start">
+                                            <div key={i} className="p-5 bg-rose-50/50 rounded-2xl border border-rose-100/50 flex gap-4 items-start">
                                                 <div className="w-2 h-2 mt-2 rounded-full bg-rose-500 shrink-0" />
-                                                <p className="text-gray-300 font-medium">{anomaly}</p>
+                                                <p className="text-gray-700 font-medium">{anomaly}</p>
                                             </div>
                                         ))}
                                         {insight.anomalies.length === 0 && (
@@ -130,7 +130,7 @@ export default function InsightsPage() {
                                         )}
                                     </div>
                                 </div>
-                                <div className="absolute -right-20 -top-20 w-64 h-64 bg-rose-600/10 blur-[100px] rounded-full"></div>
+                                <div className="absolute -right-20 -top-20 w-64 h-64 bg-rose-100/30 blur-[100px] rounded-full"></div>
                             </section>
 
                             <section className="p-8 bg-white rounded-[2.5rem] border border-gray-100 shadow-xl">

@@ -47,11 +47,11 @@ export default function DeveloperDashboard() {
             <div className="space-y-12">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                     <div>
-                        <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-4 leading-tight">
-                            Developer <span className="text-indigo-500">Node</span>
+                        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
+                            Developer <span className="text-blue-600">Dashboard</span>
                         </h1>
-                        <p className="text-gray-400 font-medium max-w-xl">
-                            Active task stream. Monitoring assigned anomalies and resolution progress.
+                        <p className="text-gray-600 font-medium">
+                            Manage your assigned bugs and track resolution status.
                         </p>
                     </div>
                 </div>
@@ -77,10 +77,10 @@ export default function DeveloperDashboard() {
                     />
                 </div>
 
-                <div className="space-y-6">
-                    <h2 className="text-xl font-black text-white uppercase tracking-tighter">My Task Queue</h2>
-                    <div className="glass-card rounded-[2.5rem] border border-white/5 overflow-hidden">
-                        {userId && <BugList role="developer" assignedTo={userId} limit={10} />}
+                <div className="space-y-4">
+                    <h2 className="text-lg font-bold text-gray-900 uppercase tracking-tight">Assigned Bugs</h2>
+                    <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
+                        <BugList role="developer" limit={6} />
                     </div>
                 </div>
             </div>
@@ -90,35 +90,27 @@ export default function DeveloperDashboard() {
 
 function StatCard({ title, value, icon, color }: { title: string, value: number, icon: React.ReactNode, color: string }) {
     const iconColors: Record<string, string> = {
-        indigo: 'text-indigo-400',
-        purple: 'text-purple-400',
-        emerald: 'text-emerald-400'
+        indigo: 'text-indigo-600',
+        purple: 'text-purple-600',
+        emerald: 'text-emerald-600'
     }
 
-    const glowColors: Record<string, string> = {
-        indigo: 'shadow-indigo-500/20',
-        purple: 'shadow-purple-500/20',
-        emerald: 'shadow-emerald-500/20'
-    }
 
     return (
         <div className={cn(
-            "glass-card p-10 rounded-[3rem] border border-white/10 shadow-2xl transition-all hover:scale-[1.05] duration-500 relative overflow-hidden group",
-            glowColors[color]
+            "bg-white p-8 rounded-2xl border border-gray-200 shadow-sm transition-all hover:shadow-md duration-300 relative overflow-hidden group",
         )}>
-            <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 blur-[40px] rounded-full -mr-12 -mt-12 group-hover:bg-white/10 transition-colors" />
-
-            <div className="flex items-center justify-between mb-8 relative z-10">
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 group-hover:border-white/20 transition-colors">
+            <div className="flex items-center justify-between mb-6 relative z-10">
+                <div className="p-3 rounded-xl bg-gray-50 border border-gray-100 group-hover:border-gray-200 transition-colors">
                     <div className={iconColors[color]}>
                         {icon}
                     </div>
                 </div>
-                <span className="text-4xl font-black text-white tracking-tighter">
+                <span className="text-3xl font-bold text-gray-900 tracking-tight">
                     {value}
                 </span>
             </div>
-            <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] ml-1">{title}</h3>
+            <h3 className="text-[10px] font-bold text-gray-500 uppercase tracking-wider ml-1">{title}</h3>
         </div>
     )
 }
