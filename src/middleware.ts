@@ -14,7 +14,8 @@ export async function middleware(request: NextRequest) {
     const isValid = (val: string) => val && val !== 'undefined' && val !== 'null' && val.length > 10
 
     if (!isValid(url) || !isValid(key)) {
-        console.error('❌ Middleware: Supabase configuration missing! Dashboard protection may fail.')
+        console.error('❌ Middleware: Supabase configuration missing! Skipping auth checks.')
+        return response
     }
 
     const supabase = createServerClient(
