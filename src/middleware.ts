@@ -9,8 +9,8 @@ export async function middleware(request: NextRequest) {
     })
 
     const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co',
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder',
         {
             cookies: {
                 getAll() {
@@ -29,56 +29,62 @@ export async function middleware(request: NextRequest) {
         }
     )
 
-    const {
-        data: { user },
-    } = await supabase.auth.getUser()
+    try {
+        const {
+            data: { user },
+        } = await supabase.auth.getUser()
 
-    // 1. Protect dashboard routes
-    if (request.nextUrl.pathname.startsWith('/dashboard')) {
-        if (!user) {
-            return NextResponse.redirect(new URL('/auth/login', request.url))
+        // 1. Protect dashboard routes
+        if (request.nextUrl.pathname.startsWith('/dashboard')) {
+            if (!user) {
+                return NextResponse.redirect(new URL('/auth/login', request.url))
+            }
+
+            // 2. Role-based protection
+            // Get user role from public.profiles
+            const { data: profile } = await supabase
+                .from('profiles')
+                .select('role')
+                .eq('id', user.id)
+                .single()
+
+            if (!profile) {
+                // If profile doesn't exist yet, sign out and redirect to login
+                await supabase.auth.signOut()
+                return NextResponse.redirect(new URL('/auth/login', request.url))
+            }
+
+            const { role } = profile
+            const path = request.nextUrl.pathname
+
+            // Cross-role protection
+            if (path.startsWith('/dashboard/manager') && role !== 'manager') {
+                return NextResponse.redirect(new URL('/dashboard/' + role, request.url))
+            }
+            if (path.startsWith('/dashboard/developer') && role !== 'developer') {
+                return NextResponse.redirect(new URL('/dashboard/' + role, request.url))
+            }
+            if (path.startsWith('/dashboard/tester') && role !== 'tester') {
+                return NextResponse.redirect(new URL('/dashboard/' + role, request.url))
+            }
         }
 
-        // 2. Role-based protection
-        // Get user role from public.profiles
-        const { data: profile } = await supabase
-            .from('profiles')
-            .select('role')
-            .eq('id', user.id)
-            .single()
+        // 3. Redirect authenticated users away from auth pages
+        if (user && request.nextUrl.pathname.startsWith('/auth')) {
+            const { data: profile } = await supabase
+                .from('profiles')
+                .select('role')
+                .eq('id', user.id)
+                .single()
 
-        if (!profile) {
-            // If profile doesn't exist yet, sign out and redirect to login
-            await supabase.auth.signOut()
-            return NextResponse.redirect(new URL('/auth/login', request.url))
+            if (profile) {
+                return NextResponse.redirect(new URL('/dashboard/' + profile.role, request.url))
+            }
         }
-
-        const { role } = profile
-        const path = request.nextUrl.pathname
-
-        // Cross-role protection
-        if (path.startsWith('/dashboard/manager') && role !== 'manager') {
-            return NextResponse.redirect(new URL('/dashboard/' + role, request.url))
-        }
-        if (path.startsWith('/dashboard/developer') && role !== 'developer') {
-            return NextResponse.redirect(new URL('/dashboard/' + role, request.url))
-        }
-        if (path.startsWith('/dashboard/tester') && role !== 'tester') {
-            return NextResponse.redirect(new URL('/dashboard/' + role, request.url))
-        }
-    }
-
-    // 3. Redirect authenticated users away from auth pages
-    if (user && request.nextUrl.pathname.startsWith('/auth')) {
-        const { data: profile } = await supabase
-            .from('profiles')
-            .select('role')
-            .eq('id', user.id)
-            .single()
-
-        if (profile) {
-            return NextResponse.redirect(new URL('/dashboard/' + profile.role, request.url))
-        }
+    } catch (e) {
+        console.error('Middleware execution failed:', e)
+        // If everything fails, just let the request proceed to the application 
+        // which will likely show a more helpful error or the login page.
     }
 
     return response
