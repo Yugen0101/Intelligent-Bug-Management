@@ -23,8 +23,6 @@ export interface ResolutionEfficiency {
 }
 
 export class AnalyticsService {
-    private supabase = createClient()
-
     private categoryColors: Record<BugCategory, string> = {
         ui_ux: '#6366f1',
         functional: '#8b5cf6',
@@ -35,7 +33,8 @@ export class AnalyticsService {
     }
 
     async getCategoryDistribution(projectId?: string): Promise<CategoryDistribution[]> {
-        let query = this.supabase.from('bugs').select('category')
+        const supabase = createClient()
+        let query = supabase.from('bugs').select('category')
         if (projectId) query = query.eq('project_id', projectId)
 
         const { data, error } = await query
@@ -55,7 +54,8 @@ export class AnalyticsService {
     }
 
     async getSeverityDistribution(projectId?: string): Promise<SeverityDistribution[]> {
-        let query = this.supabase.from('bugs').select('severity')
+        const supabase = createClient()
+        let query = supabase.from('bugs').select('severity')
         if (projectId) query = query.eq('project_id', projectId)
 
         const { data, error } = await query
@@ -75,8 +75,9 @@ export class AnalyticsService {
     }
 
     async getWorkloadDistribution(projectId?: string): Promise<WorkloadData[]> {
+        const supabase = createClient()
         // This requires joining with bug_assignments and users
-        const { data, error } = await this.supabase
+        const { data, error } = await supabase
             .from('bug_assignments')
             .select(`
                 user_id,
@@ -100,8 +101,9 @@ export class AnalyticsService {
     }
 
     async getResolutionEfficiency(projectId?: string): Promise<ResolutionEfficiency[]> {
+        const supabase = createClient()
         // Simplified: days to close for last 7 days
-        let query = this.supabase.from('bugs').select('created_at, updated_at, status')
+        let query = supabase.from('bugs').select('created_at, updated_at, status')
         if (projectId) query = query.eq('project_id', projectId)
         query = query.eq('status', 'resolved').limit(50)
 
@@ -134,7 +136,8 @@ export class AnalyticsService {
         const severities = await this.getSeverityDistribution(projectId)
         const workload = await this.getWorkloadDistribution(projectId)
 
-        const { count: openBugs } = await this.supabase
+        const supabase = createClient()
+        const { count: openBugs } = await supabase
             .from('bugs')
             .select('*', { count: 'exact', head: true })
             .eq('project_id', projectId)

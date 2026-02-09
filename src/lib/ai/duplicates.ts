@@ -14,15 +14,14 @@ export type DuplicateResult = {
 };
 
 export class DuplicateDetectionService {
-    private supabase = createClient();
-
     async findDuplicates(description: string, projectId?: string, threshold: number = 0.82): Promise<DuplicateResult[]> {
+        const supabase = createClient();
         try {
             // 1. Generate embedding for the new bug description
             const { embedding } = await nlpEngine.analyzeBug(description);
 
             // 2. Call the RPC function to find similar bugs
-            const { data, error } = await this.supabase.rpc('match_bugs', {
+            const { data, error } = await supabase.rpc('match_bugs', {
                 query_embedding: embedding,
                 match_threshold: threshold,
                 match_count: 3,

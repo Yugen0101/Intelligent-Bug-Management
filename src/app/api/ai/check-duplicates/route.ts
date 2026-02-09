@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { duplicateService } from '@/lib/ai/duplicates';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: Request) {
     try {
         const { description, project_id } = await request.json();
