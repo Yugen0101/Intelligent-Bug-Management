@@ -1,13 +1,33 @@
 'use client'
-
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Footer from '@/components/layout/Footer'
 
 export default function HomePage() {
+  const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 }); // Normalized 0 to 1
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({
+        x: e.clientX / window.innerWidth,
+        y: e.clientY / window.innerHeight,
+      });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Helper to calculate magnetic movement
+  const getTransform = (strength: number, inverted = false) => {
+    const moveX = (mousePos.x - 0.5) * strength * (inverted ? -1 : 1);
+    const moveY = (mousePos.y - 0.5) * strength * (inverted ? -1 : 1);
+    return `translate(${moveX}px, ${moveY}px)`;
+  };
   return (
     <div className="min-h-screen bg-[#0a1128] relative overflow-hidden">
       {/* Starfield Background */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden"
+        style={{ transform: getTransform(10, true), transition: 'transform 0.5s ease-out' }}>
         {/* Stars */}
         <div className="absolute w-1 h-1 bg-white rounded-full top-[10%] left-[15%] animate-pulse" style={{ animationDuration: '3s' }}></div>
         <div className="absolute w-1 h-1 bg-white rounded-full top-[20%] left-[80%] animate-pulse" style={{ animationDuration: '2s' }}></div>
@@ -19,6 +39,18 @@ export default function HomePage() {
         <div className="absolute w-1 h-1 bg-white rounded-full top-[15%] left-[60%] animate-pulse" style={{ animationDuration: '4s' }}></div>
         <div className="absolute w-0.5 h-0.5 bg-white rounded-full top-[85%] left-[20%] animate-pulse" style={{ animationDuration: '2.5s' }}></div>
         <div className="absolute w-1 h-1 bg-white rounded-full top-[25%] left-[45%] animate-pulse" style={{ animationDuration: '3.5s' }}></div>
+
+        {/* Additional Stars */}
+        <div className="absolute w-1 h-1 bg-white rounded-full top-[45%] left-[85%] animate-pulse" style={{ animationDuration: '5s' }}></div>
+        <div className="absolute w-0.5 h-0.5 bg-white rounded-full top-[12%] left-[33%] animate-pulse" style={{ animationDuration: '2.8s' }}></div>
+        <div className="absolute w-1 h-1 bg-cyan-400 rounded-full top-[75%] left-[65%] animate-pulse" style={{ animationDuration: '4.2s' }}></div>
+        <div className="absolute w-0.5 h-0.5 bg-purple-400 rounded-full top-[35%] left-[95%] animate-pulse" style={{ animationDuration: '3.7s' }}></div>
+        <div className="absolute w-1 h-1 bg-white rounded-full top-[92%] left-[48%] animate-pulse" style={{ animationDuration: '2.2s' }}></div>
+        <div className="absolute w-0.5 h-0.5 bg-blue-300 rounded-full top-[5%] left-[72%] animate-pulse" style={{ animationDuration: '4.5s' }}></div>
+        <div className="absolute w-1.5 h-1.5 bg-white/40 rounded-full top-[68%] left-[12%] blur-sm animate-pulse" style={{ animationDuration: '3.3s' }}></div>
+        <div className="absolute w-1 h-1 bg-white rounded-full top-[55%] left-[30%] animate-pulse" style={{ animationDuration: '2.5s' }}></div>
+        <div className="absolute w-0.5 h-0.5 bg-white rounded-full top-[82%] left-[88%] animate-pulse" style={{ animationDuration: '4s' }}></div>
+        <div className="absolute w-1 h-1 bg-white rounded-full top-[28%] left-[18%] animate-pulse" style={{ animationDuration: '3.1s' }}></div>
 
         {/* Saturn-like Planet */}
         <div className="absolute top-[8%] left-[12%] w-24 h-24 opacity-60">
@@ -61,64 +93,171 @@ export default function HomePage() {
           {/* Main Hero Content */}
           <div className="relative mb-16">
             {/* Astronaut Bug Hunter */}
-            <div className="absolute top-[-40px] right-[10%] w-32 h-32 md:w-48 md:h-48 animate-bounce" style={{ animationDuration: '3s' }}>
-              <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Astronaut */}
-                <defs>
-                  <linearGradient id="suitGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#E3F2FD" />
-                    <stop offset="100%" stopColor="#90CAF9" />
-                  </linearGradient>
-                </defs>
-                {/* Body */}
-                <ellipse cx="100" cy="120" rx="8" ry="3" fill="#000" opacity="0.2" />
-                <rect x="88" y="95" width="24" height="30" rx="3" fill="url(#suitGrad)" />
-                <rect x="83" y="105" width="34" height="20" rx="2" fill="#64B5F6" />
-                {/* Oxygen pack */}
-                <rect x="94" y="90" width="12" height="20" rx="2" fill="#42A5F5" opacity="0.8" />
-                <circle cx="100" cy="95" r="2" fill="#1976D2" />
-                {/* Arms */}
-                <path d="M88 105 Q75 100 68 108" stroke="#90CAF9" strokeWidth="5" strokeLinecap="round" />
-                <path d="M112 105 Q125 100 132 108" stroke="#90CAF9" strokeWidth="5" strokeLinecap="round" />
-                {/* Bug Net */}
-                <circle cx="135" cy="110" r="15" fill="none" stroke="#4CAF50" strokeWidth="2" />
-                <path d="M130 115 L132 145" stroke="#8D6E63" strokeWidth="3" />
-                {/* Legs */}
-                <rect x="92" y="125" width="6" height="15" rx="3" fill="#64B5F6" />
-                <rect x="102" y="125" width="6" height="15" rx="3" fill="#64B5F6" />
-                {/* Helmet */}
-                <circle cx="100" cy="75" r="18" fill="#E1F5FE" opacity="0.3" stroke="#90CAF9" strokeWidth="2" />
-                <circle cx="100" cy="75" r="13" fill="#FDD835" />
-                {/* Face */}
-                <circle cx="96" cy="73" r="2" fill="#333" />
-                <circle cx="104" cy="73" r="2" fill="#333" />
-                <path d="M96 78 Q100 80 104 78" stroke="#333" strokeWidth="1.5" fill="none" />
-                {/* Helmet reflection */}
-                <ellipse cx="92" cy="68" rx="6" ry="8" fill="white" opacity="0.4" transform="rotate(-30 92 68)" />
-              </svg>
+            <div className="absolute top-[-40px] right-[10%] w-32 h-32 md:w-48 md:h-48 pointer-events-none"
+              style={{
+                transform: getTransform(60),
+                transition: 'transform 0.2s ease-out'
+              }}>
+              <div className="animate-bounce" style={{ animationDuration: '3s' }}>
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="suitGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="#E3F2FD" />
+                      <stop offset="100%" stopColor="#90CAF9" />
+                    </linearGradient>
+                  </defs>
+                  <ellipse cx="100" cy="120" rx="8" ry="3" fill="#000" opacity="0.2" />
+                  <rect x="88" y="95" width="24" height="30" rx="3" fill="url(#suitGrad)" />
+                  <rect x="83" y="105" width="34" height="20" rx="2" fill="#64B5F6" />
+                  <rect x="94" y="90" width="12" height="20" rx="2" fill="#42A5F5" opacity="0.8" />
+                  <circle cx="100" cy="95" r="2" fill="#1976D2" />
+                  <path d="M88 105 Q75 100 68 108" stroke="#90CAF9" strokeWidth="5" strokeLinecap="round" />
+                  <path d="M112 105 Q125 100 132 108" stroke="#90CAF9" strokeWidth="5" strokeLinecap="round" />
+                  <circle cx="135" cy="110" r="15" fill="none" stroke="#4CAF50" strokeWidth="2" />
+                  <path d="M130 115 L132 145" stroke="#8D6E63" strokeWidth="3" />
+                  <rect x="92" y="125" width="6" height="15" rx="3" fill="#64B5F6" />
+                  <rect x="102" y="125" width="6" height="15" rx="3" fill="#64B5F6" />
+                  <circle cx="100" cy="75" r="18" fill="#E1F5FE" opacity="0.3" stroke="#90CAF9" strokeWidth="2" />
+                  <circle cx="100" cy="75" r="13" fill="#FDD835" />
+                  <circle cx="96" cy="73" r="2" fill="#333" />
+                  <circle cx="104" cy="73" r="2" fill="#333" />
+                  <path d="M96 78 Q100 80 104 78" stroke="#333" strokeWidth="1.5" fill="none" />
+                  <ellipse cx="92" cy="68" rx="6" ry="8" fill="white" opacity="0.4" transform="rotate(-30 92 68)" />
+                </svg>
+              </div>
             </div>
 
-            {/* Floating Bug - Left */}
-            <div className="absolute top-[20px] left-[5%] w-16 h-16 md:w-20 md:h-20" style={{ animation: 'float 4s ease-in-out infinite' }}>
-              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="40" cy="45" rx="18" ry="15" fill="#FF6B6B" />
-                <ellipse cx="40" cy="45" rx="14" ry="12" fill="#FF5252" />
-                <circle cx="40" cy="30" r="10" fill="#FF5252" />
-                <circle cx="36" cy="29" r="3" fill="#333" />
-                <circle cx="44" cy="29" r="3" fill="#333" />
-                <circle cx="36.5" cy="28" r="1" fill="white" opacity="0.8" />
-                <path d="M34 26 Q30 22 28 20" stroke="#D32F2F" strokeWidth="2" strokeLinecap="round" />
-                <path d="M46 26 Q50 22 52 20" stroke="#D32F2F" strokeWidth="2" strokeLinecap="round" />
-                <circle cx="28" cy="20" r="2.5" fill="#FFC107" />
-                <circle cx="52" cy="20" r="2.5" fill="#FFC107" />
-                <path d="M24 40 L18 38" stroke="#D32F2F" strokeWidth="2" strokeLinecap="round" />
-                <path d="M24 46 L18 48" stroke="#D32F2F" strokeWidth="2" strokeLinecap="round" />
-                <path d="M24 52 L18 56" stroke="#D32F2F" strokeWidth="2" strokeLinecap="round" />
-                <path d="M56 40 L62 38" stroke="#D32F2F" strokeWidth="2" strokeLinecap="round" />
-                <path d="M56 46 L62 48" stroke="#D32F2F" strokeWidth="2" strokeLinecap="round" />
-                <path d="M56 52 L62 56" stroke="#D32F2F" strokeWidth="2" strokeLinecap="round" />
-                <path d="M38 34 Q40 36 42 34" stroke="#333" strokeWidth="1" fill="none" />
-              </svg>
+            {/* Flying Red Bug - Left */}
+            <div className="absolute top-[20px] left-[5%] w-16 h-16 md:w-20 md:h-20 pointer-events-none"
+              style={{
+                transform: getTransform(40),
+                transition: 'transform 0.15s ease-out'
+              }}>
+              <div style={{ animation: 'float 4s ease-in-out infinite' }}>
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="40" cy="45" rx="18" ry="15" fill="#FF6B6B" />
+                  <ellipse cx="40" cy="45" rx="14" ry="12" fill="#FF5252" />
+                  <circle cx="40" cy="30" r="10" fill="#FF5252" />
+                  <circle cx="36" cy="29" r="3" fill="#333" />
+                  <circle cx="44" cy="29" r="3" fill="#333" />
+                  <circle cx="36.5" cy="28" r="1" fill="white" opacity="0.8" />
+                  <path d="M34 26 Q30 22 28 20" stroke="#D32F2F" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M46 26 Q50 22 52 20" stroke="#D32F2F" strokeWidth="2" strokeLinecap="round" />
+                  <circle cx="28" cy="20" r="2.5" fill="#FFC107" />
+                  <circle cx="52" cy="20" r="2.5" fill="#FFC107" />
+                  <path d="M24 40 L18 38" stroke="#D32F2F" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M24 46 L18 48" stroke="#D32F2F" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M24 52 L18 56" stroke="#D32F2F" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M56 40 L62 38" stroke="#D32F2F" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M56 46 L62 48" stroke="#D32F2F" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M56 52 L62 56" stroke="#D32F2F" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M38 34 Q40 36 42 34" stroke="#333" strokeWidth="1" fill="none" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Flying Purple Bug - Right */}
+            <div className="absolute bottom-[-10px] right-[5%] w-14 h-14 md:w-18 md:h-18 pointer-events-none"
+              style={{
+                transform: getTransform(50),
+                transition: 'transform 0.18s ease-out'
+              }}>
+              <div style={{ animation: 'float 5s ease-in-out infinite' }}>
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="40" cy="45" rx="16" ry="14" fill="#9C27B0" opacity="0.9" />
+                  <circle cx="40" cy="32" r="9" fill="#7B1FA2" />
+                  <circle cx="37" cy="30" r="2" fill="#00E676" />
+                  <circle cx="43" cy="30" r="2" fill="#00E676" />
+                  <path d="M32 25 Q30 18 25 15" stroke="#9C27B0" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M48 25 Q50 18 55 15" stroke="#9C27B0" strokeWidth="2" strokeLinecap="round" />
+                  <circle cx="25" cy="15" r="2" fill="#00E676" />
+                  <circle cx="55" cy="15" r="2" fill="#00E676" />
+                  <path d="M24 42 L16 38" stroke="#7B1FA2" strokeWidth="1.5" />
+                  <path d="M24 48 L16 52" stroke="#7B1FA2" strokeWidth="1.5" />
+                  <path d="M56 42 L64 38" stroke="#7B1FA2" strokeWidth="1.5" />
+                  <path d="M56 48 L64 52" stroke="#7B1FA2" strokeWidth="1.5" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Floating Analytics Chart */}
+            <div className="absolute bottom-[-40px] left-[2%] w-24 h-24 hidden lg:block pointer-events-none"
+              style={{
+                transform: getTransform(30),
+                transition: 'transform 0.25s ease-out'
+              }}>
+              <div style={{ animation: 'float 7s ease-in-out infinite' }}>
+                <div className="bg-white/5 backdrop-blur-md p-3 rounded-lg border border-white/20 shadow-2xl rotate-3">
+                  <div className="flex items-end gap-1 h-12">
+                    <div className="w-2 bg-cyan-400 rounded-t-sm" style={{ height: '40%' }}></div>
+                    <div className="w-2 bg-blue-400 rounded-t-sm" style={{ height: '70%' }}></div>
+                    <div className="w-2 bg-purple-400 rounded-t-sm" style={{ height: '55%' }}></div>
+                    <div className="w-2 bg-green-400 rounded-t-sm" style={{ height: '90%' }}></div>
+                    <div className="w-2 bg-yellow-400 rounded-t-sm" style={{ height: '30%' }}></div>
+                  </div>
+                  <div className="mt-2 h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-full bg-cyan-400 w-2/3"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Kanban Board */}
+            <div className="absolute top-[280px] left-[5%] w-20 h-24 hidden xl:block pointer-events-none"
+              style={{
+                transform: getTransform(45),
+                transition: 'transform 0.2s ease-out'
+              }}>
+              <div style={{ animation: 'float 6s ease-in-out infinite' }}>
+                <div className="bg-slate-900/40 backdrop-blur-md p-2 rounded-lg border border-white/10 shadow-xl -rotate-6">
+                  <div className="text-[8px] text-white opacity-40 mb-2 uppercase font-bold tracking-tighter">Mission Progress</div>
+                  <div className="space-y-1.5">
+                    <div className="h-3 bg-white/5 rounded px-1 flex items-center">
+                      <div className="w-6 h-1 bg-green-500 rounded-full"></div>
+                    </div>
+                    <div className="h-3 bg-white/5 rounded px-1 flex items-center">
+                      <div className="w-8 h-1 bg-yellow-500 rounded-full"></div>
+                    </div>
+                    <div className="h-3 bg-white/5 rounded px-1 flex items-center">
+                      <div className="w-5 h-1 bg-blue-500 rounded-full"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Stats Card - Right Side */}
+            <div className="absolute top-[400px] right-[10%] w-24 h-20 hidden lg:block pointer-events-none"
+              style={{
+                transform: getTransform(25),
+                transition: 'transform 0.3s ease-out'
+              }}>
+              <div style={{ animation: 'float 8.5s ease-in-out infinite' }}>
+                <div className="bg-white/5 backdrop-blur-md p-3 rounded-lg border border-white/20 shadow-2xl rotate-12">
+                  <div className="text-[10px] text-cyan-400 font-bold mb-1 tracking-tighter">SYSTEM UPTIME</div>
+                  <div className="text-xl font-mono text-white">99.9%</div>
+                  <div className="mt-1 flex gap-0.5">
+                    {[...Array(6)].map((_, i) => (
+                      <div key={i} className="w-1 h-3 bg-green-500/40 rounded-full"></div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Security Badge - Bottom Right */}
+            <div className="absolute bottom-[-80px] right-[15%] w-20 h-20 hidden xl:block pointer-events-none"
+              style={{
+                transform: getTransform(55),
+                transition: 'transform 0.1s ease-out'
+              }}>
+              <div style={{ animation: 'float 7.5s ease-in-out infinite' }}>
+                <div className="bg-slate-900/60 backdrop-blur-md p-3 rounded-full border border-cyan-500/30 flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.2)]">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-8 h-8 text-cyan-400">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </div>
+              </div>
             </div>
 
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
@@ -287,14 +426,54 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Footer Section */}
-      <Footer />
+      {/* Nebula Footer Section */}
+      <section className="relative mt-20 pt-40 overflow-hidden">
+        {/* Deep Space Background Continuity */}
+        <div className="absolute inset-0 bg-[#0a1128] z-0"></div>
+
+        {/* Cosmic Nebula Glow Behind Footer */}
+        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-transparent via-blue-900/20 to-[#0a1128] blur-3xl z-10 pointer-events-none opacity-60"></div>
+
+        {/* Layered Background Waves */}
+        <div className="absolute inset-0 z-10 opacity-70 pointer-events-none hidden md:block">
+          <svg viewBox="0 -100 1200 250" preserveAspectRatio="none" className="absolute top-[-120px] w-full h-[320px]">
+            {/* Wave 1: Deep Navy Base */}
+            <path d="M0,0V120H1200V0C1132.19,23.1,1055.71,15.5,985.66-3c-79-20.83-161.89-61.83-241.83-78.64a702.3,702.3,0,0,0-250.45.39c-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,0Z" fill="url(#waveGrad1)" opacity="0.6"></path>
+            {/* Wave 2: Mid Blue Overlay */}
+            <path d="M0,40V120H1200V40c-67.8,23.1-144.29,15.5-214.34-3-79-20.83-161.89-61.83-241.83-78.64a702.3,702.3,0,0,0-250.45.39c-57.84,11.73-114.16,31.07-172,41.86A600.21,600.21,0,0,1,0,40Z" fill="url(#waveGrad2)" opacity="0.5"></path>
+            {/* Wave 3: Light Blue Accent */}
+            <path d="M0,80V120H1200V80c-67.8,23.1-144.29,15.5-214.34-3-70.05-18.48-146.53-26.09-214.34-3-112.79,35.71-232.44,61.44-353.58,64.29C299.39,141.08,172.74,127.93,58.54,92.19,39.3,86.17,19.33,81.44,0,80Z" fill="url(#waveGrad3)" opacity="0.4"></path>
+
+            <defs>
+              <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#1E3A8A" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#0a1128" />
+              </linearGradient>
+              <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="#0a1128" />
+              </linearGradient>
+              <linearGradient id="waveGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#60A5FA" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#0a1128" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        {/* Closing Bottom Glow */}
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-cyan-500/20 to-transparent blur-2xl z-10 pointer-events-none"></div>
+
+        {/* Footer Component is now immersed in the Nebula */}
+        <div className="relative z-20">
+          <Footer />
+        </div>
+      </section>
 
       <style jsx>{`
         @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-        }
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(5deg); }
       `}</style>
     </div>
   )
