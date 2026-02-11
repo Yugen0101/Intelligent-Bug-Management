@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Footer from '@/components/layout/Footer'
 
 export default function HomePage() {
   return (
@@ -286,28 +287,8 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Wavy Cosmic Footer */}
-      <div className="relative mt-32">
-        <svg className="w-full h-auto" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0,160 C320,100 420,200 720,160 C1020,120 1120,220 1440,160 L1440,320 L0,320 Z" fill="url(#wave1)" opacity="0.3" />
-          <path d="M0,192 C360,140 460,240 720,192 C980,144 1080,244 1440,192 L1440,320 L0,320 Z" fill="url(#wave2)" opacity="0.3" />
-          <path d="M0,224 C400,180 500,280 720,224 C940,168 1040,268 1440,224 L1440,320 L0,320 Z" fill="url(#wave3)" opacity="0.4" />
-          <defs>
-            <linearGradient id="wave1" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#1E3A8A" />
-              <stop offset="100%" stopColor="#1E40AF" />
-            </linearGradient>
-            <linearGradient id="wave2" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#3B82F6" />
-              <stop offset="100%" stopColor="#2563EB" />
-            </linearGradient>
-            <linearGradient id="wave3" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#60A5FA" />
-              <stop offset="100%" stopColor="#3B82F6" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
+      {/* Footer Section */}
+      <Footer />
 
       <style jsx>{`
         @keyframes float {
