@@ -64,7 +64,7 @@ export default function LoginPage() {
                             <LogIn className="w-8 h-8 text-blue-600" />
                         </div>
                         <h1 className="text-4xl font-black text-gray-900 tracking-tighter mb-3 leading-tight">
-                            BugMaster <span className="text-blue-600">Login</span>
+                            Bug Mind <span className="text-blue-600">Login</span>
                         </h1>
                         <p className="text-gray-500 font-medium tracking-tight">Sign in to manage your bugs</p>
                     </div>

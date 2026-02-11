@@ -87,7 +87,7 @@ export function Sidebar({ role, isMobile, onNavClick }: SidebarProps) {
                     </div>
                     <div className="flex flex-col">
                         <span className="text-xl font-bold text-gray-900 tracking-tight leading-none">
-                            Bug<span className="text-blue-600">Master</span>
+                            Bug<span className="text-blue-600">Mind</span>
                         </span>
                         <span className="text-[10px] font-bold text-gray-500 mt-1 uppercase tracking-wider">
                             {role} Panel
