@@ -28,6 +28,11 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+debug-chat.js
+diag-report.json
+diag-result.txt
+verify-fix.js
+test-new-key.js
 
 # env files (do not commit secrets!)
 .env*.local

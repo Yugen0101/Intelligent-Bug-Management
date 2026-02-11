@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import OpenAI from 'openai';
 
 export type GeminiAnalysis = {
     root_cause: string;
@@ -25,24 +25,45 @@ export type ProjectHealthInsight = {
 };
 
 export class GeminiEngine {
-    private genAI: any = null;
-    private model: any = null;
+    private openai: OpenAI | null = null;
+    // Using Google's Gemini 2.0 Flash via OpenRouter
+    private modelName = "google/gemini-2.0-flash-001";
 
-    private initModel() {
-        const apiKey = (process.env.GEMINI_API_KEY || "").trim();
-        if (!apiKey || apiKey === 'your_gemini_api_key_here') {
-            throw new Error("Gemini API key not configured");
+    private initClient() {
+        const apiKey = (process.env.OPENROUTER_API_KEY || "").trim();
+        if (!apiKey || apiKey === 'your_openrouter_key_here') {
+            throw new Error("OPENROUTER_NOT_CONFIGURED");
         }
 
-        if (!this.genAI || !this.model) {
-            this.genAI = new GoogleGenerativeAI(apiKey);
-            this.model = this.genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        if (!this.openai) {
+            this.openai = new OpenAI({
+                baseURL: "https://openrouter.ai/api/v1",
+                apiKey: apiKey,
+                defaultHeaders: {
+                    "HTTP-Referer": "http://localhost:3000", // Required for OpenRouter
+                    "X-Title": "Bug Management Platform", // Optional
+                }
+            });
         }
-        return this.model;
+        return this.openai;
+    }
+
+    private async retryOperation<T>(operation: () => Promise<T>, retries = 3, delay = 1000): Promise<T> {
+        try {
+            return await operation();
+        } catch (error: any) {
+            // Check for rate limiting (429) or overloaded model (503) from OpenRouter
+            if (retries > 0 && (error.status === 429 || error.status === 503 || error.message?.includes('429') || error.message?.includes('503'))) {
+                console.log(`OpenRouter rate/load limit. Retrying in ${delay}ms...`);
+                await new Promise(resolve => setTimeout(resolve, delay));
+                return this.retryOperation(operation, retries - 1, delay * 2);
+            }
+            throw error;
+        }
     }
 
     async analyzeBug(description: string, category: string, severity: string): Promise<GeminiAnalysis> {
-        const model = this.initModel();
+        const client = this.initClient();
 
         const prompt = `
             You are an expert software engineer and bug triage assistant. 
@@ -62,9 +83,12 @@ export class GeminiEngine {
         `;
 
         try {
-            const result = await model.generateContent(prompt);
-            const response = await result.response;
-            const text = response.text();
+            const completion = await this.retryOperation(() => client.chat.completions.create({
+                model: this.modelName,
+                messages: [{ role: "user", content: prompt }]
+            }));
+
+            const text = completion.choices[0]?.message?.content || "{}";
 
             // Extract JSON if model wraps it in markdown backticks
             const jsonMatch = text.match(/\{[\s\S]*\}/);
@@ -77,14 +101,24 @@ export class GeminiEngine {
             }
 
             return JSON.parse(text);
-        } catch (error) {
-            console.error("Gemini API Error:", error);
+        } catch (error: any) {
+            console.error("OpenRouter API Error:", error);
+
+            if (error.message === "OPENROUTER_NOT_CONFIGURED") {
+                throw error;
+            }
+
+            // Handle 401 or invalid API key errors
+            if (error.status === 401 || error.message?.includes('401')) {
+                throw new Error("INVALID_API_KEY");
+            }
+
             throw error;
         }
     }
 
     async predictBugMetadata(title: string, description: string): Promise<GeminiPrediction> {
-        const model = this.initModel();
+        const client = this.initClient();
 
         const prompt = `
             You are a senior bug triage specialist. Based on the following bug report, predict the most appropriate category and severity.
@@ -108,9 +142,12 @@ export class GeminiEngine {
         `;
 
         try {
-            const result = await model.generateContent(prompt);
-            const response = await result.response;
-            const text = response.text();
+            const completion = await this.retryOperation(() => client.chat.completions.create({
+                model: this.modelName,
+                messages: [{ role: "user", content: prompt }]
+            }));
+
+            const text = completion.choices[0]?.message?.content || "{}";
 
             const jsonMatch = text.match(/\{[\s\S]*\}/);
             if (jsonMatch) {
@@ -121,14 +158,14 @@ export class GeminiEngine {
 
             return JSON.parse(text);
         } catch (error) {
-            console.error("Gemini Prediction Error:", error);
+            console.error("OpenRouter Prediction Error:", error);
             throw error;
         }
     }
 
     async getAgentResponse(message: string, context: { description: string, comments: any[] }): Promise<string> {
         try {
-            const model = this.initModel();
+            const client = this.initClient();
 
             const prompt = `
                 You are an AI Triage Agent for a bug management platform. 
@@ -142,17 +179,35 @@ export class GeminiEngine {
                 Keep it focused on the specific bug context.
             `;
 
-            const result = await model.generateContent(prompt);
-            const response = await result.response;
-            return response.text();
-        } catch (error) {
-            console.error("Gemini Agent Error:", error);
-            return "I apologize, but I'm having trouble connecting to my reasoning engine. Please try again in a moment.";
+            const completion = await this.retryOperation(() => client.chat.completions.create({
+                model: this.modelName,
+                messages: [{ role: "user", content: prompt }]
+            }));
+
+            return completion.choices[0]?.message?.content || "I couldn't generate a response.";
+        } catch (error: any) {
+            console.error("OpenRouter Agent Error:", error);
+
+            // Handle specific error types
+            if (error.message === "OPENROUTER_NOT_CONFIGURED") {
+                return "⚠️ **AI Service Not Configured**\n\nThe OpenRouter API key is missing. Please add a valid `OPENROUTER_API_KEY` to your `.env.local` file.\n\n**Get your key:**\nvisit https://openrouter.ai/keys";
+            }
+
+            // Handle 401/403 or invalid API key errors
+            if (error.status === 401 || error.status === 403 || error.message?.includes('401')) {
+                return "⚠️ **Invalid API Key**\n\nYour OpenRouter API key appears to be invalid or lacks credit.\n\nCheck your key at https://openrouter.ai/keys";
+            }
+
+            if (error.status === 402 || error.message?.includes('402')) {
+                return "⚠️ **Insufficient Credits**\n\nYour OpenRouter account needs credits. Please top up at https://openrouter.ai/credits";
+            }
+
+            return "I apologize, but I'm having trouble connecting to my reasoning engine via OpenRouter. Please check your configuration.";
         }
     }
 
     async generateProjectHealthInsight(stats: any): Promise<ProjectHealthInsight> {
-        const model = this.initModel();
+        const client = this.initClient();
 
         const prompt = `
             You are a senior project management consultant. Analyze the following bug tracking data and provide an executive summary, recommendations, and risk assessment.
@@ -173,9 +228,12 @@ export class GeminiEngine {
         `;
 
         try {
-            const result = await model.generateContent(prompt);
-            const response = await result.response;
-            const text = response.text();
+            const completion = await this.retryOperation(() => client.chat.completions.create({
+                model: this.modelName,
+                messages: [{ role: "user", content: prompt }]
+            }));
+
+            const text = completion.choices[0]?.message?.content || "{}";
 
             const jsonMatch = text.match(/\{[\s\S]*\}/);
             if (jsonMatch) {
@@ -185,15 +243,15 @@ export class GeminiEngine {
             }
 
             return JSON.parse(text);
-        } catch (error) {
-            console.error("Gemini Health Insight Error:", error);
+        } catch (error: any) {
+            console.error("OpenRouter Health Insight Error:", error);
             throw error;
         }
     }
 
     async generateDuplicateReasoning(newBugDesc: string, existingBugDesc: string): Promise<string> {
         try {
-            const model = this.initModel();
+            const client = this.initClient();
 
             const prompt = `
                 Compare these two bug descriptions and explain in one concise sentence why they appear to be duplicates. Focus on the core functionality failure or symptoms.
@@ -204,15 +262,17 @@ export class GeminiEngine {
                 Response must be a single, professional sentence (max 25 words).
             `;
 
-            const result = await model.generateContent(prompt);
-            const response = await result.response;
-            return response.text().trim();
-        } catch (error) {
-            console.error("Gemini Duplicate Reasoning Error:", error);
+            const completion = await this.retryOperation(() => client.chat.completions.create({
+                model: this.modelName,
+                messages: [{ role: "user", content: prompt }]
+            }));
+
+            return completion.choices[0]?.message?.content?.trim() || "Matches description.";
+        } catch (error: any) {
+            console.error("OpenRouter Duplicate Reasoning Error:", error);
             return "These issues share highly similar technical characteristics and symptoms.";
         }
     }
 }
 
 export const geminiEngine = new GeminiEngine();
-

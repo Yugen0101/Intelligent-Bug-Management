@@ -17,14 +17,21 @@ export async function POST(request: Request) {
     } catch (error: any) {
         console.error('Gemini Analysis API Error:', error);
 
-        // Handle specific "API Key not configured" error
-        if (error.message === "Gemini API key not configured") {
+        // Handle specific error messages
+        if (error.message === "GEMINI_NOT_CONFIGURED") {
             return NextResponse.json({
                 error: 'AI Analysis is currently disabled. Please configure your GEMINI_API_KEY.',
                 isConfigError: true
             }, { status: 503 });
         }
 
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        if (error.message === "INVALID_API_KEY") {
+            return NextResponse.json({
+                error: 'Invalid or expired API key. Please generate a new key at https://aistudio.google.com/app/apikey',
+                isConfigError: true
+            }, { status: 401 });
+        }
+
+        return NextResponse.json({ error: error.message || 'An unexpected error occurred' }, { status: 500 });
     }
 }
