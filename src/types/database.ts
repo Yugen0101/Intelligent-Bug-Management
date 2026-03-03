@@ -28,6 +28,8 @@ export interface Project {
     name: string
     description?: string
     created_by?: string
+    slack_webhook_url?: string
+    slack_notifications_enabled?: boolean
     created_at: string
     updated_at: string
 }
@@ -38,6 +40,9 @@ export interface Bug {
     created_by?: string
     title: string
     description: string
+    steps_to_reproduce?: string
+    expected_result?: string
+    actual_result?: string
     category?: BugCategory
     severity?: BugSeverity
     status: BugStatus
@@ -107,6 +112,9 @@ export interface SimilarBug {
     id: string
     title: string
     description: string
+    steps_to_reproduce?: string
+    expected_result?: string
+    actual_result?: string
     category?: BugCategory
     severity?: BugSeverity
     status: BugStatus

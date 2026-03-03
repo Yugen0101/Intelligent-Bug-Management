@@ -1,96 +1,91 @@
 'use client'
 
 import Link from 'next/link'
-import { Facebook, Instagram, Youtube, Twitter } from 'lucide-react'
+import { Facebook, Instagram, Youtube, Twitter, Bug } from 'lucide-react'
 
 export default function Footer() {
     return (
-        <footer className="bg-transparent text-gray-400 py-16 px-4 relative z-20">
-            <div className="container mx-auto">
+        <footer className="bg-white border-t border-gray-100 text-gray-500 py-16 px-4 relative z-20">
+            <div className="container mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                    {/* About Column */}
-                    <div>
-                        <h3 className="text-white font-bold text-lg mb-6 tracking-wider">ABOUT</h3>
-                        <ul className="space-y-4">
-                            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Contact Us</Link></li>
-                            <li><Link href="#" className="hover:text-cyan-400 transition-colors">About Us</Link></li>
-                            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Careers</Link></li>
-                            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Press</Link></li>
-                            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Project Information</Link></li>
-                        </ul>
-                    </div>
-
-                    {/* Services Column */}
-                    <div>
-                        <h3 className="text-white font-bold text-lg mb-6 tracking-wider">SERVICES</h3>
-                        <ul className="space-y-4">
-                            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Bug Tracking</Link></li>
-                            <li><Link href="#" className="hover:text-cyan-400 transition-colors">AI Classification</Link></li>
-                            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Duplicate Detection</Link></li>
-                            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Team Collaboration</Link></li>
-                            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Progress Insights</Link></li>
-                        </ul>
-                    </div>
-
-                    {/* Support Column */}
-                    <div>
-                        <h3 className="text-white font-bold text-lg mb-6 tracking-wider">SUPPORT</h3>
-                        <ul className="space-y-4">
-                            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Help Center</Link></li>
-                            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Privacy Policy</Link></li>
-                            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Terms & Conditions</Link></li>
-                            <li><Link href="#" className="hover:text-cyan-400 transition-colors">Security</Link></li>
-                            <li><Link href="#" className="hover:text-cyan-400 transition-colors">FAQ</Link></li>
-                        </ul>
-                    </div>
-
-                    {/* Contact Us Column */}
-                    <div>
-                        <h3 className="text-white font-bold text-lg mb-6 tracking-wider">CONTACT US</h3>
-                        <div className="space-y-6 text-sm">
-                            <div>
-                                <p className="text-white font-semibold mb-1">Mail Us:</p>
-                                <a href="mailto:bugmind.ai@gmail.com" className="hover:text-cyan-400 transition-colors">bugmind.ai@gmail.com</a>
+                    {/* Brand Column */}
+                    <div className="space-y-6">
+                        <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                                <Bug className="text-white w-5 h-5" />
                             </div>
-                            <div>
-                                <p className="text-white font-semibold mb-1">Registered Office Address:</p>
-                                <p className="leading-relaxed">
-                                    BugMind Platform Limited,<br />
-                                    No. 42, Tech Park East,<br />
-                                    Innovation District,<br />
-                                    Chennai - 600001,<br />
-                                    Tamil Nadu, India.
-                                </p>
-                            </div>
+                            <span className="text-xl font-black tracking-tighter text-gray-900 italic">BUGMIND</span>
+                        </div>
+                        <p className="text-sm leading-relaxed max-w-xs font-medium">
+                            Next-generation bug tracking platform powered by artificial intelligence. Ship faster, track smarter.
+                        </p>
+                        <div className="flex gap-4">
+                            <SocialLink icon={<Facebook size={18} />} />
+                            <SocialLink icon={<Instagram size={18} />} />
+                            <SocialLink icon={<Youtube size={18} />} />
+                            <SocialLink icon={<Twitter size={18} />} />
+                        </div>
+                    </div>
+
+                    {/* Solutions Column */}
+                    <div>
+                        <h3 className="text-gray-900 font-bold text-sm mb-6 uppercase tracking-widest">Platform</h3>
+                        <ul className="space-y-4 text-sm font-medium">
+                            <li><FooterLink label="Bug Tracking" /></li>
+                            <li><FooterLink label="AI Classification" /></li>
+                            <li><FooterLink label="Team Dashboard" /></li>
+                            <li><FooterLink label="Insight Reports" /></li>
+                        </ul>
+                    </div>
+
+                    {/* Resources Column */}
+                    <div>
+                        <h3 className="text-gray-900 font-bold text-sm mb-6 uppercase tracking-widest">Resources</h3>
+                        <ul className="space-y-4 text-sm font-medium">
+                            <li><FooterLink label="Documentation" /></li>
+                            <li><FooterLink label="API Reference" /></li>
+                            <li><FooterLink label="Community" /></li>
+                            <li><FooterLink label="Security" /></li>
+                        </ul>
+                    </div>
+
+                    {/* Company Column */}
+                    <div>
+                        <h3 className="text-gray-900 font-bold text-sm mb-6 uppercase tracking-widest">Connect</h3>
+                        <div className="space-y-4 text-sm font-medium">
+                            <p>Support: <a href="mailto:support@bugmind.ai" className="text-primary hover:underline">support@bugmind.ai</a></p>
+                            <p>BugMind Platform Ltd.<br />Innovation District, TN IN</p>
                         </div>
                     </div>
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div className="flex items-center gap-4">
-                        <span className="text-sm">Follow Us:</span>
-                        <div className="flex gap-4">
-                            <Link href="#" className="p-2 bg-white/5 rounded-full hover:bg-white/10 hover:text-cyan-400 transition-all">
-                                <Facebook size={18} />
-                            </Link>
-                            <Link href="#" className="p-2 bg-white/5 rounded-full hover:bg-white/10 hover:text-cyan-400 transition-all">
-                                <Instagram size={18} />
-                            </Link>
-                            <Link href="#" className="p-2 bg-white/5 rounded-full hover:bg-white/10 hover:text-cyan-400 transition-all">
-                                <Youtube size={18} />
-                            </Link>
-                            <Link href="#" className="p-2 bg-white/5 rounded-full hover:bg-white/10 hover:text-cyan-400 transition-all">
-                                <Twitter size={18} />
-                            </Link>
-                        </div>
+                <div className="pt-8 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold uppercase tracking-widest">
+                    <p>© 2026 BugMind. All rights reserved.</p>
+                    <div className="flex gap-8">
+                        <Link href="#" className="hover:text-primary transition-colors">Privacy</Link>
+                        <Link href="#" className="hover:text-primary transition-colors">Terms</Link>
+                        <Link href="#" className="hover:text-primary transition-colors">Cookies</Link>
                     </div>
-
-                    <p className="text-sm">
-                        © 2026 BugMind. All rights reserved.
-                    </p>
                 </div>
             </div>
         </footer>
+    )
+}
+
+function FooterLink({ label }: { label: string }) {
+    return (
+        <Link href="#" className="hover:text-primary transition-colors flex items-center gap-2 group">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-all"></span>
+            {label}
+        </Link>
+    )
+}
+
+function SocialLink({ icon }: { icon: React.ReactNode }) {
+    return (
+        <Link href="#" className="w-10 h-10 border border-gray-100 rounded-xl flex items-center justify-center hover:bg-primary/5 hover:text-primary hover:border-primary/20 transition-all">
+            {icon}
+        </Link>
     )
 }

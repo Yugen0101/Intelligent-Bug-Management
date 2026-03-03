@@ -42,7 +42,7 @@ export default function DebugEnvPage() {
                     </div>
                 )}
 
-                <div className="bg-blue-50 p-6 rounded-lg border border-blue-100">
+                <div className="bg-primary/5 p-6 rounded-lg border border-blue-100">
                     <h2 className="font-bold text-blue-900 mb-2">How to Fix This:</h2>
                     <ol className="list-decimal list-inside space-y-2 text-blue-800">
                         <li>Go to <strong>Vercel Dashboard &gt; Settings &gt; Environment Variables</strong></li>

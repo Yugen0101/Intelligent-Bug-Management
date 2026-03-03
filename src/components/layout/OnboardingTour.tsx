@@ -37,8 +37,8 @@ const STEPS = [
         title: "Executive Insights",
         description: "Managers get deep-dive analytics and AI health assessments to monitor project risk at a glance.",
         icon: BarChart3,
-        color: "text-blue-600 bg-blue-50",
-        bgGradient: "from-blue-500/10 via-cyan-500/5 to-transparent shadow-blue-500/20"
+        color: "text-primary bg-primary/5",
+        bgGradient: "from-primary/10 via-cyan-500/5 to-transparent shadow-primary/20"
     },
     {
         title: "AI Triage Agent",

@@ -48,7 +48,7 @@ export default function DeveloperDashboard() {
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                     <div>
                         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
-                            Developer <span className="text-blue-600">Dashboard</span>
+                            Developer <span className="text-primary">Dashboard</span>
                         </h1>
                         <p className="text-gray-600 font-medium">
                             Manage your assigned bugs and track resolution status.

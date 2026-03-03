@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/client'
 import type { Bug, BugCategory, BugSeverity } from '@/types/database'
+import { subDays } from 'date-fns'
 
 export interface CategoryDistribution {
     category: string
@@ -32,10 +33,14 @@ export class AnalyticsService {
         integration: '#10b981'
     }
 
-    async getCategoryDistribution(projectId?: string): Promise<CategoryDistribution[]> {
+    async getCategoryDistribution(projectId?: string, days?: number): Promise<CategoryDistribution[]> {
         const supabase = createClient()
         let query = supabase.from('bugs').select('category')
         if (projectId) query = query.eq('project_id', projectId)
+        if (days) {
+            const startDate = subDays(new Date(), days).toISOString()
+            query = query.gte('created_at', startDate)
+        }
 
         const { data, error } = await query
         if (error) throw error
@@ -53,10 +58,14 @@ export class AnalyticsService {
         }))
     }
 
-    async getSeverityDistribution(projectId?: string): Promise<SeverityDistribution[]> {
+    async getSeverityDistribution(projectId?: string, days?: number): Promise<SeverityDistribution[]> {
         const supabase = createClient()
         let query = supabase.from('bugs').select('severity')
         if (projectId) query = query.eq('project_id', projectId)
+        if (days) {
+            const startDate = subDays(new Date(), days).toISOString()
+            query = query.gte('created_at', startDate)
+        }
 
         const { data, error } = await query
         if (error) throw error
@@ -100,12 +109,16 @@ export class AnalyticsService {
         return Object.entries(distribution).map(([name, bugs]) => ({ name, bugs }))
     }
 
-    async getResolutionEfficiency(projectId?: string): Promise<ResolutionEfficiency[]> {
+    async getResolutionEfficiency(projectId?: string, days?: number): Promise<ResolutionEfficiency[]> {
         const supabase = createClient()
-        // Simplified: days to close for last 7 days
+        // Simplified: days to close
         let query = supabase.from('bugs').select('created_at, updated_at, status')
         if (projectId) query = query.eq('project_id', projectId)
-        query = query.eq('status', 'resolved').limit(50)
+        if (days) {
+            const startDate = subDays(new Date(), days).toISOString()
+            query = query.gte('created_at', startDate)
+        }
+        query = query.eq('status', 'resolved').limit(100)
 
         const { data, error } = await query
         if (error) throw error

@@ -15,7 +15,7 @@ export default function SettingsPage() {
                 <div className="max-w-2xl space-y-6">
                     <section className="p-6 bg-white rounded-3xl border border-gray-100 shadow-xl shadow-gray-50">
                         <div className="flex items-center gap-3 mb-6">
-                            <User className="w-5 h-5 text-blue-600" />
+                            <User className="w-5 h-5 text-primary" />
                             <h2 className="text-xl font-bold text-gray-900">Profile Information</h2>
                         </div>
                         <div className="space-y-4">
@@ -28,7 +28,7 @@ export default function SettingsPage() {
                                 </div>
                                 <div className="space-y-1">
                                     <label className="text-sm font-bold text-gray-500 uppercase">Role</label>
-                                    <div className="px-4 py-3 bg-blue-50 rounded-xl text-blue-700 font-bold border border-blue-100">
+                                    <div className="px-4 py-3 bg-primary/5 rounded-xl text-blue-700 font-bold border border-blue-100">
                                         QA Tester
                                     </div>
                                 </div>

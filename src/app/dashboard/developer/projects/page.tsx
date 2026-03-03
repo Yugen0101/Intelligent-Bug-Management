@@ -52,12 +52,12 @@ export default function DeveloperProjectsPage() {
                         {projects.map((project) => (
                             <div key={project.id} className="group p-6 bg-white rounded-3xl border border-gray-100 shadow-xl shadow-gray-50 transition-all hover:scale-[1.02] hover:shadow-2xl duration-300">
                                 <div className="flex items-start justify-between mb-4">
-                                    <div className="p-3 bg-blue-50 rounded-2xl group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                                    <div className="p-3 bg-primary/5 rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                                         <FolderKanban className="w-6 h-6" />
                                     </div>
                                     <Link
                                         href={`/dashboard/developer/bugs?project=${project.id}`}
-                                        className="p-2 text-gray-400 hover:text-blue-600 transition-colors"
+                                        className="p-2 text-gray-400 hover:text-primary transition-colors"
                                     >
                                         <ExternalLink className="w-5 h-5" />
                                     </Link>
@@ -72,7 +72,7 @@ export default function DeveloperProjectsPage() {
                                     </span>
                                     <Link
                                         href={`/dashboard/developer/bugs?status=in_progress&project=${project.id}`}
-                                        className="text-sm font-bold text-blue-600 hover:underline flex items-center gap-1"
+                                        className="text-sm font-bold text-primary hover:underline flex items-center gap-1"
                                     >
                                         <Clock className="w-4 h-4" />
                                         My Tasks

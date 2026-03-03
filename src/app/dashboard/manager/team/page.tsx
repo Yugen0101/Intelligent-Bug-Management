@@ -15,6 +15,9 @@ interface Profile {
 export default function TeamPage() {
     const [members, setMembers] = useState<Profile[]>([])
     const [loading, setLoading] = useState(true)
+    const [isInviteModalOpen, setIsInviteModalOpen] = useState(false)
+    const [isInviting, setIsInviting] = useState(false)
+    const [inviteData, setInviteData] = useState({ name: '', email: '', role: 'developer' })
     const supabase = createClient()
 
     useEffect(() => {
@@ -30,15 +33,107 @@ export default function TeamPage() {
         fetchTeam()
     }, [])
 
+    const handleInvite = async (e: React.FormEvent) => {
+        e.preventDefault()
+        setIsInviting(true)
+
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 2000))
+
+        const newMember: Profile = {
+            id: Math.random().toString(36).substr(2, 9),
+            full_name: inviteData.name,
+            role: inviteData.role,
+            avatar_url: null
+        }
+
+        setMembers(prev => [newMember, ...prev])
+        setIsInviting(false)
+        setIsInviteModalOpen(false)
+        setInviteData({ name: '', email: '', role: 'developer' })
+    }
+
     return (
         <DashboardLayout role="manager">
+            {/* Invite Modal */}
+            {isInviteModalOpen && (
+                <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[100] flex items-center justify-center p-4 animate-in fade-in duration-300">
+                    <div className="bg-white rounded-[32px] w-full max-w-md p-8 shadow-2xl animate-in zoom-in-95 slide-in-from-bottom-4 duration-300">
+                        <div className="flex items-center justify-between mb-8">
+                            <h2 className="text-xl font-black text-gray-900 tracking-tight">Invite Member</h2>
+                            <button onClick={() => setIsInviteModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-xl transition-colors">
+                                <MoreVertical className="w-5 h-5 text-gray-400 rotate-45" /> {/* Using MoreVertical as a placeholder or close icon */}
+                            </button>
+                        </div>
+
+                        <form onSubmit={handleInvite} className="space-y-5">
+                            <div>
+                                <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1">Full Name</label>
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="John Doe"
+                                    value={inviteData.name}
+                                    onChange={e => setInviteData(prev => ({ ...prev, name: e.target.value }))}
+                                    className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:bg-white transition-all text-sm font-bold"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1">Email Address</label>
+                                <input
+                                    required
+                                    type="email"
+                                    placeholder="john@example.com"
+                                    value={inviteData.email}
+                                    onChange={e => setInviteData(prev => ({ ...prev, email: e.target.value }))}
+                                    className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:bg-white transition-all text-sm font-bold"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1">Role</label>
+                                <select
+                                    value={inviteData.role}
+                                    onChange={e => setInviteData(prev => ({ ...prev, role: e.target.value }))}
+                                    className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:bg-white transition-all text-sm font-bold appearance-none cursor-pointer"
+                                >
+                                    <option value="tester">Tester</option>
+                                    <option value="developer">Developer</option>
+                                    <option value="manager">Manager</option>
+                                </select>
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={isInviting}
+                                className="w-full mt-4 py-4 bg-gray-900 text-white rounded-2xl text-[13px] font-black tracking-widest uppercase hover:bg-black transition-all active:scale-[0.98] shadow-xl shadow-gray-200 flex items-center justify-center gap-3 disabled:opacity-50"
+                            >
+                                {isInviting ? (
+                                    <>
+                                        <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                                        Sending...
+                                    </>
+                                ) : (
+                                    <>
+                                        <Mail className="w-4 h-4" />
+                                        Send Invitation
+                                    </>
+                                )}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            )}
+
             <div className="space-y-8">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
                         <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Team Management</h1>
                         <p className="text-gray-500 font-medium">Manage cross-functional teams and role assignments.</p>
                     </div>
-                    <button className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gray-900 text-white rounded-2xl font-bold hover:bg-black transition-all shadow-xl shadow-gray-200 active:scale-[0.98]">
+                    <button
+                        onClick={() => setIsInviteModalOpen(true)}
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gray-900 text-white rounded-2xl font-bold hover:bg-black transition-all shadow-xl shadow-gray-200 active:scale-[0.98]"
+                    >
                         <UserPlus className="w-5 h-5" />
                         Invite Member
                     </button>
@@ -59,7 +154,7 @@ export default function TeamPage() {
                                 <tr key={member.id} className="hover:bg-gray-50/50 transition-colors group">
                                     <td className="px-6 py-4">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold border-2 border-white shadow-sm">
+                                            <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-primary font-bold border-2 border-white shadow-sm">
                                                 {member.full_name.charAt(0)}
                                             </div>
                                             <div>
@@ -70,8 +165,8 @@ export default function TeamPage() {
                                     </td>
                                     <td className="px-6 py-4 text-sm">
                                         <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tight ${member.role === 'manager' ? 'bg-purple-50 text-purple-600' :
-                                                member.role === 'developer' ? 'bg-blue-50 text-blue-600' :
-                                                    'bg-emerald-50 text-emerald-600'
+                                            member.role === 'developer' ? 'bg-primary/5 text-primary' :
+                                                'bg-emerald-50 text-emerald-600'
                                             }`}>
                                             {member.role}
                                         </span>

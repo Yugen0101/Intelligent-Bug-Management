@@ -42,7 +42,7 @@ export function ProjectForm({ onSubmit, onCancel, isLoading }: ProjectFormProps)
                         type="text"
                         placeholder="e.g. NextGen AI Dashboard"
                         className={cn(
-                            "w-full px-5 py-3.5 bg-gray-50 border rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none font-medium",
+                            "w-full px-5 py-3.5 bg-gray-50 border rounded-2xl focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none font-medium",
                             errors.name ? "border-red-300 bg-red-50/30" : "border-gray-200"
                         )}
                     />
@@ -63,7 +63,7 @@ export function ProjectForm({ onSubmit, onCancel, isLoading }: ProjectFormProps)
                         rows={4}
                         placeholder="What is this project about? Keep it concise but descriptive."
                         className={cn(
-                            "w-full px-5 py-3.5 bg-gray-50 border rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none font-medium resize-none",
+                            "w-full px-5 py-3.5 bg-gray-50 border rounded-2xl focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none font-medium resize-none",
                             errors.description ? "border-red-300 bg-red-50/30" : "border-gray-200"
                         )}
                     />
@@ -88,7 +88,7 @@ export function ProjectForm({ onSubmit, onCancel, isLoading }: ProjectFormProps)
                 <button
                     type="submit"
                     disabled={isLoading}
-                    className="flex-[2] bg-blue-600 text-white py-4 rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-xl shadow-blue-100 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 active:scale-95"
+                    className="flex-[2] bg-primary text-white py-4 rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-xl shadow-blue-100 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 active:scale-95"
                 >
                     {isLoading ? (
                         <>

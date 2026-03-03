@@ -62,6 +62,38 @@ export default function NewBugPage() {
 
             if (insertError) throw insertError
 
+            // Trigger real-time notifications (including Slack if high severity)
+            const { data: profile } = await supabase
+                .from('profiles')
+                .select('full_name')
+                .eq('id', user.id)
+                .single();
+
+            const { data: project } = await supabase
+                .from('projects')
+                .select('created_by')
+                .eq('id', values.project_id)
+                .single();
+
+            if (project?.created_by && data) {
+                const { sendNotification } = await import('@/lib/utils/notifications');
+                await sendNotification({
+                    userId: project.created_by,
+                    type: 'status_update',
+                    title: 'New Bug Reported',
+                    message: `A new ${values.severity} severity bug was reported: ${values.title}`,
+                    link: `/dashboard/manager/bugs/${data.id}`,
+                    projectId: values.project_id,
+                    bugDetails: {
+                        id: data.id,
+                        title: values.title,
+                        severity: values.severity || 'low',
+                        category: values.category || 'functional',
+                        reporter_name: profile?.full_name || 'A Tester'
+                    }
+                });
+            }
+
             setSuccess(true)
             setTimeout(() => router.push('/dashboard/tester'), 2000)
         } catch (err: any) {
@@ -103,10 +135,10 @@ export default function NewBugPage() {
                 <div className="bg-white rounded-3xl border border-gray-200 shadow-sm overflow-hidden relative">
                     <div className="p-10 border-b border-gray-100">
                         <div className="flex items-center gap-4 mb-2">
-                            <div className="p-3 bg-blue-50 border border-blue-100 rounded-2xl">
-                                <Sparkles className="w-5 h-5 text-blue-600" />
+                            <div className="p-3 bg-primary/5 border border-blue-100 rounded-2xl">
+                                <Sparkles className="w-5 h-5 text-primary" />
                             </div>
-                            <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Report <span className="text-blue-600">New Bug</span></h1>
+                            <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Report <span className="text-primary">New Bug</span></h1>
                         </div>
                         <p className="text-gray-600 font-medium max-w-xl leading-relaxed">
                             Provide details about the issue. AI analysis will help classify the category and severity.

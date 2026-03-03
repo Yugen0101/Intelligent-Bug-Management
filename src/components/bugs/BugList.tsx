@@ -99,9 +99,9 @@ export function BugList({ role, projectId, userId, assignedTo, limit }: BugListP
 
     if (loading) {
         return (
-            <div className="flex flex-col items-center justify-center py-24 gap-4">
-                <Loader2 className="w-10 h-10 text-blue-600 animate-spin" />
-                <p className="text-gray-500 font-bold uppercase tracking-wider text-xs">Loading bugs...</p>
+            <div className={`flex flex-col items-center justify-center gap-3 ${limit ? 'py-8' : 'py-24'}`}>
+                <Loader2 className="w-6 h-6 text-indigo-400 animate-spin" />
+                <p className="text-gray-400 font-bold uppercase tracking-wider text-[10px]">Loading bugs...</p>
             </div>
         )
     }
@@ -124,11 +124,11 @@ export function BugList({ role, projectId, userId, assignedTo, limit }: BugListP
             {!limit && (
                 <div className="flex flex-col lg:flex-row gap-4 items-center justify-between bg-white p-4 rounded-2xl border border-gray-200 shadow-sm">
                     <div className="relative w-full lg:max-w-md group">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-primary transition-colors" />
                         <input
                             type="text"
                             placeholder="Search bugs..."
-                            className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/30 transition-all font-medium text-gray-900"
+                            className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 transition-all font-medium text-gray-900"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                         />
@@ -175,14 +175,33 @@ export function BugList({ role, projectId, userId, assignedTo, limit }: BugListP
 
             {/* Grid */}
             {bugs.length === 0 ? (
-                <div className="text-center py-24 bg-white rounded-3xl border-2 border-dashed border-gray-200">
-                    <Bug className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                    <h3 className="text-xl font-bold text-gray-900 mb-1">No Bugs Found</h3>
-                    <p className="text-gray-500 max-w-xs mx-auto">
-                        {debouncedSearch || filter !== 'all'
-                            ? "No results match your search criteria."
-                            : "No bugs have been reported yet."}
-                    </p>
+                limit ? (
+                    // Compact empty state for dashboard widget mode
+                    <div className="flex flex-col items-center py-6 gap-2 text-center">
+                        <Bug className="w-8 h-8 text-gray-200" />
+                        <p className="text-[11px] font-bold text-gray-400">No bugs reported yet</p>
+                    </div>
+                ) : (
+                    <div className="text-center py-24 bg-white rounded-3xl border-2 border-dashed border-gray-200">
+                        <Bug className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+                        <h3 className="text-xl font-bold text-gray-900 mb-1">No Bugs Found</h3>
+                        <p className="text-gray-500 max-w-xs mx-auto">
+                            {debouncedSearch || filter !== 'all'
+                                ? "No results match your search criteria."
+                                : "No bugs have been reported yet."}
+                        </p>
+                    </div>
+                )
+            ) : limit ? (
+                // Compact single-column list for dashboard widget
+                <div className="space-y-3">
+                    {bugs.map((bug) => (
+                        <BugCard
+                            key={bug.id}
+                            bug={bug}
+                            href={`/dashboard/${role}/bugs/${bug.id}`}
+                        />
+                    ))}
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">

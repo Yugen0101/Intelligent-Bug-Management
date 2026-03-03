@@ -23,6 +23,9 @@ import type { Project, BugCategory, BugSeverity, Bug } from '@/types/database'
 const bugSchema = z.object({
     title: z.string().min(5, 'Title must be at least 5 characters').max(100),
     description: z.string().min(20, 'Description must be at least 20 characters'),
+    steps_to_reproduce: z.string().min(10, 'Please provide steps to reproduce'),
+    expected_result: z.string().min(5, 'Please provide expected result'),
+    actual_result: z.string().min(5, 'Please provide actual result'),
     project_id: z.string().uuid('Please select a project'),
     category: z.enum(['ui_ux', 'functional', 'performance', 'security', 'data_logic', 'integration']).optional(),
     severity: z.enum(['critical', 'high', 'medium', 'low']).optional(),
@@ -60,6 +63,9 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
         defaultValues: {
             title: initialData?.title || '',
             description: initialData?.description || '',
+            steps_to_reproduce: initialData?.steps_to_reproduce || '',
+            expected_result: initialData?.expected_result || '',
+            actual_result: initialData?.actual_result || '',
             project_id: initialData?.project_id || '',
             category: initialData?.category || undefined,
             severity: initialData?.severity || undefined,
@@ -68,6 +74,9 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
 
     const title = watch('title')
     const description = watch('description')
+    const steps = watch('steps_to_reproduce')
+    const expected = watch('expected_result')
+    const actual = watch('actual_result')
     const projectId = watch('project_id')
 
     useEffect(() => {
@@ -80,7 +89,10 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
 
     useEffect(() => {
         const analyzeText = async () => {
-            if (title?.length > 10 && description?.length > 30 && !isPredicting && !initialData) {
+            const hasEnoughContent = (title?.length > 10) &&
+                (description?.length > 20 || steps?.length > 20);
+
+            if (hasEnoughContent && !isPredicting && !initialData) {
                 setIsPredicting(true)
                 try {
                     // 1. Get NLP Analysis (Embeddings/Keywords)
@@ -96,7 +108,13 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                     const predictionResponse = await fetch('/api/ai/predict-bug', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ title, description })
+                        body: JSON.stringify({
+                            title,
+                            description,
+                            steps_to_reproduce: steps,
+                            expected_result: expected,
+                            actual_result: actual
+                        })
                     })
 
                     if (!predictionResponse.ok) throw new Error('ML Prediction failed')
@@ -129,7 +147,7 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
         }, 1500)
 
         return () => clearTimeout(debounceTimer)
-    }, [title, description, projectId, initialData])
+    }, [title, description, steps, expected, actual, projectId, initialData])
 
     const applyAISuggestion = () => {
         if (prediction) {
@@ -181,7 +199,7 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                             {...register('project_id')}
                             className={cn(
                                 "w-full px-4 py-3 bg-white border rounded-xl text-gray-900 outline-none transition-all appearance-none cursor-pointer font-medium",
-                                errors.project_id ? "border-red-300 bg-red-50 text-red-900" : "border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10"
+                                errors.project_id ? "border-red-300 bg-red-50 text-red-900" : "border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
                             )}
                         >
                             <option value="">Select project...</option>
@@ -208,7 +226,7 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                         placeholder="e.g. Navigation bar is broken..."
                         className={cn(
                             "w-full px-4 py-3 bg-white border rounded-xl text-gray-900 outline-none transition-all font-medium placeholder:text-gray-400",
-                            errors.title ? "border-red-300 bg-red-50 text-red-900" : "border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10"
+                            errors.title ? "border-red-300 bg-red-50 text-red-900" : "border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
                         )}
                     />
                     {errors.title && (
@@ -227,18 +245,76 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                         placeholder="Describe the issue in detail..."
                         className={cn(
                             "w-full px-4 py-3 bg-white border rounded-xl text-gray-900 outline-none transition-all font-medium placeholder:text-gray-400 resize-none",
-                            errors.description ? "border-red-300 bg-red-50 text-red-900" : "border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10"
+                            errors.description ? "border-red-300 bg-red-50 text-red-900" : "border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
                         )}
                     />
                     {errors.description && (
                         <p className="mt-1 text-xs font-bold text-red-500 uppercase tracking-wider ml-1">{errors.description.message}</p>
                     )}
+                </div>
+
+                {/* Steps, Expected, Actual */}
+                <div className="grid grid-cols-1 gap-10">
+                    <div>
+                        <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
+                            Steps to Reproduce
+                        </label>
+                        <textarea
+                            {...register('steps_to_reproduce')}
+                            rows={4}
+                            placeholder="1. Open app\n2. Click login\n3. Observe..."
+                            className={cn(
+                                "w-full px-4 py-3 bg-white border rounded-xl text-gray-900 outline-none transition-all font-medium placeholder:text-gray-400 resize-none",
+                                errors.steps_to_reproduce ? "border-red-300 bg-red-50 text-red-900" : "border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
+                            )}
+                        />
+                        {errors.steps_to_reproduce && (
+                            <p className="mt-1 text-xs font-bold text-red-500 uppercase tracking-wider ml-1">{errors.steps_to_reproduce.message}</p>
+                        )}
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
+                                Expected Result
+                            </label>
+                            <textarea
+                                {...register('expected_result')}
+                                rows={3}
+                                placeholder="What should happen?"
+                                className={cn(
+                                    "w-full px-4 py-3 bg-white border rounded-xl text-gray-900 outline-none transition-all font-medium placeholder:text-gray-400 resize-none",
+                                    errors.expected_result ? "border-red-300 bg-red-50 text-red-900" : "border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
+                                )}
+                            />
+                            {errors.expected_result && (
+                                <p className="mt-1 text-xs font-bold text-red-500 uppercase tracking-wider ml-1">{errors.expected_result.message}</p>
+                            )}
+                        </div>
+                        <div>
+                            <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
+                                Actual Result
+                            </label>
+                            <textarea
+                                {...register('actual_result')}
+                                rows={3}
+                                placeholder="What actually happened?"
+                                className={cn(
+                                    "w-full px-4 py-3 bg-white border rounded-xl text-gray-900 outline-none transition-all font-medium placeholder:text-gray-400 resize-none",
+                                    errors.actual_result ? "border-red-300 bg-red-50 text-red-900" : "border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
+                                )}
+                            />
+                            {errors.actual_result && (
+                                <p className="mt-1 text-xs font-bold text-red-500 uppercase tracking-wider ml-1">{errors.actual_result.message}</p>
+                            )}
+                        </div>
+                    </div>
 
                     {(isPredicting || prediction) && (
-                        <div className="mt-6 p-6 bg-blue-50/50 border border-blue-100 rounded-2xl relative overflow-hidden group">
+                        <div className="mt-6 p-6 bg-primary/5/50 border border-blue-100 rounded-2xl relative overflow-hidden group">
                             <div className="flex items-center gap-3 mb-6">
                                 <div className="p-2 bg-blue-100 rounded-lg">
-                                    <Sparkles className="w-5 h-5 text-blue-600" />
+                                    <Sparkles className="w-5 h-5 text-primary" />
                                 </div>
                                 <div>
                                     <span className="text-xs font-bold text-gray-900 uppercase tracking-wider block">AI Analysis</span>
@@ -247,7 +323,7 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                             </div>
 
                             {isPredicting ? (
-                                <div className="flex items-center gap-3 text-blue-600 p-3 bg-white border border-blue-100 rounded-xl">
+                                <div className="flex items-center gap-3 text-primary p-3 bg-white border border-blue-100 rounded-xl">
                                     <Loader2 className="w-4 h-4 animate-spin" />
                                     <span className="text-sm font-bold uppercase tracking-wider">Analyzing...</span>
                                 </div>
@@ -288,7 +364,7 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                                     >
                                         <div className="flex items-center justify-between mb-2">
                                             <p className="text-[9px] uppercase tracking-wider font-bold text-gray-400">AI Explanation</p>
-                                            <div className="text-[8px] font-bold text-blue-600 uppercase tracking-wider opacity-0 group-hover/reason:opacity-100 transition-opacity">
+                                            <div className="text-[8px] font-bold text-primary uppercase tracking-wider opacity-0 group-hover/reason:opacity-100 transition-opacity">
                                                 Details
                                             </div>
                                         </div>
@@ -300,7 +376,7 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                                     <button
                                         type="button"
                                         onClick={applyAISuggestion}
-                                        className="w-full py-3.5 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider rounded-xl hover:bg-blue-700 transition-all shadow-sm active:scale-95 flex items-center justify-center gap-2 mt-2"
+                                        className="w-full py-3.5 bg-primary text-white text-[10px] font-bold uppercase tracking-wider rounded-xl hover:bg-blue-700 transition-all shadow-sm active:scale-95 flex items-center justify-center gap-2 mt-2"
                                     >
                                         <Sparkles className="w-4 h-4" />
                                         Apply AI Suggestions
@@ -362,7 +438,7 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
             <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-blue-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-md active:scale-95 flex items-center justify-center gap-3 group"
+                className="w-full bg-primary text-white py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-blue-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-md active:scale-95 flex items-center justify-center gap-3 group"
             >
                 {isLoading ? (
                     <div className="w-10 h-1 border-2 border-black/20 border-t-black rounded-full animate-spin" />

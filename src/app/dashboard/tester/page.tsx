@@ -38,7 +38,7 @@ export default function TesterDashboard() {
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                     <div>
                         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
-                            Tester <span className="text-blue-600">Dashboard</span>
+                            Tester <span className="text-primary">Dashboard</span>
                         </h1>
                         <p className="text-gray-600 font-medium">
                             Report new bugs and track the progress of your submissions.

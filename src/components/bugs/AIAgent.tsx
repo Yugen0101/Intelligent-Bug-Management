@@ -205,7 +205,7 @@ export function AIAgent({ bug, comments }: AIAgentProps) {
                                     className={cn(
                                         "p-3 rounded-2xl text-sm leading-relaxed shadow-sm",
                                         msg.role === 'user'
-                                            ? "bg-blue-600 text-white rounded-tr-none"
+                                            ? "bg-primary text-white rounded-tr-none"
                                             : "bg-white text-gray-700 rounded-tl-none border border-gray-100"
                                     )}
                                 >
@@ -254,7 +254,7 @@ export function AIAgent({ bug, comments }: AIAgentProps) {
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
                                 disabled={isLoading}
-                                className="w-full bg-gray-50 border border-gray-200 rounded-2xl py-3 pl-4 pr-12 text-sm focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all font-medium"
+                                className="w-full bg-gray-50 border border-gray-200 rounded-2xl py-3 pl-4 pr-12 text-sm focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-primary transition-all font-medium"
                             />
                             <button
                                 type="submit"

@@ -117,7 +117,13 @@ export class GeminiEngine {
         }
     }
 
-    async predictBugMetadata(title: string, description: string): Promise<GeminiPrediction> {
+    async predictBugMetadata(
+        title: string,
+        description: string,
+        steps_to_reproduce?: string,
+        expected_result?: string,
+        actual_result?: string
+    ): Promise<GeminiPrediction> {
         const client = this.initClient();
 
         const prompt = `
@@ -125,6 +131,9 @@ export class GeminiEngine {
             
             Title: "${title}"
             Description: "${description}"
+            Steps to Reproduce: "${steps_to_reproduce || 'Not provided'}"
+            Expected Result: "${expected_result || 'Not provided'}"
+            Actual Result: "${actual_result || 'Not provided'}"
             
             Valid Categories: ui_ux, functional, performance, security, data_logic, integration
             Valid Severities: critical, high, medium, low

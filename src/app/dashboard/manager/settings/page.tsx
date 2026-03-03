@@ -15,7 +15,7 @@ export default function ManagerSettingsPage() {
                 <div className="max-w-2xl space-y-6">
                     <section className="p-6 bg-white rounded-3xl border border-gray-100 shadow-xl shadow-gray-50">
                         <div className="flex items-center gap-3 mb-6">
-                            <User className="w-5 h-5 text-blue-600" />
+                            <User className="w-5 h-5 text-primary" />
                             <h2 className="text-xl font-bold text-gray-900">Admin Profile</h2>
                         </div>
                         <div className="space-y-4">

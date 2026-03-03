@@ -21,7 +21,7 @@ function TesterBugsContent() {
                 </div>
                 <Link
                     href="/dashboard/tester/bugs/new"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-xl shadow-blue-200 active:scale-[0.98]"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-primary text-white rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-xl shadow-blue-200 active:scale-[0.98]"
                 >
                     <Plus className="w-5 h-5" />
                     Report New Bug

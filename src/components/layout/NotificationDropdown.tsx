@@ -112,7 +112,7 @@ export function NotificationDropdown() {
 
     const getIcon = (type: string) => {
         switch (type) {
-            case 'assignment': return <UserPlus className="w-4 h-4 text-blue-500" />
+            case 'assignment': return <UserPlus className="w-4 h-4 text-primary" />
             case 'comment': return <MessageSquare className="w-4 h-4 text-purple-500" />
             case 'status_update': return <Check className="w-4 h-4 text-green-500" />
             default: return <Info className="w-4 h-4 text-gray-500" />

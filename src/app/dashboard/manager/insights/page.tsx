@@ -74,7 +74,7 @@ export default function InsightsPage() {
                         <select
                             value={selectedProjectId}
                             onChange={(e) => setSelectedProjectId(e.target.value)}
-                            className="w-full pl-11 pr-4 py-3 bg-white border border-gray-100 shadow-lg rounded-2xl text-sm font-bold text-gray-700 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
+                            className="w-full pl-11 pr-4 py-3 bg-white border border-gray-100 shadow-lg rounded-2xl text-sm font-bold text-gray-700 appearance-none focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
                         >
                             {projects.map(p => (
                                 <option key={p.id} value={p.id}>{p.name}</option>
@@ -85,21 +85,21 @@ export default function InsightsPage() {
 
                 {isLoading ? (
                     <div className="flex flex-col items-center justify-center py-24 space-y-4">
-                        <Loader2 className="w-12 h-12 text-blue-600 animate-spin" />
+                        <Loader2 className="w-12 h-12 text-primary animate-spin" />
                         <p className="text-gray-500 font-bold animate-pulse">Gemini is analyzing project data...</p>
                     </div>
                 ) : insight ? (
                     <>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div className="p-8 bg-white rounded-[2rem] border border-gray-100 shadow-xl">
-                                <TrendingUp className="w-8 h-8 text-blue-600 mb-4" />
+                                <TrendingUp className="w-8 h-8 text-primary mb-4" />
                                 <div className="text-3xl font-black text-gray-900 capitalize">{insight.riskLevel}</div>
                                 <div className="text-xs font-black text-gray-400 uppercase tracking-widest">Calculated Risk Level</div>
                             </div>
 
-                            <div className="md:col-span-2 p-8 bg-blue-50 text-blue-900 rounded-[2rem] border border-blue-100 shadow-xl relative overflow-hidden">
+                            <div className="md:col-span-2 p-8 bg-primary/5 text-blue-900 rounded-[2rem] border border-blue-100 shadow-xl relative overflow-hidden">
                                 <div className="relative z-10">
-                                    <h3 className="text-lg font-bold mb-2 flex items-center gap-2 text-blue-600">
+                                    <h3 className="text-lg font-bold mb-2 flex items-center gap-2 text-primary">
                                         <Lightbulb className="w-5 h-5 text-amber-500" />
                                         Executive Summary
                                     </h3>

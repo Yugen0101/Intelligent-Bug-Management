@@ -22,7 +22,7 @@ export function BugCard({ bug, href }: BugCardProps) {
     }
 
     const statusStyles = {
-        open: 'bg-blue-50 text-blue-700 border-blue-200',
+        open: 'bg-primary/5 text-blue-700 border-blue-200',
         in_progress: 'bg-purple-50 text-purple-700 border-purple-200',
         resolved: 'bg-emerald-50 text-emerald-700 border-emerald-200',
         closed: 'bg-gray-100 text-gray-700 border-gray-200',
@@ -57,7 +57,7 @@ export function BugCard({ bug, href }: BugCardProps) {
                 </div>
 
                 <div className="flex-1 relative z-10">
-                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2 line-clamp-1 tracking-tight">
+                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors mb-2 line-clamp-1 tracking-tight">
                         {bug.title}
                     </h3>
                     <p className="text-sm text-gray-600 line-clamp-2 mb-4 leading-relaxed">
@@ -68,16 +68,16 @@ export function BugCard({ bug, href }: BugCardProps) {
                 <div className="mt-auto relative z-10">
                     <div className="flex flex-wrap items-center gap-y-3 gap-x-4 pt-4 border-t border-gray-100">
                         <div className="flex items-center gap-1.5 text-[10px] font-bold text-gray-500 uppercase tracking-wider">
-                            <Tag className="w-3 h-3 text-blue-500" />
+                            <Tag className="w-3 h-3 text-primary" />
                             <span>{bug.category?.replace('_', ' ')}</span>
                         </div>
                         <div className="flex items-center gap-1.5 text-[10px] font-bold text-gray-500 uppercase tracking-wider">
-                            <Clock className="w-3 h-3 text-blue-500" />
+                            <Clock className="w-3 h-3 text-primary" />
                             <span>{formatDistanceToNow(new Date(bug.created_at), { addSuffix: true })}</span>
                         </div>
                         {bug.created_by_profile && (
                             <div className="flex items-center gap-1.5 text-[10px] font-bold text-gray-500 uppercase tracking-wider">
-                                <User className="w-3 h-3 text-blue-500" />
+                                <User className="w-3 h-3 text-primary" />
                                 <span>{bug.created_by_profile.full_name}</span>
                             </div>
                         )}
@@ -85,7 +85,7 @@ export function BugCard({ bug, href }: BugCardProps) {
 
                     {bug.ai_metadata?.category_prediction && (
                         <div className="mt-4 flex">
-                            <div className="flex items-center gap-1.5 px-2 py-1 bg-blue-50 text-blue-600 rounded-lg text-[9px] font-bold uppercase tracking-wider border border-blue-100">
+                            <div className="flex items-center gap-1.5 px-2 py-1 bg-primary/5 text-primary rounded-lg text-[9px] font-bold uppercase tracking-wider border border-blue-100">
                                 <AlertCircle className="w-3 h-3" />
                                 AI Suggested
                             </div>
