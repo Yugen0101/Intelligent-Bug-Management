@@ -5,8 +5,14 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Bug Mind - AI-Powered Bug Management",
-  description: "Intelligent bug tracking with NLP classification, duplicate detection, and decision-support insights",
+  title: "BugMind — AI-Powered Bug Management for Modern Teams",
+  description: "BugMind uses AI to automatically detect, classify, and prioritize bugs so your team ships faster and resolves issues smarter. Start free today.",
+  keywords: ["AI bug management", "bug tracking", "NLP classification", "developer tools", "QA platform"],
+  openGraph: {
+    title: "BugMind — AI-Powered Bug Management",
+    description: "Intelligent bug tracking with NLP classification, duplicate detection, and AI prioritization.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
