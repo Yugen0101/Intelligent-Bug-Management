@@ -25,6 +25,7 @@ const bugSchema = z.object({
     project_id: z.string().uuid('Please select a project'),
     category: z.enum(['ui_ux', 'functional', 'performance', 'security', 'data_logic', 'integration']).optional(),
     severity: z.enum(['critical', 'high', 'medium', 'low']).optional(),
+    assigned_to: z.string().uuid().optional().or(z.literal('')),
 })
 
 type BugFormValues = z.infer<typeof bugSchema>
@@ -47,11 +48,12 @@ export default function NewBugPage() {
             if (!user) throw new Error('Not authenticated')
 
             const { embedding, ...remainingMetadata } = aiMetadata || {}
+            const { assigned_to, ...bugValues } = values as any
 
-            const { data, error: insertError } = await supabase
+            const { data: bug, error: insertError } = await supabase
                 .from('bugs')
                 .insert({
-                    ...values,
+                    ...bugValues,
                     created_by: user.id,
                     status: 'open',
                     embedding: embedding || null,
@@ -61,6 +63,18 @@ export default function NewBugPage() {
                 .single()
 
             if (insertError) throw insertError
+
+            // 2. Handle Assignment
+            if (assigned_to && bug) {
+                const { error: assignError } = await supabase
+                    .from('bug_assignments')
+                    .insert({
+                        bug_id: bug.id,
+                        assigned_to: assigned_to,
+                    })
+
+                if (assignError) throw assignError
+            }
 
             // Trigger real-time notifications (including Slack if high severity)
             const { data: profile } = await supabase
@@ -75,17 +89,17 @@ export default function NewBugPage() {
                 .eq('id', values.project_id)
                 .single();
 
-            if (project?.created_by && data) {
+            if (project?.created_by && bug) {
                 const { sendNotification } = await import('@/lib/utils/notifications');
                 await sendNotification({
                     userId: project.created_by,
                     type: 'status_update',
                     title: 'New Bug Reported',
                     message: `A new ${values.severity} severity bug was reported: ${values.title}`,
-                    link: `/dashboard/manager/bugs/${data.id}`,
+                    link: `/dashboard/manager/bugs/${bug.id}`,
                     projectId: values.project_id,
                     bugDetails: {
-                        id: data.id,
+                        id: bug.id,
                         title: values.title,
                         severity: values.severity || 'low',
                         category: values.category || 'functional',

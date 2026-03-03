@@ -32,21 +32,47 @@ export default function ManagerProjectsPage() {
         fetchProjects()
     }, [])
 
-    const handleCreateProject = async (values: ProjectFormValues) => {
+    const handleCreateProject = async (values: any) => {
         setIsSubmitting(true)
         try {
             const { data: { user } } = await supabase.auth.getUser()
             if (!user) throw new Error('User not authenticated')
 
-            const { error } = await supabase
+            // 1. Create Project
+            const { data: project, error: projectError } = await supabase
                 .from('projects')
                 .insert({
                     name: values.name,
                     description: values.description,
                     created_by: user.id
                 })
+                .select()
+                .single()
 
-            if (error) throw error
+            if (projectError) throw projectError
+
+            // 2. Assign Team Members
+            if (values.team_members && values.team_members.length > 0) {
+                // Fetch profiles to get their current roles
+                const { data: profiles } = await supabase
+                    .from('profiles')
+                    .select('id, role')
+                    .in('id', values.team_members)
+
+                const memberInserts = profiles?.map(p => ({
+                    project_id: project.id,
+                    user_id: p.id,
+                    role: p.role
+                })) || []
+
+                if (memberInserts.length > 0) {
+                    const { error: memberError } = await supabase
+                        .from('project_members')
+                        .insert(memberInserts)
+
+                    if (memberError) throw memberError
+                }
+            }
 
             await fetchProjects()
             setShowForm(false)

@@ -43,7 +43,12 @@ export function BugList({ role, projectId, userId, assignedTo, limit }: BugListP
                     .select(`
             *,
             created_by_profile:profiles!bugs_created_by_fkey(*),
-            project:projects(*)
+            project:projects(*),
+            assignments:bug_assignments(
+                id,
+                assigned_to,
+                profiles:profiles!bug_assignments_assigned_to_fkey(*)
+            )
           `)
 
                 // Apply basic filters

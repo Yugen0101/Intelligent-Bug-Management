@@ -11,7 +11,8 @@ import {
     Sparkles,
     Loader2,
     Info,
-    ArrowRight
+    ArrowRight,
+    User
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
@@ -29,6 +30,7 @@ const bugSchema = z.object({
     project_id: z.string().uuid('Please select a project'),
     category: z.enum(['ui_ux', 'functional', 'performance', 'security', 'data_logic', 'integration']).optional(),
     severity: z.enum(['critical', 'high', 'medium', 'low']).optional(),
+    assigned_to: z.string().uuid('Please select a team member').optional().or(z.literal('')),
 })
 
 export type BugFormValues = z.infer<typeof bugSchema>
@@ -49,6 +51,8 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
     const [isCheckingDuplicates, setIsCheckingDuplicates] = useState(false)
     const [duplicateOf, setDuplicateOf] = useState<string | null>(null)
     const [isReasoningOpen, setIsReasoningOpen] = useState(false)
+    const [projectMembers, setProjectMembers] = useState<any[]>([])
+    const [loadingMembers, setLoadingMembers] = useState(false)
 
     const supabase = createClient()
 
@@ -69,6 +73,7 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
             project_id: initialData?.project_id || '',
             category: initialData?.category || undefined,
             severity: initialData?.severity || undefined,
+            assigned_to: '',
         }
     })
 
@@ -86,6 +91,30 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
         }
         fetchProjects()
     }, [])
+
+    useEffect(() => {
+        async function fetchProjectMembers() {
+            if (!projectId) {
+                setProjectMembers([])
+                return
+            }
+            setLoadingMembers(true)
+            try {
+                const { data, error } = await supabase
+                    .from('project_members')
+                    .select('user_id, profiles!inner(id, full_name, role)')
+                    .eq('project_id', projectId)
+
+                if (error) throw error
+                setProjectMembers(data?.map(m => (m as any).profiles) || [])
+            } catch (err) {
+                console.error('Error fetching project members:', err)
+            } finally {
+                setLoadingMembers(false)
+            }
+        }
+        fetchProjectMembers()
+    }, [projectId])
 
     useEffect(() => {
         const analyzeText = async () => {
@@ -213,6 +242,37 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                     </div>
                     {errors.project_id && (
                         <p className="mt-1 text-xs font-bold text-red-500 uppercase tracking-wider ml-1">{errors.project_id.message}</p>
+                    )}
+                </div>
+
+                {/* Assignment Dropdown */}
+                <div className="pt-2">
+                    <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
+                        Assign To
+                    </label>
+                    <div className="relative group">
+                        <select
+                            {...register('assigned_to')}
+                            disabled={!projectId || loadingMembers}
+                            className={cn(
+                                "w-full px-4 py-3 bg-white border rounded-xl text-gray-900 outline-none transition-all appearance-none cursor-pointer font-medium disabled:opacity-50 disabled:bg-gray-50",
+                                errors.assigned_to ? "border-red-300 bg-red-50 text-red-900" : "border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
+                            )}
+                        >
+                            <option value="">{loadingMembers ? 'Loading members...' : projectId ? 'Select member...' : 'Select a project first'}</option>
+                            {projectMembers.map((member) => (
+                                <option key={member.id} value={member.id}>
+                                    {member.full_name} ({member.role})
+                                </option>
+                            ))}
+                        </select>
+                        <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500 flex items-center gap-2">
+                            <User className="w-4 h-4" />
+                            <span className="text-xs">↓</span>
+                        </div>
+                    </div>
+                    {errors.assigned_to && (
+                        <p className="mt-1 text-xs font-bold text-red-500 uppercase tracking-wider ml-1">{errors.assigned_to.message}</p>
                     )}
                 </div>
 

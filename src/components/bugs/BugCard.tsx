@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import type { BugWithRelations } from '@/types/database'
 import { formatDistanceToNow } from 'date-fns'
-import { AlertCircle, Clock, Tag, User } from 'lucide-react'
+import { AlertCircle, Clock, Tag, User, UserCheck } from 'lucide-react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
@@ -79,6 +79,12 @@ export function BugCard({ bug, href }: BugCardProps) {
                             <div className="flex items-center gap-1.5 text-[10px] font-bold text-gray-500 uppercase tracking-wider">
                                 <User className="w-3 h-3 text-primary" />
                                 <span>{bug.created_by_profile.full_name}</span>
+                            </div>
+                        )}
+                        {bug.assignments && bug.assignments.length > 0 && (
+                            <div className="flex items-center gap-1.5 text-[10px] font-bold text-indigo-600 uppercase tracking-wider bg-indigo-50/50 px-2 py-0.5 rounded-md border border-indigo-100/50">
+                                <UserCheck className="w-3 h-3" />
+                                <span>{(bug.assignments[0] as any).profiles.full_name}</span>
                             </div>
                         )}
                     </div>
