@@ -102,13 +102,13 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
             try {
                 const { data, error } = await supabase
                     .from('project_members')
-                    .select('user_id, profiles!inner(id, full_name, role)')
+                    .select('user_id, profiles:profiles!project_members_user_id_fkey(id, full_name, role)')
                     .eq('project_id', projectId)
 
                 if (error) throw error
                 setProjectMembers(data?.map(m => (m as any).profiles) || [])
-            } catch (err) {
-                console.error('Error fetching project members:', err)
+            } catch (err: any) {
+                console.error('Error fetching project members:', err.message || err)
             } finally {
                 setLoadingMembers(false)
             }
