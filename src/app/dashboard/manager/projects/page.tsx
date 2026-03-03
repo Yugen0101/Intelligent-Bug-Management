@@ -6,6 +6,7 @@ import { DashboardLayout } from '@/components/layout/DashboardLayout'
 import { FolderKanban, Plus, ExternalLink, Users, BarChart, X, Bell, Hash } from 'lucide-react'
 import Link from 'next/link'
 import { ProjectForm, ProjectFormValues } from '@/components/projects/ProjectForm'
+import { TeamAssignmentModal } from '@/components/projects/TeamAssignmentModal'
 
 import { Project } from '@/types/database'
 
@@ -14,6 +15,7 @@ export default function ManagerProjectsPage() {
     const [loading, setLoading] = useState(true)
     const [showForm, setShowForm] = useState(false)
     const [editingProject, setEditingProject] = useState<Project | null>(null)
+    const [selectedProjectForTeam, setSelectedProjectForTeam] = useState<Project | null>(null)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const supabase = createClient()
 
@@ -171,13 +173,13 @@ export default function ManagerProjectsPage() {
                                             {project.description || 'No description provided.'}
                                         </p>
                                         <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-50">
-                                            <Link
-                                                href={`/dashboard/manager/team?project=${project.id}`}
-                                                className="flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-primary"
+                                            <button
+                                                onClick={() => setSelectedProjectForTeam(project)}
+                                                className="flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-primary transition-colors"
                                             >
                                                 <Users className="w-4 h-4" />
                                                 Team
-                                            </Link>
+                                            </button>
                                             <Link
                                                 href={`/dashboard/manager/insights?project=${project.id}`}
                                                 className="flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-primary"
@@ -271,6 +273,18 @@ export default function ManagerProjectsPage() {
                             </form>
                         </div>
                     </div>
+                )}
+
+                {selectedProjectForTeam && (
+                    <TeamAssignmentModal
+                        isOpen={!!selectedProjectForTeam}
+                        onClose={() => {
+                            setSelectedProjectForTeam(null)
+                            fetchProjects() // Refresh projects to show membership changes if any (though not displayed in card currently)
+                        }}
+                        projectId={selectedProjectForTeam.id}
+                        projectName={selectedProjectForTeam.name}
+                    />
                 )}
             </div>
         </DashboardLayout>

@@ -102,11 +102,12 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
             try {
                 const { data, error } = await supabase
                     .from('project_members')
-                    .select('user_id, profiles:profiles!project_members_user_id_fkey(id, full_name, role)')
+                    .select('user_id, profiles(id, full_name, role)')
                     .eq('project_id', projectId)
 
                 if (error) throw error
-                setProjectMembers(data?.map(m => (m as any).profiles) || [])
+                // Filter out any entries where profiles might be null due to RLS or other issues
+                setProjectMembers(data?.map(m => (m as any).profiles).filter(Boolean) || [])
             } catch (err: any) {
                 console.error('Error fetching project members:', err.message || err)
             } finally {
@@ -248,7 +249,7 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                 {/* Assignment Dropdown */}
                 <div className="pt-2">
                     <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
-                        Assign To
+                        Assign To (Optional)
                     </label>
                     <div className="relative group">
                         <select
@@ -259,7 +260,12 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                                 errors.assigned_to ? "border-red-300 bg-red-50 text-red-900" : "border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
                             )}
                         >
-                            <option value="">{loadingMembers ? 'Loading members...' : projectId ? 'Select member...' : 'Select a project first'}</option>
+                            <option value="">
+                                {loadingMembers ? 'Loading members...'
+                                    : !projectId ? 'Select a project first'
+                                        : projectMembers.length === 0 ? 'No members assigned to this project'
+                                            : 'Select member...'}
+                            </option>
                             {projectMembers.map((member) => (
                                 <option key={member.id} value={member.id}>
                                     {member.full_name} ({member.role})
