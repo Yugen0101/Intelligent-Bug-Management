@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { Profile, UserRole } from '@/types/database'
 
@@ -8,7 +8,12 @@ export function useProfiles(roles?: UserRole[]) {
     const [profiles, setProfiles] = useState<Profile[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
-    const supabase = createClient()
+
+    // Stabilize supabase client
+    const supabase = useMemo(() => createClient(), [])
+
+    // Stabilize roles dependency
+    const rolesKey = roles?.join(',') || ''
 
     useEffect(() => {
         async function fetchProfiles() {
@@ -36,7 +41,7 @@ export function useProfiles(roles?: UserRole[]) {
         }
 
         fetchProfiles()
-    }, [roles, supabase])
+    }, [rolesKey, supabase])
 
     return { profiles, loading, error }
 }

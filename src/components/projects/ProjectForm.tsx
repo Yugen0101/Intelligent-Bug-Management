@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
@@ -8,6 +8,7 @@ import { createClient } from '@/lib/supabase/client'
 import { Loader2, FolderPlus, Users, Check, Search } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useProfiles } from '@/hooks/useProfiles'
+import { UserRole } from '@/types/database'
 
 const projectSchema = z.object({
     name: z.string().min(3, 'Project name must be at least 3 characters').max(50),
@@ -24,7 +25,8 @@ interface ProjectFormProps {
 }
 
 export function ProjectForm({ onSubmit, onCancel, isLoading }: ProjectFormProps) {
-    const { profiles, loading: loadingProfiles } = useProfiles(['developer', 'tester'])
+    const roles = useMemo<UserRole[]>(() => ['developer', 'tester'], [])
+    const { profiles, loading: loadingProfiles } = useProfiles(roles)
     const [searchTerm, setSearchTerm] = useState('')
 
     const {

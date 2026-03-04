@@ -1,4 +1,6 @@
 import OpenAI from 'openai';
+import { DatasetProvider } from './datasets';
+import { BugCategory, BugSeverity } from '@/types/database';
 
 export type GeminiAnalysis = {
     root_cause: string;
@@ -65,10 +67,20 @@ export class GeminiEngine {
     async analyzeBug(description: string, category: string, severity: string): Promise<GeminiAnalysis> {
         const client = this.initClient();
 
+        const relatedExamples = DatasetProvider.getRelatedExamples(description);
+
         const prompt = `
             You are an expert software engineer and bug triage assistant. 
             Analyze the following bug report and provide a diagnostic report.
             
+            ${relatedExamples.length > 0 ? `Here are some similar resolved bug patterns from our training dataset to guide your analysis:
+            ${relatedExamples.map(ex => `
+            - Pattern: "${ex.title}"
+              Root Cause: ${ex.root_cause}
+              Resolution: ${ex.resolution_steps.join(', ')}
+            `).join('\n')}
+            ` : ''}
+
             Bug Description: "${description}"
             Category: ${category}
             Severity: ${severity}
@@ -126,9 +138,17 @@ export class GeminiEngine {
     ): Promise<GeminiPrediction> {
         const client = this.initClient();
 
+        const relatedExamples = DatasetProvider.getRelatedExamples(description);
+
         const prompt = `
             You are a senior bug triage specialist. Based on the following bug report, predict the most appropriate category and severity.
             
+            ${relatedExamples.length > 0 ? `Use these verified training examples as a reference for your categorization:
+            ${relatedExamples.map(ex => `
+            - Report: "${ex.description}" -> Category: ${ex.category}, Severity: ${ex.severity}
+            `).join('\n')}
+            ` : ''}
+
             Title: "${title}"
             Description: "${description}"
             Steps to Reproduce: "${steps_to_reproduce || 'Not provided'}"
@@ -176,6 +196,8 @@ export class GeminiEngine {
         try {
             const client = this.initClient();
 
+            const relatedExamples = DatasetProvider.getRelatedExamples(context.description);
+
             const prompt = `
                 You are an AI Triage Agent for a bug management platform. 
                 The user (a developer) is asking: "${message}"
@@ -184,6 +206,13 @@ export class GeminiEngine {
                 Description: "${context.description}"
                 Recent comments: ${JSON.stringify(context.comments.slice(-5))}
                 
+                ${relatedExamples.length > 0 ? `Reference these patterns from our internal knowledge base if relevant:
+                ${relatedExamples.map(ex => `
+                - Known Issue: "${ex.title}"
+                  Resolution: ${ex.resolution_steps.join(', ')}
+                `).join('\n')}
+                ` : ''}
+
                 Provide a helpful, professional, and technical response to guide the developer. 
                 Keep it focused on the specific bug context.
             `;

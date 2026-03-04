@@ -1,4 +1,5 @@
 import { pipeline, env } from '@xenova/transformers';
+import { DatasetProvider } from '../ai/datasets';
 
 // Configure transformers for serverless/local environment
 env.allowLocalModels = false;
@@ -132,7 +133,19 @@ class NLPEngine {
     async solveBug(text: string): Promise<SolutionResult> {
         const text_lower = text.toLowerCase();
 
-        // Logic for "rectifying" bugs using component-based templates
+        // 1. Try to find a match in the training dataset first (Training-driven analysis)
+        const datasetMatches = DatasetProvider.getRelatedExamples(text);
+        if (datasetMatches.length > 0) {
+            const match = datasetMatches[0];
+            return {
+                root_cause: `[Training Match: ${match.title}] ${match.root_cause}`,
+                steps: match.resolution_steps,
+                fix_snippet: match.fix_snippet,
+                confidence: 0.95 // Higher confidence for verified training patterns
+            };
+        }
+
+        // 2. Logic for "rectifying" bugs using component-based templates (Heuristic Fallback)
         if (text_lower.includes('auth') || text_lower.includes('login') || text_lower.includes('401') || text_lower.includes('403')) {
             return {
                 root_cause: "Potential Authentication or Authorization failure. This often occurs when JWT tokens are missing, expired, or middleware policies are incorrectly configured.",

@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { Loader2, Users, Check, Search, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useProfiles } from '@/hooks/useProfiles'
+import { UserRole } from '@/types/database'
 
 interface TeamAssignmentModalProps {
     isOpen: boolean
@@ -14,11 +15,13 @@ interface TeamAssignmentModalProps {
 }
 
 export function TeamAssignmentModal({ isOpen, onClose, projectId, projectName }: TeamAssignmentModalProps) {
-    const { profiles, loading: loadingProfiles } = useProfiles(['developer', 'tester'])
+    const roles = useMemo<UserRole[]>(() => ['developer', 'tester'], [])
+    const { profiles, loading: loadingProfiles } = useProfiles(roles)
     const [selectedMembers, setSelectedMembers] = useState<string[]>([])
     const [isSaving, setIsSaving] = useState(false)
     const [searchTerm, setSearchTerm] = useState('')
-    const supabase = createClient()
+
+    const supabase = useMemo(() => createClient(), [])
 
     useEffect(() => {
         async function fetchCurrentMembers() {
