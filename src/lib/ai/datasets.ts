@@ -83,16 +83,7 @@ export const TRAINING_DATASET: TrainingExample[] = [
         resolution_steps: ["Add cleanup function in useEffect", "call chart.destroy()", "use a ref for chart instance"],
         tags: ["memory", "leak", "in"]
     },
-    {
-        id: 'train-1772605269696',
-        title: 'Verification Bug',
-        description: 'Testing the fix',
-        category: 'ui',
-        severity: 'low',
-        root_cause: 'Testing',
-        resolution_steps: ["Step 1","Step 2"],
-        tags: ["verification","bug"]
-    },
+
 ];
 
 export class DatasetProvider {

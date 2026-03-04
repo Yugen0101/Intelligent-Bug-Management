@@ -17,8 +17,23 @@ for (let i = 0; i < args.length; i += 2) {
     }
 }
 
+const validCategories = ['ui_ux', 'functional', 'performance', 'security', 'data_logic', 'integration'];
+const validSeverities = ['critical', 'high', 'medium', 'low'];
+
 if (!params.title || !params.desc || !params.cat) {
     console.error('Usage: node scripts/train-model.ts --title <title> --desc <description> --cat <category> --sev <severity> --cause <root_cause> --steps <steps_comma_separated>');
+    console.error(`Valid categories: ${validCategories.join(', ')}`);
+    console.error(`Valid severities: ${validSeverities.join(', ')}`);
+    process.exit(1);
+}
+
+if (!validCategories.includes(params.cat)) {
+    console.error(`❌ Invalid category: "${params.cat}". Valid options: ${validCategories.join(', ')}`);
+    process.exit(1);
+}
+
+if (params.sev && !validSeverities.includes(params.sev)) {
+    console.error(`❌ Invalid severity: "${params.sev}". Valid options: ${validSeverities.join(', ')}`);
     process.exit(1);
 }
 
