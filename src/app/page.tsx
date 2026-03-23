@@ -117,11 +117,6 @@ function Hero() {
       <div className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center w-full">
         {/* Left */}
         <div>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-blue-600/10 border border-blue-200 text-blue-700 text-xs font-bold px-3 py-1.5 rounded-full mb-6 uppercase tracking-widest">
-            <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
-            AI-Powered Bug Management
-          </motion.div>
 
           <motion.h1 initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
             className="text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.1] tracking-tight mb-6">
