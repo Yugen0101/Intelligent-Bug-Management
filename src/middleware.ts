@@ -67,6 +67,11 @@ export async function middleware(request: NextRequest) {
             const { role } = profile
             const path = request.nextUrl.pathname
 
+            // 2.5 Redirect from exact /dashboard to role-based dashboard
+            if (path === '/dashboard' || path === '/dashboard/') {
+                return NextResponse.redirect(new URL(`/dashboard/${role}`, request.url))
+            }
+
             // Cross-role protection
             if (path.startsWith('/dashboard/manager') && role !== 'manager') {
                 return NextResponse.redirect(new URL('/dashboard/' + role, request.url))

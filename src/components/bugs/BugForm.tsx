@@ -1,14 +1,14 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { createClient } from '@/lib/supabase/client'
 import {
     AlertCircle,
     AlertTriangle,
-    Sparkles,
+    Bug as BugIcon,
     Loader2,
     Info,
     ArrowRight,
@@ -18,6 +18,7 @@ import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { DuplicateBugCard } from './DuplicateBugCard'
 import { ConfidenceBadge, ReasoningModal } from '@/components/ui/AIExplainability'
+import { PremiumSelect } from '@/components/ui/PremiumSelect'
 import type { DuplicateResult } from '@/lib/ai/duplicates'
 import type { Project, BugCategory, BugSeverity, Bug } from '@/types/database'
 
@@ -61,6 +62,7 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
         handleSubmit,
         watch,
         setValue,
+        control,
         formState: { errors },
     } = useForm<BugFormValues>({
         resolver: zodResolver(bugSchema),
@@ -221,65 +223,48 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
             <div className="space-y-10">
                 {/* Project Selection */}
                 <div>
-                    <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
-                        Select Project
-                    </label>
-                    <div className="relative group">
-                        <select
-                            {...register('project_id')}
-                            className={cn(
-                                "w-full px-4 py-3 bg-white border rounded-xl text-gray-900 outline-none transition-all appearance-none cursor-pointer font-medium",
-                                errors.project_id ? "border-red-300 bg-red-50 text-red-900" : "border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
-                            )}
-                        >
-                            <option value="">Select project...</option>
-                            {projects.map((p) => (
-                                <option key={p.id} value={p.id}>{p.name}</option>
-                            ))}
-                        </select>
-                        <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
-                            ↓
-                        </div>
-                    </div>
-                    {errors.project_id && (
-                        <p className="mt-1 text-xs font-bold text-red-500 uppercase tracking-wider ml-1">{errors.project_id.message}</p>
-                    )}
+                    <Controller
+                        name="project_id"
+                        control={control}
+                        render={({ field }) => (
+                            <PremiumSelect
+                                label="Select Project"
+                                placeholder="Select project..."
+                                options={projects.map(p => ({ value: p.id, label: p.name }))}
+                                value={field.value}
+                                onChange={field.onChange}
+                                error={errors.project_id?.message}
+                            />
+                        )}
+                    />
                 </div>
 
                 {/* Assignment Dropdown */}
                 <div className="pt-2">
-                    <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
-                        Assign To (Optional)
-                    </label>
-                    <div className="relative group">
-                        <select
-                            {...register('assigned_to')}
-                            disabled={!projectId || loadingMembers}
-                            className={cn(
-                                "w-full px-4 py-3 bg-white border rounded-xl text-gray-900 outline-none transition-all appearance-none cursor-pointer font-medium disabled:opacity-50 disabled:bg-gray-50",
-                                errors.assigned_to ? "border-red-300 bg-red-50 text-red-900" : "border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
-                            )}
-                        >
-                            <option value="">
-                                {loadingMembers ? 'Loading members...'
+                    <Controller
+                        name="assigned_to"
+                        control={control}
+                        render={({ field }) => (
+                            <PremiumSelect
+                                label="Assign To (Optional)"
+                                placeholder={loadingMembers ? 'Loading members...'
                                     : !projectId ? 'Select a project first'
-                                        : projectMembers.length === 0 ? 'No members assigned to this project'
+                                        : projectMembers.length === 0 ? 'No members assigned'
                                             : 'Select member...'}
-                            </option>
-                            {projectMembers.map((member) => (
-                                <option key={member.id} value={member.id}>
-                                    {member.full_name} ({member.role})
-                                </option>
-                            ))}
-                        </select>
-                        <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500 flex items-center gap-2">
-                            <User className="w-4 h-4" />
-                            <span className="text-xs">↓</span>
-                        </div>
-                    </div>
-                    {errors.assigned_to && (
-                        <p className="mt-1 text-xs font-bold text-red-500 uppercase tracking-wider ml-1">{errors.assigned_to.message}</p>
-                    )}
+                                options={projectMembers.map(m => ({
+                                    value: m.id,
+                                    label: `${m.full_name} (${m.role})`,
+                                    icon: <User className="w-3 h-3" />
+                                }))}
+                                value={field.value}
+                                onChange={field.onChange}
+                                disabled={!projectId || loadingMembers}
+                                error={errors.assigned_to?.message}
+                                showNone
+                                noneLabel="Unassigned / None"
+                            />
+                        )}
+                    />
                 </div>
 
                 {/* Bug Title */}
@@ -380,7 +365,7 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                         <div className="mt-6 p-6 bg-primary/5/50 border border-blue-100 rounded-2xl relative overflow-hidden group">
                             <div className="flex items-center gap-3 mb-6">
                                 <div className="p-2 bg-blue-100 rounded-lg">
-                                    <Sparkles className="w-5 h-5 text-primary" />
+                                    <BugIcon className="w-5 h-5 text-primary" />
                                 </div>
                                 <div>
                                     <span className="text-xs font-bold text-gray-900 uppercase tracking-wider block">AI Analysis</span>
@@ -409,7 +394,7 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                                                 />
                                             </div>
                                         </div>
-                                        <div className="bg-white p-4 rounded-xl border border-purple-100">
+                                        <div className="bg-white p-4 rounded-xl border border-blue-100">
                                             <p className="text-[9px] uppercase tracking-wider font-bold text-gray-500 mb-1">Predicted Severity</p>
                                             <div className="flex items-center justify-between gap-2">
                                                 <span className="text-lg font-bold text-gray-900 capitalize tracking-tight">
@@ -444,7 +429,7 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                                         onClick={applyAISuggestion}
                                         className="w-full py-3.5 bg-primary text-white text-[10px] font-bold uppercase tracking-wider rounded-xl hover:bg-blue-700 transition-all shadow-sm active:scale-95 flex items-center justify-center gap-2 mt-2"
                                     >
-                                        <Sparkles className="w-4 h-4" />
+                                        <BugIcon className="w-4 h-4" />
                                         Apply AI Suggestions
                                     </button>
 
@@ -467,36 +452,50 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                 {/* Manual Selects */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-gray-100">
                     <div>
-                        <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
-                            Override Category
-                        </label>
-                        <select
-                            {...register('category')}
-                            className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-gray-900 outline-none transition-all font-medium appearance-none cursor-pointer"
-                        >
-                            <option value="">Choose...</option>
-                            <option value="ui_ux">UI/UX</option>
-                            <option value="functional">Functional</option>
-                            <option value="performance">Performance</option>
-                            <option value="security">Security</option>
-                            <option value="data_logic">Data/Logic</option>
-                            <option value="integration">Integration</option>
-                        </select>
+                        <Controller
+                            name="category"
+                            control={control}
+                            render={({ field }) => (
+                                <PremiumSelect
+                                    label="Override Category"
+                                    placeholder="Choose..."
+                                    options={[
+                                        { value: 'ui_ux', label: 'UI/UX' },
+                                        { value: 'functional', label: 'Functional' },
+                                        { value: 'performance', label: 'Performance' },
+                                        { value: 'security', label: 'Security' },
+                                        { value: 'data_logic', label: 'Data/Logic' },
+                                        { value: 'integration', label: 'Integration' },
+                                    ]}
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                    showNone
+                                    noneLabel="Any Category"
+                                />
+                            )}
+                        />
                     </div>
                     <div>
-                        <label className="block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4 ml-1">
-                            Override Severity
-                        </label>
-                        <select
-                            {...register('severity')}
-                            className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-gray-900 outline-none transition-all font-medium appearance-none cursor-pointer"
-                        >
-                            <option value="">Choose...</option>
-                            <option value="critical">Critical</option>
-                            <option value="high">High</option>
-                            <option value="medium">Medium</option>
-                            <option value="low">Low</option>
-                        </select>
+                        <Controller
+                            name="severity"
+                            control={control}
+                            render={({ field }) => (
+                                <PremiumSelect
+                                    label="Override Severity"
+                                    placeholder="Choose..."
+                                    options={[
+                                        { value: 'critical', label: 'Critical' },
+                                        { value: 'high', label: 'High' },
+                                        { value: 'medium', label: 'Medium' },
+                                        { value: 'low', label: 'Low' },
+                                    ]}
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                    showNone
+                                    noneLabel="Any Severity"
+                                />
+                            )}
+                        />
                     </div>
                 </div>
             </div>
@@ -507,7 +506,7 @@ export function BugForm({ initialData, onSubmit, isLoading, submitLabel = 'Submi
                 className="w-full bg-primary text-white py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-blue-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-md active:scale-95 flex items-center justify-center gap-3 group"
             >
                 {isLoading ? (
-                    <div className="w-10 h-1 border-2 border-black/20 border-t-black rounded-full animate-spin" />
+                    <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
                 ) : (
                     <>
                         {submitLabel}

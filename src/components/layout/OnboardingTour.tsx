@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-    Sparkles,
+    Bug,
     ChevronRight,
     X,
     Zap,
@@ -20,11 +20,11 @@ import {
 
 const STEPS = [
     {
-        title: "Welcome to Brainwave",
+        title: "Welcome to BugMind",
         description: "Welcome to your new AI-powered bug management command center. Let's show you how to forge a better workflow.",
-        icon: Sparkles,
-        color: "text-indigo-600 bg-indigo-50",
-        bgGradient: "from-indigo-500/10 via-purple-500/5 to-transparent shadow-indigo-500/20"
+        icon: Bug,
+        color: "text-blue-600 bg-blue-50",
+        bgGradient: "from-blue-500/10 via-blue-500/5 to-transparent shadow-blue-500/20"
     },
     {
         title: "Intelligent Classification",
@@ -44,8 +44,8 @@ const STEPS = [
         title: "AI Triage Agent",
         description: "Need help fixing a bug? Our conversational AI assistant provides root cause analysis and step-by-step solutions.",
         icon: MessageSquare,
-        color: "text-purple-600 bg-purple-50",
-        bgGradient: "from-purple-500/10 via-pink-500/5 to-transparent shadow-purple-500/20"
+        color: "text-blue-600 bg-blue-50",
+        bgGradient: "from-blue-500/10 via-blue-400/5 to-transparent shadow-blue-500/20"
     }
 ]
 
@@ -97,8 +97,8 @@ export function OnboardingTour() {
                     </AnimatePresence>
 
                     {/* Animated Decorative Blobs */}
-                    <div className="absolute top-0 -left-10 w-40 h-40 bg-indigo-400/10 blur-[80px] rounded-full animate-pulse" />
-                    <div className="absolute bottom-0 -right-10 w-40 h-40 bg-purple-400/10 blur-[80px] rounded-full animate-pulse delay-1000" />
+                    <div className="absolute top-0 -left-10 w-40 h-40 bg-blue-400/10 blur-[80px] rounded-full animate-pulse" />
+                    <div className="absolute bottom-0 -right-10 w-40 h-40 bg-blue-400/10 blur-[80px] rounded-full animate-pulse delay-1000" />
 
                     <div className="relative p-12 flex flex-col items-center text-center min-h-[540px] justify-between">
                         <motion.button
@@ -157,7 +157,7 @@ export function OnboardingTour() {
                                     >
                                         <motion.div
                                             className={cn(
-                                                "absolute inset-0 bg-indigo-600 rounded-full",
+                                                "absolute inset-0 bg-blue-600 rounded-full",
                                                 i < currentStep ? "opacity-30" : ""
                                             )}
                                             initial={false}

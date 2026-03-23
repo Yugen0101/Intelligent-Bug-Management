@@ -1,13 +1,15 @@
 'use client'
 
-import { useState, useEffect, use } from 'react'
+import { useState, useEffect, use, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { DashboardLayout } from '@/components/layout/DashboardLayout'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { PremiumSelect } from '@/components/ui/PremiumSelect'
 import {
     ArrowLeft,
+    ChevronRight,
     Clock,
     User,
     Tag,
@@ -15,10 +17,17 @@ import {
     MessageSquare,
     Send,
     Loader2,
-    CheckCircle2,
-    Trash2,
+    Calendar,
+    Pin,
+    Hash,
+    MoreVertical,
     Edit2,
-    Sparkles
+    Trash2,
+    CheckCircle2,
+    XCircle,
+    Play,
+    StopCircle,
+    Bug as BugIcon
 } from 'lucide-react'
 import Link from 'next/link'
 import { formatDistanceToNow } from 'date-fns'
@@ -36,6 +45,7 @@ import {
 } from "@/components/ui/dialog"
 import { sendNotification } from '@/lib/utils/notifications'
 import dynamic from 'next/dynamic'
+import { useUndo } from '@/components/providers/UndoProvider'
 
 const AIAgent = dynamic(() => import('@/components/bugs/AIAgent').then(mod => mod.AIAgent), {
     ssr: false,
@@ -70,9 +80,13 @@ export default function BugDetailPage({ params }: BugDetailPageProps) {
     const [developers, setDevelopers] = useState<Profile[]>([])
     const [submittingAssignment, setSubmittingAssignment] = useState(false)
     const [assignment, setAssignment] = useState<{ assigned_to: string } | null>(null)
+    
+    // Undo refs
+    const isUndoneRef = useRef<boolean>(false)
 
     const router = useRouter()
     const supabase = createClient()
+    const { addAction } = useUndo()
 
     useEffect(() => {
         if (!id || id === 'undefined') {
@@ -139,6 +153,8 @@ export default function BugDetailPage({ params }: BugDetailPageProps) {
     const handleAssign = async (devId: string) => {
         if (!devId || role !== 'manager') return
         setSubmittingAssignment(true)
+        const previousAssignee = assignment?.assigned_to
+
         try {
             const { data: { user } } = await supabase.auth.getUser()
             if (!user) throw new Error('Not authenticated')
@@ -153,6 +169,24 @@ export default function BugDetailPage({ params }: BugDetailPageProps) {
 
             if (assignError) throw assignError
             setAssignment({ assigned_to: devId })
+
+            addAction("Assignment updated", async () => {
+                if (previousAssignee) {
+                    await supabase
+                        .from('bug_assignments')
+                        .upsert({
+                            bug_id: id,
+                            assigned_to: previousAssignee,
+                            assigned_by: user.id
+                        })
+                } else {
+                    await supabase
+                        .from('bug_assignments')
+                        .delete()
+                        .eq('bug_id', id)
+                }
+                setAssignment(previousAssignee ? { assigned_to: previousAssignee } : null)
+            })
 
             await sendNotification({
                 userId: devId,
@@ -232,22 +266,63 @@ export default function BugDetailPage({ params }: BugDetailPageProps) {
 
     const handleDeleteBug = async () => {
         setIsDeleting(true)
-        try {
-            const { error: deleteError } = await supabase
-                .from('bugs')
-                .delete()
-                .eq('id', id)
+        setDeleteConfirmOpen(false)
+        isUndoneRef.current = false
+        
+        const bugToDelete = { ...bug }
+        
+        addAction(`Bug "${bugToDelete.title}" deleted`, async () => {
+            isUndoneRef.current = true
+            setIsDeleting(false) 
+        })
 
-            if (deleteError) throw deleteError
-            router.push(`/dashboard/${role}`)
-        } catch (err: any) {
-            alert(err.message)
-            setIsDeleting(false)
-            setDeleteConfirmOpen(false)
-        }
+        setTimeout(async () => {
+            if (isUndoneRef.current) return
+
+            try {
+                const { error: deleteError } = await supabase
+                    .from('bugs')
+                    .delete()
+                    .eq('id', id)
+
+                if (deleteError) throw deleteError
+                router.push(`/dashboard/${role}`)
+            } catch (err: any) {
+                console.error('Final deletion failed:', err)
+                setIsDeleting(false)
+            }
+        }, 5000)
+    }
+
+    const handleDeleteComment = async (commentId: string) => {
+        const commentToDelete = comments.find(c => c.id === commentId)
+        if (!commentToDelete) return
+
+        const previousComments = [...comments]
+        setComments(comments.filter(c => c.id !== commentId))
+
+        addAction("Comment deleted", async () => {
+            setComments(previousComments)
+        })
+
+        setTimeout(async () => {
+            // Check if comment is still missing (not undone)
+            setComments(current => {
+                const isStillDeleted = !current.find(c => c.id === commentId)
+                if (isStillDeleted) {
+                    supabase.from('comments').delete().eq('id', commentId).then(({ error }) => {
+                        if (error) console.error('Failed to delete comment from DB:', error)
+                    })
+                }
+                return current
+            })
+        }, 5000)
     }
 
     const handleStatusUpdate = async (newStatus: BugStatus) => {
+        const previousStatus = bug?.status
+        if (newStatus === previousStatus) return
+
         try {
             const { error: updateError } = await supabase
                 .from('bugs')
@@ -256,6 +331,16 @@ export default function BugDetailPage({ params }: BugDetailPageProps) {
 
             if (updateError) throw updateError
             setBug(prev => prev ? { ...prev, status: newStatus } : null)
+
+            addAction(`Status changed to ${newStatus.replace('_', ' ')}`, async () => {
+                if (previousStatus) {
+                    await supabase
+                        .from('bugs')
+                        .update({ status: previousStatus })
+                        .eq('id', id)
+                    setBug(prev => prev ? { ...prev, status: previousStatus } : null)
+                }
+            })
 
             if (bug && bug.created_by) {
                 const { data: { user } } = await supabase.auth.getUser()
@@ -276,7 +361,7 @@ export default function BugDetailPage({ params }: BugDetailPageProps) {
 
     const statusStyles: Record<BugStatus, string> = {
         open: 'bg-blue-50 text-blue-700 border-blue-100',
-        in_progress: 'bg-purple-50 text-purple-700 border-purple-100',
+        in_progress: 'bg-blue-50 text-blue-700 border-blue-100',
         resolved: 'bg-emerald-50 text-emerald-700 border-emerald-100',
         closed: 'bg-gray-50 text-gray-700 border-gray-100',
         duplicate: 'bg-amber-50 text-amber-700 border-amber-100'
@@ -313,7 +398,7 @@ export default function BugDetailPage({ params }: BugDetailPageProps) {
                         <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Report Not Found</h1>
                         <p className="text-gray-600 font-medium max-w-md mx-auto">{error || "The bug report you're looking for doesn't exist or you don't have access."}</p>
                     </div>
-                    <Link href={`/dashboard/${role}`} className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl text-sm font-bold hover:bg-gray-800 transition-all uppercase tracking-wide">
+                    <Link href={`/dashboard/${role}`} className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl text-sm font-bold hover:bg-blue-700 transition-all uppercase tracking-wide shadow-lg shadow-blue-200">
                         <ArrowLeft className="w-4 h-4" />
                         Back to Dashboard
                     </Link>
@@ -360,22 +445,20 @@ export default function BugDetailPage({ params }: BugDetailPageProps) {
 
                     <div className="flex items-center gap-4">
                         {role !== 'tester' && (
-                            <div className="flex bg-gray-100 border border-gray-200 rounded-2xl p-1">
-                                {(['open', 'in_progress', 'resolved'] as BugStatus[]).map((s) => (
-                                    <button
-                                        key={s}
-                                        onClick={() => handleStatusUpdate(s)}
-                                        className={cn(
-                                            "px-4 py-2 text-[10px] font-bold rounded-xl transition-all capitalize tracking-wider uppercase",
-                                            bug.status === s
-                                                ? "bg-white text-gray-900 shadow-sm"
-                                                : "text-gray-500 hover:text-gray-900"
-                                        )}
-                                    >
-                                        {s.replace('_', ' ')}
-                                    </button>
-                                ))}
-                            </div>
+                            <PremiumSelect
+                                className="min-w-[140px]"
+                                options={[
+                                    { value: 'open', label: 'Open' },
+                                    { value: 'in_progress', label: 'Active' },
+                                    { value: 'resolved', label: 'Resolved' },
+                                    { value: 'closed', label: 'Finalized' },
+                                    { value: 'duplicate', label: 'Duplicate' },
+                                ]}
+                                value={bug.status}
+                                onChange={(val) => handleStatusUpdate(val as BugStatus)}
+                                showNone
+                                noneLabel="No Status (Reset)"
+                            />
                         )}
                     </div>
                 </div>
@@ -409,8 +492,8 @@ export default function BugDetailPage({ params }: BugDetailPageProps) {
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center border border-purple-100">
-                                            <Tag className="w-4 h-4 text-purple-600" />
+                                        <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center border border-blue-100">
+                                            <Tag className="w-4 h-4 text-blue-600" />
                                         </div>
                                         <div>
                                             <p className="text-[9px] font-bold text-gray-500 uppercase tracking-wider mb-0.5">Category</p>
@@ -447,7 +530,7 @@ export default function BugDetailPage({ params }: BugDetailPageProps) {
                                 <div className="relative z-10 space-y-8">
                                     <div className="flex items-center gap-4">
                                         <div className="w-12 h-12 bg-blue-50 border border-blue-100 rounded-2xl flex items-center justify-center shadow-sm">
-                                            <Sparkles className="w-6 h-6 text-blue-600" />
+                                            <BugIcon className="w-6 h-6 text-blue-600" />
                                         </div>
                                         <div>
                                             <h3 className="font-bold text-xl text-gray-900 tracking-tight">AI Analysis</h3>
@@ -511,9 +594,17 @@ export default function BugDetailPage({ params }: BugDetailPageProps) {
                                         <div className="flex-1 space-y-2 pt-0.5">
                                             <div className="flex items-center justify-between">
                                                 <span className="text-sm font-bold text-gray-900">{comment.user?.full_name}</span>
-                                                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
-                                                    {comment.created_at ? formatDistanceToNow(new Date(comment.created_at), { addSuffix: true }) : 'Recently'}
-                                                </span>
+                                                <div className="flex items-center gap-3">
+                                                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                                                        {comment.created_at ? formatDistanceToNow(new Date(comment.created_at), { addSuffix: true }) : 'Recently'}
+                                                    </span>
+                                                    <button 
+                                                        onClick={() => handleDeleteComment(comment.id)}
+                                                        className="p-1 text-gray-300 hover:text-red-500 transition-colors opacity-0 group-hover/comment:opacity-100"
+                                                    >
+                                                        <Trash2 className="w-3.5 h-3.5" />
+                                                    </button>
+                                                </div>
                                             </div>
                                             <div className="bg-white p-4 rounded-xl border border-gray-100 text-sm text-gray-600 font-medium leading-relaxed shadow-sm">
                                                 {comment.content}
@@ -536,7 +627,7 @@ export default function BugDetailPage({ params }: BugDetailPageProps) {
                                         <button
                                             type="submit"
                                             disabled={!newComment.trim() || submittingComment}
-                                            className="absolute right-2 top-2 w-10 h-10 bg-gray-900 text-white rounded-xl flex items-center justify-center hover:bg-gray-800 transition-all disabled:opacity-20 shadow-sm"
+                                            className="absolute right-2 top-2 w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center hover:bg-blue-700 transition-all disabled:opacity-20 shadow-sm"
                                         >
                                             {submittingComment ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                                         </button>
@@ -562,17 +653,19 @@ export default function BugDetailPage({ params }: BugDetailPageProps) {
                                     <h5 className="text-[10px] font-bold text-gray-500 uppercase tracking-wider block mb-3">Assigned To</h5>
                                     {role === 'manager' ? (
                                         <div className="relative">
-                                            <select
-                                                className="w-full bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 text-xs font-bold text-gray-900 outline-none cursor-pointer appearance-none transition-all focus:ring-2 focus:ring-blue-100"
+                                            <PremiumSelect
+                                                placeholder="Unassigned"
+                                                options={developers.map(dev => ({
+                                                    value: dev.id,
+                                                    label: dev.full_name,
+                                                    icon: <User className="w-3.5 h-3.5" />
+                                                }))}
                                                 value={assignment?.assigned_to || ""}
-                                                onChange={(e) => handleAssign(e.target.value)}
+                                                onChange={(val) => handleAssign(val)}
                                                 disabled={submittingAssignment}
-                                            >
-                                                <option value="">Unassigned</option>
-                                                {developers.map(dev => (
-                                                    <option key={dev.id} value={dev.id}>{dev.full_name}</option>
-                                                ))}
-                                            </select>
+                                                showNone
+                                                noneLabel="Unassigned (None)"
+                                            />
                                         </div>
                                     ) : (
                                         <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-xl border border-gray-100">
@@ -594,7 +687,7 @@ export default function BugDetailPage({ params }: BugDetailPageProps) {
                                         <div className={cn(
                                             "w-2.5 h-2.5 rounded-full",
                                             bug.status === 'open' ? "bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.4)]" :
-                                                bug.status === 'in_progress' ? "bg-purple-600 shadow-[0_0_8px_rgba(147,51,234,0.4)]" :
+                                                bug.status === 'in_progress' ? "bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.4)]" :
                                                     "bg-emerald-600 shadow-[0_0_8px_rgba(5,150,105,0.4)]"
                                         )} />
                                         <span className="text-xs font-bold text-gray-900 uppercase tracking-wider">
@@ -616,7 +709,7 @@ export default function BugDetailPage({ params }: BugDetailPageProps) {
                                             <Edit2 className="w-4 h-4 text-gray-400" />
                                             Edit Report
                                         </span>
-                                        <Sparkles className="w-4 h-4 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        <BugIcon className="w-4 h-4 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                                     </button>
                                 </DialogTrigger>
                                 <DialogContent className="sm:max-w-[700px] p-0 overflow-hidden border-none bg-white rounded-[2rem] shadow-2xl">

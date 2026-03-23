@@ -219,7 +219,7 @@ export default function ManagerProjectsPage() {
                             </button>
 
                             <div className="flex items-center gap-3 mb-6">
-                                <div className="p-3 bg-purple-50 text-purple-600 rounded-2xl">
+                                <div className="p-3 bg-blue-50 text-blue-600 rounded-2xl">
                                     <Bell className="w-6 h-6" />
                                 </div>
                                 <div>

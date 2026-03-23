@@ -95,8 +95,8 @@ export default function DeveloperDashboard() {
                 {/* ── Stat Cards ── */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     {[
-                        { title: 'My Assignments', value: stats.assigned, change: '+2', icon: <Bug className="w-4 h-4 text-indigo-500" />, bg: 'bg-indigo-50', bars: [20, 40, 30, 60, 45, 70], neg: false },
-                        { title: 'In Progress', value: stats.inProgress, change: '-1', icon: <Activity className="w-4 h-4 text-purple-500" />, bg: 'bg-purple-50', bars: [40, 60, 50, 80, 70, 90], neg: true },
+                        { title: 'My Assignments', value: stats.assigned, change: '+2', icon: <Bug className="w-4 h-4 text-blue-500" />, bg: 'bg-blue-50', bars: [20, 40, 30, 60, 45, 70], neg: false },
+                        { title: 'In Progress', value: stats.inProgress, change: '-1', icon: <Activity className="w-4 h-4 text-blue-500" />, bg: 'bg-blue-50', bars: [40, 60, 50, 80, 70, 90], neg: true },
                         { title: 'Resolved', value: stats.resolved, change: '+5', icon: <CheckCircle2 className="w-4 h-4 text-emerald-500" />, bg: 'bg-emerald-50', bars: [30, 50, 40, 70, 60, 85], neg: false },
                         { title: 'Critical Task', value: stats.critical, change: '0', icon: <AlertTriangle className="w-4 h-4 text-rose-500" />, bg: 'bg-rose-50', bars: [60, 50, 55, 45, 40, 30], neg: false },
                     ].map((card) => (
@@ -112,7 +112,7 @@ export default function DeveloperDashboard() {
                                 </span>
                                 <div className="flex items-end gap-0.5 h-7">
                                     {card.bars.map((h, i) => (
-                                        <div key={i} className={cn('w-1.5 rounded-full opacity-60 group-hover:opacity-100 transition-opacity', card.neg ? 'bg-rose-400' : 'bg-indigo-400')} style={{ height: `${h}%` }} />
+                                        <div key={i} className={cn('w-1.5 rounded-full opacity-60 group-hover:opacity-100 transition-opacity', card.neg ? 'bg-rose-400' : 'bg-blue-400')} style={{ height: `${h}%` }} />
                                     ))}
                                 </div>
                             </div>
@@ -139,16 +139,16 @@ export default function DeveloperDashboard() {
                             <svg viewBox={`0 0 ${svgW} ${svgH}`} className="w-full" style={{ height: 120 }} preserveAspectRatio="none">
                                 <defs>
                                     <linearGradient id="dg" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0%" stopColor="#6366f1" stopOpacity="0.22" />
-                                        <stop offset="100%" stopColor="#6366f1" stopOpacity="0.01" />
+                                        <stop offset="0%" stopColor="#2563eb" stopOpacity="0.22" />
+                                        <stop offset="100%" stopColor="#2563eb" stopOpacity="0.01" />
                                     </linearGradient>
                                 </defs>
                                 <path d={areaPath} fill="url(#dg)" />
-                                <path d={linePath} fill="none" stroke="#6366f1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d={linePath} fill="none" stroke="#2563eb" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                                 {trendData.map((v, i) => {
                                     const x = (i / (trendData.length - 1)) * svgW
                                     const y = svgH - (v / maxTrend) * svgH * 0.85
-                                    return <circle key={i} cx={x} cy={y} r="3.5" fill="#6366f1" stroke="white" strokeWidth="2" />
+                                    return <circle key={i} cx={x} cy={y} r="3.5" fill="#2563eb" stroke="white" strokeWidth="2" />
                                 })}
                             </svg>
 
@@ -165,7 +165,7 @@ export default function DeveloperDashboard() {
                         <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6">
                             <div className="flex items-center justify-between mb-5">
                                 <h3 className="text-[11px] font-black text-gray-900 uppercase tracking-widest">My Assigned Bugs</h3>
-                                <button className="flex items-center gap-1 text-[11px] font-black text-indigo-500 hover:text-indigo-700 transition-colors uppercase">
+                                <button className="flex items-center gap-1 text-[11px] font-black text-blue-500 hover:text-blue-700 transition-colors uppercase">
                                     Manage All Issue <Zap className="w-3 h-3" />
                                 </button>
                             </div>

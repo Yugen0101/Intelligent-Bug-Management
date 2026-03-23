@@ -145,7 +145,7 @@ export function ProjectForm({ onSubmit, onCancel, isLoading }: ProjectFormProps)
                                     )}
                                 >
                                     <div className="flex items-center gap-3">
-                                        <div className="w-9 h-9 rounded-full bg-indigo-100 flex items-center justify-center text-primary font-bold text-sm border-2 border-white shadow-sm">
+                                        <div className="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center text-primary font-bold text-sm border-2 border-white shadow-sm">
                                             {profile.full_name.charAt(0)}
                                         </div>
                                         <div>

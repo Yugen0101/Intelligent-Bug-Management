@@ -239,7 +239,7 @@ const FEATURES = [
 
 const colorMap: Record<string, { bg: string; icon: string; border: string; glow: string }> = {
   blue: { bg: 'bg-blue-50', icon: 'text-blue-600', border: 'border-blue-100', glow: 'hover:shadow-blue-100' },
-  indigo: { bg: 'bg-indigo-50', icon: 'text-indigo-600', border: 'border-indigo-100', glow: 'hover:shadow-indigo-100' },
+  indigo: { bg: 'bg-blue-50', icon: 'text-blue-600', border: 'border-blue-100', glow: 'hover:shadow-blue-100' },
   sky: { bg: 'bg-sky-50', icon: 'text-sky-600', border: 'border-sky-100', glow: 'hover:shadow-sky-100' },
 };
 

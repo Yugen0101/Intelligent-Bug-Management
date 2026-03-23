@@ -11,7 +11,7 @@ import {
     AlertCircle,
     CheckCircle2,
     ArrowLeft,
-    Sparkles,
+    Bug as BugIcon,
     Loader2
 } from 'lucide-react'
 import Link from 'next/link'
@@ -150,7 +150,7 @@ export default function NewBugPage() {
                     <div className="p-10 border-b border-gray-100">
                         <div className="flex items-center gap-4 mb-2">
                             <div className="p-3 bg-primary/5 border border-blue-100 rounded-2xl">
-                                <Sparkles className="w-5 h-5 text-primary" />
+                                <BugIcon className="w-5 h-5 text-primary" />
                             </div>
                             <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Report <span className="text-primary">New Bug</span></h1>
                         </div>

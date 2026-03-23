@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { BugCard } from './BugCard'
-import { Loader2, Search, Filter, AlertCircle } from 'lucide-react'
+import { Loader2, Search, Filter, AlertCircle, Bug as BugIcon } from 'lucide-react'
+import { PremiumSelect } from '@/components/ui/PremiumSelect'
 import type { BugWithRelations, BugStatus, BugSeverity } from '@/types/database'
 
 interface BugListProps {
@@ -105,7 +106,7 @@ export function BugList({ role, projectId, userId, assignedTo, limit }: BugListP
     if (loading) {
         return (
             <div className={`flex flex-col items-center justify-center gap-3 ${limit ? 'py-8' : 'py-24'}`}>
-                <Loader2 className="w-6 h-6 text-indigo-400 animate-spin" />
+                <Loader2 className="w-6 h-6 text-blue-400 animate-spin" />
                 <p className="text-gray-400 font-bold uppercase tracking-wider text-[10px]">Loading bugs...</p>
             </div>
         )
@@ -140,36 +141,38 @@ export function BugList({ role, projectId, userId, assignedTo, limit }: BugListP
                     </div>
 
                     <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
-                        <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 p-1.5 rounded-xl">
-                            <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider ml-2">Status</span>
-                            <select
-                                className="bg-transparent border-none px-2 py-1 text-xs font-bold text-gray-700 uppercase tracking-wider outline-none cursor-pointer"
-                                value={filter}
-                                onChange={(e) => setFilter(e.target.value as any)}
-                            >
-                                <option value="all">Global</option>
-                                <option value="open">Open</option>
-                                <option value="in_progress">Active</option>
-                                <option value="resolved">Resolved</option>
-                                <option value="closed">Finalized</option>
-                                <option value="duplicate">Duplicate</option>
-                            </select>
-                        </div>
+                        <PremiumSelect
+                            options={[
+                                { value: 'all', label: 'Global' },
+                                { value: 'open', label: 'Open' },
+                                { value: 'in_progress', label: 'Active' },
+                                { value: 'resolved', label: 'Resolved' },
+                                { value: 'closed', label: 'Finalized' },
+                                { value: 'duplicate', label: 'Duplicate' },
+                            ]}
+                            value={filter}
+                            onChange={(val) => setFilter(val as any)}
+                            className="min-w-[140px]"
+                            showNone
+                            noneLabel="Global / None"
+                        />
 
-                        <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 p-1.5 rounded-xl">
-                            <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider ml-2">Sort</span>
-                            <select
-                                className="bg-transparent border-none px-2 py-1 text-xs font-bold text-gray-700 uppercase tracking-wider outline-none cursor-pointer"
+                        <div className="flex items-center gap-3">
+                            <PremiumSelect
+                                options={[
+                                    { value: 'created_at', label: 'Date' },
+                                    { value: 'status', label: 'Status' },
+                                    { value: 'severity', label: 'Priority' },
+                                ]}
                                 value={sortBy}
-                                onChange={(e) => setSortBy(e.target.value as any)}
-                            >
-                                <option value="created_at">Date</option>
-                                <option value="status">Status</option>
-                                <option value="severity">Priority</option>
-                            </select>
+                                onChange={(val) => setSortBy(val as any)}
+                                className="min-w-[120px]"
+                                showNone
+                                noneLabel="Default (None)"
+                            />
                             <button
                                 onClick={() => setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc')}
-                                className="p-1 px-2.5 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-all text-gray-700 active:scale-95"
+                                className="h-[46px] px-4 bg-white border border-gray-200 rounded-2xl hover:border-gray-300 transition-all text-gray-700 active:scale-95 shadow-sm font-bold"
                             >
                                 {sortOrder === 'asc' ? '↑' : '↓'}
                             </button>

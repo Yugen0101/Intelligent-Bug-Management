@@ -113,7 +113,7 @@ export function NotificationDropdown() {
     const getIcon = (type: string) => {
         switch (type) {
             case 'assignment': return <UserPlus className="w-4 h-4 text-primary" />
-            case 'comment': return <MessageSquare className="w-4 h-4 text-purple-500" />
+            case 'comment': return <MessageSquare className="w-4 h-4 text-blue-500" />
             case 'status_update': return <Check className="w-4 h-4 text-green-500" />
             default: return <Info className="w-4 h-4 text-gray-500" />
         }
@@ -138,7 +138,7 @@ export function NotificationDropdown() {
                                 e.stopPropagation()
                                 markAllAsRead()
                             }}
-                            className="text-[10px] font-bold text-indigo-400 hover:text-indigo-300 uppercase tracking-widest"
+                            className="text-[10px] font-bold text-blue-400 hover:text-blue-300 uppercase tracking-widest"
                         >
                             Mark all read
                         </button>
@@ -160,15 +160,15 @@ export function NotificationDropdown() {
                                 key={n.id}
                                 className={cn(
                                     "p-4 cursor-pointer focus:bg-white/5 transition-colors border-b border-white/5 last:border-0",
-                                    !n.read && "bg-indigo-500/5"
+                                    !n.read && "bg-blue-500/5"
                                 )}
                                 onSelect={() => markAsRead(n.id)}
                             >
                                 <div className="flex gap-3 w-full">
                                     <div className={cn(
                                         "w-8 h-8 rounded-xl flex items-center justify-center shrink-0 shadow-sm",
-                                        n.type === 'assignment' ? "bg-indigo-500/10" :
-                                            n.type === 'comment' ? "bg-purple-500/10" :
+                                        n.type === 'assignment' ? "bg-blue-500/10" :
+                                            n.type === 'comment' ? "bg-blue-500/10" :
                                                 "bg-emerald-500/10"
                                     )}>
                                         {getIcon(n.type)}
@@ -178,7 +178,7 @@ export function NotificationDropdown() {
                                             <p className={cn("text-xs font-bold leading-none", n.read ? "text-gray-400" : "text-white")}>
                                                 {n.title}
                                             </p>
-                                            {!n.read && <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full shrink-0"></div>}
+                                            {!n.read && <div className="w-1.5 h-1.5 bg-blue-500 rounded-full shrink-0"></div>}
                                         </div>
                                         <p className="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">
                                             {n.message}

@@ -23,7 +23,7 @@ export function BugCard({ bug, href }: BugCardProps) {
 
     const statusStyles = {
         open: 'bg-primary/5 text-blue-700 border-blue-200',
-        in_progress: 'bg-purple-50 text-purple-700 border-purple-200',
+        in_progress: 'bg-blue-50 text-blue-700 border-blue-200',
         resolved: 'bg-emerald-50 text-emerald-700 border-emerald-200',
         closed: 'bg-gray-100 text-gray-700 border-gray-200',
         duplicate: 'bg-slate-100 text-slate-700 border-slate-200',
@@ -82,7 +82,7 @@ export function BugCard({ bug, href }: BugCardProps) {
                             </div>
                         )}
                         {bug.assignments && bug.assignments.length > 0 && (
-                            <div className="flex items-center gap-1.5 text-[10px] font-bold text-indigo-600 uppercase tracking-wider bg-indigo-50/50 px-2 py-0.5 rounded-md border border-indigo-100/50">
+                            <div className="flex items-center gap-1.5 text-[10px] font-bold text-blue-600 uppercase tracking-wider bg-blue-50/50 px-2 py-0.5 rounded-md border border-blue-100/50">
                                 <UserCheck className="w-3 h-3" />
                                 <span>{(bug.assignments[0] as any).profiles.full_name}</span>
                             </div>

@@ -85,7 +85,7 @@ export function Sidebar({ role, isMobile, onNavClick }: SidebarProps) {
             {/* Brand Identity */}
             <div className="p-7 mb-2">
                 <Link href="/" className="flex items-center gap-2.5 group">
-                    <div className="w-8 h-8 bg-indigo-600 flex items-center justify-center rounded-xl group-hover:rotate-12 transition-transform duration-500 shadow-md shadow-indigo-100">
+                    <div className="w-8 h-8 bg-blue-600 flex items-center justify-center rounded-xl group-hover:rotate-12 transition-transform duration-500 shadow-md shadow-blue-100">
                         <Bug className="w-4.5 h-4.5 text-white" />
                     </div>
                     <span className="text-lg font-black text-gray-900 tracking-tight">
@@ -101,13 +101,13 @@ export function Sidebar({ role, isMobile, onNavClick }: SidebarProps) {
             <div className="px-7 mb-6">
                 <div className={cn(
                     "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border shadow-sm",
-                    role === 'manager' ? "bg-indigo-50 text-indigo-700 border-indigo-100" :
+                    role === 'manager' ? "bg-blue-50 text-blue-700 border-blue-100" :
                         role === 'developer' ? "bg-emerald-50 text-emerald-700 border-emerald-100" :
                             "bg-amber-50 text-amber-700 border-amber-100"
                 )}>
                     <div className={cn(
                         "w-1.5 h-1.5 rounded-full animate-pulse",
-                        role === 'manager' ? "bg-indigo-600" :
+                        role === 'manager' ? "bg-blue-600" :
                             role === 'developer' ? "bg-emerald-600" :
                                 "bg-amber-600"
                     )} />
@@ -127,17 +127,17 @@ export function Sidebar({ role, isMobile, onNavClick }: SidebarProps) {
                             className={cn(
                                 "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[13px] font-bold transition-all duration-200 group relative",
                                 item.active
-                                    ? "bg-indigo-50/60 text-indigo-600"
+                                    ? "bg-blue-50/60 text-blue-600"
                                     : "text-gray-500 hover:text-gray-900 hover:bg-gray-50/80"
                             )}
                         >
                             <item.icon className={cn(
                                 "w-4.5 h-4.5 transition-transform duration-500",
-                                item.active ? "text-indigo-600" : "text-gray-400 group-hover:text-gray-600"
+                                item.active ? "text-blue-600" : "text-gray-400 group-hover:text-gray-600"
                             )} />
                             <span>{item.title}</span>
                             {item.active && (
-                                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full shadow-[0_0_12px_rgba(79,70,229,0.3)]" />
+                                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-blue-600 rounded-r-full shadow-[0_0_12px_rgba(37,99,235,0.3)]" />
                             )}
                         </Link>
                     ))}
@@ -158,13 +158,13 @@ export function Sidebar({ role, isMobile, onNavClick }: SidebarProps) {
                                 className={cn(
                                     "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[13px] font-bold transition-all duration-200 group relative",
                                     item.active
-                                        ? "bg-indigo-50/60 text-indigo-600"
+                                        ? "bg-blue-50/60 text-blue-600"
                                         : "text-gray-500 hover:text-gray-900 hover:bg-gray-50/80"
                                 )}
                             >
                                 <item.icon className={cn(
                                     "w-4.5 h-4.5 transition-transform duration-500",
-                                    item.active ? "text-indigo-600" : "text-gray-400 group-hover:text-gray-600"
+                                    item.active ? "text-blue-600" : "text-gray-400 group-hover:text-gray-600"
                                 )} />
                                 <span>{item.title}</span>
                             </Link>

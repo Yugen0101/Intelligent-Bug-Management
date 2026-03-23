@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { Shield, User, Mail, Lock } from 'lucide-react'
+import { PremiumSelect } from '@/components/ui/PremiumSelect'
 import type { UserRole } from '@/types/database'
 
 export default function SignUpPage() {
@@ -339,11 +341,12 @@ export default function SignUpPage() {
             </div>
 
             {/* Main Card */}
-            <div className="w-full max-w-[400px] bg-white rounded-md shadow-sm border border-gray-200 p-8 z-10">
-                <div className="text-center mb-6">
-                    <h1 className="text-xl font-semibold text-[#172B4D] mb-2">
-                        Sign up for your BugMind account
+            <div className="w-full max-w-[440px] bg-white/80 backdrop-blur-xl rounded-[2.5rem] shadow-2xl border border-white/50 p-10 z-10">
+                <div className="text-center mb-10">
+                    <h1 className="text-2xl font-black text-gray-900 mb-2 tracking-tight">
+                        Join the <span className="text-primary">BugMind</span> Network
                     </h1>
+                    <p className="text-gray-500 font-medium text-sm">Start your professional bug tracking journey.</p>
                 </div>
 
                 {error && (
@@ -354,73 +357,74 @@ export default function SignUpPage() {
 
                 <form onSubmit={handleSignUp} className="space-y-4">
                     <div>
-                        <label htmlFor="fullName" className="block text-sm font-medium text-[#172B4D] mb-1">
-                            Full Name
-                        </label>
-                        <input
-                            id="fullName"
-                            type="text"
-                            value={fullName}
-                            onChange={(e) => setFullName(e.target.value)}
-                            required
-                            className="w-full px-3 py-2 border border-gray-300 rounded bg-[#FAFBFC] text-[#172B4D] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0052CC] focus:border-[#0052CC] transition-all"
-                            placeholder="Enter your full name"
-                        />
+                        <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1">Full Name</label>
+                        <div className="relative group">
+                            <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-primary transition-colors" />
+                            <input
+                                type="text"
+                                value={fullName}
+                                onChange={(e) => setFullName(e.target.value)}
+                                required
+                                className="w-full pl-11 pr-4 py-3.5 bg-gray-50/50 border border-gray-100 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all font-bold text-sm"
+                                placeholder="John Doe"
+                            />
+                        </div>
                     </div>
 
                     <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-[#172B4D] mb-1">
-                            Email
-                        </label>
-                        <input
-                            id="email"
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                            className="w-full px-3 py-2 border border-gray-300 rounded bg-[#FAFBFC] text-[#172B4D] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0052CC] focus:border-[#0052CC] transition-all"
-                            placeholder="Enter your email"
-                        />
+                        <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1">Email Address</label>
+                        <div className="relative group">
+                            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-primary transition-colors" />
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                className="w-full pl-11 pr-4 py-3.5 bg-gray-50/50 border border-gray-100 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all font-bold text-sm"
+                                placeholder="name@company.com"
+                            />
+                        </div>
                     </div>
 
                     <div>
-                        <label htmlFor="password" className="block text-sm font-medium text-[#172B4D] mb-1">
-                            Password
-                        </label>
-                        <input
-                            id="password"
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                            minLength={6}
-                            className="w-full px-3 py-2 border border-gray-300 rounded bg-[#FAFBFC] text-[#172B4D] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0052CC] focus:border-[#0052CC] transition-all"
-                            placeholder="Create a password"
-                        />
+                        <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1">Secure Password</label>
+                        <div className="relative group">
+                            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-primary transition-colors" />
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                                minLength={6}
+                                className="w-full pl-11 pr-4 py-3.5 bg-gray-50/50 border border-gray-100 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all font-bold text-sm"
+                                placeholder="••••••••"
+                            />
+                        </div>
                     </div>
 
-                    <div>
-                        <label htmlFor="role" className="block text-sm font-medium text-[#172B4D] mb-1">
-                            Role
-                        </label>
-                        <select
-                            id="role"
-                            value={role}
-                            onChange={(e) => setRole(e.target.value as UserRole)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded bg-[#FAFBFC] text-[#172B4D] focus:outline-none focus:ring-2 focus:ring-[#0052CC] focus:border-[#0052CC] transition-all"
-                        >
-                            <option value="tester">Tester</option>
-                            <option value="developer">Developer</option>
-                            <option value="manager">Manager</option>
-                        </select>
-                    </div>
+                    <PremiumSelect
+                        label="Account Role"
+                        placeholder="Select role..."
+                        options={[
+                            { value: 'tester', label: 'Tester', icon: <Shield className="w-3.5 h-3.5" /> },
+                            { value: 'developer', label: 'Developer', icon: <Shield className="w-3.5 h-3.5" /> },
+                            { value: 'manager', label: 'Manager', icon: <Shield className="w-3.5 h-3.5" /> },
+                        ]}
+                        value={role}
+                        onChange={(val) => setRole(val as UserRole)}
+                    />
 
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full py-2.5 bg-[#0052CC] text-white font-medium rounded hover:bg-[#0747A6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed mt-2"
+                        className="w-full py-4 bg-primary text-white font-black rounded-2xl hover:bg-blue-700 transition-all active:scale-[0.98] shadow-xl shadow-blue-200 mt-4 text-[13px] tracking-widest uppercase flex items-center justify-center gap-3 disabled:opacity-50"
                     >
-                        {loading ? 'Creating account...' : 'Sign up'}
+                        {loading ? (
+                            <>
+                                <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                                Creating Account...
+                            </>
+                        ) : 'Create Account'}
                     </button>
                 </form>
 

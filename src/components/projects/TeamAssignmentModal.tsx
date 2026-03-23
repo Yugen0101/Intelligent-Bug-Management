@@ -131,7 +131,7 @@ export function TeamAssignmentModal({ isOpen, onClose, projectId, projectName }:
                                     )}
                                 >
                                     <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-primary font-bold border-2 border-white shadow-sm">
+                                        <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-primary font-bold border-2 border-white shadow-sm">
                                             {profile.full_name.charAt(0)}
                                         </div>
                                         <div>

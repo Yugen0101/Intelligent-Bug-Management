@@ -4,15 +4,15 @@
   --background: #fdfaff;
   --foreground: #0f172a;
 
-  /* Enterprise Palette */
-  --primary: #8b5cf6;
-  /* Violet 500 */
-  --primary-dark: #7c3aed;
-  /* Violet 600 */
-  --secondary: #ec4899;
-  /* Pink 500 */
-  --accent: #06b6d4;
-  /* Cyan 500 */
+  /* Enterprise Palette — Blue (matches Landing Page) */
+  --primary: #2563eb;
+  /* Blue 600 */
+  --primary-dark: #1d4ed8;
+  /* Blue 700 */
+  --secondary: #3b82f6;
+  /* Blue 500 */
+  --accent: #60a5fa;
+  /* Blue 400 */
   --surface: #ffffff;
   --border: #e2e8f0;
 }

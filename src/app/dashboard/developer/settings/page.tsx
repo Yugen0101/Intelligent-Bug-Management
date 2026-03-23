@@ -28,7 +28,7 @@ export default function DeveloperSettingsPage() {
                                 </div>
                                 <div className="space-y-1">
                                     <label className="text-sm font-bold text-gray-500 uppercase">Specialization</label>
-                                    <div className="px-4 py-3 bg-indigo-50 rounded-xl text-indigo-700 font-bold border border-indigo-100 flex items-center gap-2">
+                                    <div className="px-4 py-3 bg-blue-50 rounded-xl text-blue-700 font-bold border border-blue-100 flex items-center gap-2">
                                         <Code2 className="w-4 h-4" />
                                         Full Stack
                                     </div>

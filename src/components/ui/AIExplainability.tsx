@@ -9,7 +9,7 @@ import {
     ShieldCheck,
     AlertCircle,
     X,
-    Sparkles
+    Bug as BugIcon
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import {
@@ -67,10 +67,10 @@ export function ReasoningModal({ isOpen, onClose, title, explanation, confidence
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent className="sm:max-w-md bg-white rounded-[2.5rem] border-none shadow-2xl p-0 overflow-hidden">
-                <div className="bg-gradient-to-br from-indigo-600 to-purple-700 p-8 text-white relative">
-                    <Sparkles className="absolute top-6 right-8 w-12 h-12 opacity-20" />
+                <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-8 text-white relative">
+                    <BugIcon className="absolute top-6 right-8 w-12 h-12 opacity-20" />
                     <DialogTitle className="text-2xl font-black mb-2">AI Reasoning</DialogTitle>
-                    <DialogDescription className="text-indigo-100 font-medium">
+                    <DialogDescription className="text-blue-100 font-medium">
                         Deep dive into how our models analyzed this bug.
                     </DialogDescription>
                 </div>
@@ -90,13 +90,13 @@ export function ReasoningModal({ isOpen, onClose, title, explanation, confidence
                         {confidence.category !== undefined && (
                             <div className="p-4 rounded-2xl border border-gray-100 bg-white shadow-sm">
                                 <div className="text-[10px] font-black text-gray-400 uppercase mb-1">Classifier Conf.</div>
-                                <div className="text-xl font-black text-indigo-600">{(confidence.category * 100).toFixed(0)}%</div>
+                                <div className="text-xl font-black text-blue-600">{(confidence.category * 100).toFixed(0)}%</div>
                             </div>
                         )}
                         {confidence.severity !== undefined && (
                             <div className="p-4 rounded-2xl border border-gray-100 bg-white shadow-sm">
                                 <div className="text-[10px] font-black text-gray-400 uppercase mb-1">Impact Analysis</div>
-                                <div className="text-xl font-black text-purple-600">{(confidence.severity * 100).toFixed(0)}%</div>
+                                <div className="text-xl font-black text-blue-600">{(confidence.severity * 100).toFixed(0)}%</div>
                             </div>
                         )}
                     </div>
@@ -114,7 +114,7 @@ export function ReasoningModal({ isOpen, onClose, title, explanation, confidence
                 <div className="p-4 bg-gray-50 flex justify-end shrink-0">
                     <button
                         onClick={onClose}
-                        className="px-6 py-2 bg-gray-900 text-white text-xs font-black uppercase tracking-widest rounded-xl hover:bg-black transition-all"
+                        className="px-6 py-2 bg-blue-600 text-white text-xs font-black uppercase tracking-widest rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-100"
                     >
                         Close
                     </button>

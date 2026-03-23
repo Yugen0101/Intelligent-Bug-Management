@@ -156,14 +156,14 @@ export default function ManagerDashboard() {
                                     </div>
                                     <button
                                         onClick={() => setVisibleWidgets((p) => ({ ...p, [w.id]: !p[w.id] }))}
-                                        className={cn('w-12 h-6 rounded-full relative transition-colors duration-300', visibleWidgets[w.id] ? 'bg-indigo-600' : 'bg-gray-200')}
+                                        className={cn('w-12 h-6 rounded-full relative transition-colors duration-300', visibleWidgets[w.id] ? 'bg-blue-600' : 'bg-gray-200')}
                                     >
                                         <div className={cn('absolute top-1 left-1 w-4 h-4 bg-white rounded-full shadow transition-transform duration-300', visibleWidgets[w.id] ? 'translate-x-6' : 'translate-x-0')} />
                                     </button>
                                 </div>
                             ))}
                         </div>
-                        <button onClick={() => setIsWidgetModalOpen(false)} className="w-full mt-6 py-3.5 bg-gray-900 text-white rounded-2xl text-[13px] font-black tracking-widest uppercase hover:bg-black transition-all active:scale-95">
+                        <button onClick={() => setIsWidgetModalOpen(false)} className="w-full mt-6 py-3.5 bg-blue-600 text-white rounded-2xl text-[13px] font-black tracking-widest uppercase hover:bg-blue-700 transition-all active:scale-95 shadow-lg shadow-blue-200">
                             Done
                         </button>
                     </div>
@@ -198,7 +198,7 @@ export default function ManagerDashboard() {
                                         <button
                                             key={p}
                                             onClick={() => { setSelectedPeriod(p); setIsPeriodOpen(false) }}
-                                            className={cn('w-full text-left px-3 py-2 rounded-lg text-[11px] font-bold transition-colors', selectedPeriod === p ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-50')}
+                                            className={cn('w-full text-left px-3 py-2 rounded-lg text-[11px] font-bold transition-colors', selectedPeriod === p ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:bg-gray-50')}
                                         >
                                             {p === '7d' ? 'Last 7 days' : p === '90d' ? 'Last 90 days' : 'Last 30 days'}
                                         </button>
@@ -211,7 +211,7 @@ export default function ManagerDashboard() {
                             <Plus className="w-3.5 h-3.5 group-hover:rotate-90 transition-transform duration-300" />
                             Add widget
                         </button>
-                        <button onClick={exportData} className="flex items-center gap-1.5 px-4 py-2 bg-indigo-600 text-white rounded-xl text-[11px] font-black uppercase tracking-wider hover:bg-indigo-700 transition-all active:scale-95 shadow-md shadow-indigo-100">
+                        <button onClick={exportData} className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 text-white rounded-xl text-[11px] font-black uppercase tracking-wider hover:bg-blue-700 transition-all active:scale-95 shadow-md shadow-blue-100">
                             <Download className="w-3.5 h-3.5" />
                             Export
                         </button>
@@ -221,7 +221,7 @@ export default function ManagerDashboard() {
                 {/* ── Stat Cards ── */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     {[
-                        { title: 'Total Issues', value: stats.totalBugs, change: '+15.5%', icon: <Bug className="w-4 h-4 text-indigo-500" />, bg: 'bg-indigo-50', bars: [35, 55, 40, 75, 50, 80], neg: false },
+                        { title: 'Total Issues', value: stats.totalBugs, change: '+15.5%', icon: <Bug className="w-4 h-4 text-blue-500" />, bg: 'bg-blue-50', bars: [35, 55, 40, 75, 50, 80], neg: false },
                         { title: 'Active Projects', value: stats.activeProjects, change: '+8.4%', icon: <Zap className="w-4 h-4 text-emerald-500" />, bg: 'bg-emerald-50', bars: [50, 70, 45, 80, 65, 90], neg: false },
                         { title: 'Unassigned', value: stats.unassigned, change: '-10.5%', icon: <Users className="w-4 h-4 text-rose-500" />, bg: 'bg-rose-50', bars: [80, 60, 70, 50, 45, 30], neg: true },
                         { title: 'Critical', value: stats.critical, change: '+4.4%', icon: <AlertTriangle className="w-4 h-4 text-amber-500" />, bg: 'bg-amber-50', bars: [30, 45, 38, 60, 42, 55], neg: false },
@@ -238,7 +238,7 @@ export default function ManagerDashboard() {
                                 </span>
                                 <div className="flex items-end gap-0.5 h-7">
                                     {card.bars.map((h, i) => (
-                                        <div key={i} className={cn('w-1.5 rounded-full opacity-60 group-hover:opacity-100 transition-opacity', card.neg ? 'bg-rose-400' : 'bg-indigo-400')} style={{ height: `${h}%` }} />
+                                        <div key={i} className={cn('w-1.5 rounded-full opacity-60 group-hover:opacity-100 transition-opacity', card.neg ? 'bg-rose-400' : 'bg-blue-400')} style={{ height: `${h}%` }} />
                                     ))}
                                 </div>
                             </div>
@@ -266,16 +266,16 @@ export default function ManagerDashboard() {
                             <svg viewBox={`0 0 ${svgW} ${svgH}`} className="w-full" style={{ height: 120 }} preserveAspectRatio="none">
                                 <defs>
                                     <linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0%" stopColor="#6366f1" stopOpacity="0.22" />
-                                        <stop offset="100%" stopColor="#6366f1" stopOpacity="0.01" />
+                                        <stop offset="0%" stopColor="#2563eb" stopOpacity="0.22" />
+                                        <stop offset="100%" stopColor="#2563eb" stopOpacity="0.01" />
                                     </linearGradient>
                                 </defs>
                                 <path d={areaPath} fill="url(#ag)" />
-                                <path d={linePath} fill="none" stroke="#6366f1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d={linePath} fill="none" stroke="#2563eb" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                                 {trendData.map((v, i) => {
                                     const x = (i / (trendData.length - 1)) * svgW
                                     const y = svgH - (v / maxTrend) * svgH * 0.88
-                                    return <circle key={i} cx={x} cy={y} r="3.5" fill="#6366f1" stroke="white" strokeWidth="2" />
+                                    return <circle key={i} cx={x} cy={y} r="3.5" fill="#2563eb" stroke="white" strokeWidth="2" />
                                 })}
                             </svg>
 
@@ -316,7 +316,7 @@ export default function ManagerDashboard() {
                             <div className="mt-6 pt-5 border-t border-gray-50 grid grid-cols-2 gap-3">
                                 {[
                                     { label: 'Resolved', val: '68%', icon: <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> },
-                                    { label: 'In Progress', val: '24%', icon: <Clock className="w-3.5 h-3.5 text-indigo-500" /> },
+                                    { label: 'In Progress', val: '24%', icon: <Clock className="w-3.5 h-3.5 text-blue-500" /> },
                                     { label: 'Open', val: '8%', icon: <Activity className="w-3.5 h-3.5 text-amber-500" /> },
                                     { label: 'Target', val: '80%', icon: <Target className="w-3.5 h-3.5 text-gray-300" /> },
                                 ].map((s) => (
@@ -339,7 +339,7 @@ export default function ManagerDashboard() {
                     <div className="lg:col-span-2 bg-white rounded-3xl border border-gray-100 shadow-sm p-6">
                         <div className="flex items-center justify-between mb-5">
                             <h3 className="text-[11px] font-black text-gray-900 uppercase tracking-widest">Recent Activity</h3>
-                            <button className="flex items-center gap-1 text-[11px] font-black text-indigo-500 hover:text-indigo-700 transition-colors">
+                            <button className="flex items-center gap-1 text-[11px] font-black text-blue-500 hover:text-blue-700 transition-colors">
                                 SEE ALL <ArrowUpRight className="w-3 h-3" />
                             </button>
                         </div>

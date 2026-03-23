@@ -23,7 +23,7 @@ interface ChartProps {
     height?: number
 }
 
-const CHART_COLORS = ['#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', '#f59e0b', '#10b981'];
+const CHART_COLORS = ['#2563eb', '#3b82f6', '#ec4899', '#f43f5e', '#f59e0b', '#10b981'];
 
 export function BugDistributionPie({ data, height = 300 }: ChartProps) {
     return (
@@ -73,7 +73,7 @@ export function SeverityBarChart({ data, height = 300 }: ChartProps) {
     const severityColors: Record<string, string> = {
         critical: '#f43f5e',
         high: '#f59e0b',
-        medium: '#8b5cf6',
+        medium: '#3b82f6',
         low: '#10b981'
     }
 
@@ -104,7 +104,7 @@ export function SeverityBarChart({ data, height = 300 }: ChartProps) {
                     />
                     <Bar dataKey="count" radius={[12, 12, 0, 0]} barSize={40}>
                         {data.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={severityColors[entry.severity] || '#6366f1'} />
+                            <Cell key={`cell-${index}`} fill={severityColors[entry.severity] || '#2563eb'} />
                         ))}
                     </Bar>
                 </BarChart>
@@ -120,8 +120,8 @@ export function PerformanceTrendLine({ data, height = 300 }: ChartProps) {
                 <AreaChart data={data}>
                     <defs>
                         <linearGradient id="colorTrend" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#6366f1" stopOpacity={0.3} />
-                            <stop offset="95%" stopColor="#6366f1" stopOpacity={0} />
+                            <stop offset="5%" stopColor="#2563eb" stopOpacity={0.3} />
+                            <stop offset="95%" stopColor="#2563eb" stopOpacity={0} />
                         </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
@@ -147,7 +147,7 @@ export function PerformanceTrendLine({ data, height = 300 }: ChartProps) {
                     <Area
                         type="monotone"
                         dataKey="avgTime"
-                        stroke="#6366f1"
+                        stroke="#2563eb"
                         strokeWidth={4}
                         fillOpacity={1}
                         fill="url(#colorTrend)"

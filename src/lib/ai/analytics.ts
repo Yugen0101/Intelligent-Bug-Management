@@ -25,8 +25,8 @@ export interface ResolutionEfficiency {
 
 export class AnalyticsService {
     private categoryColors: Record<BugCategory, string> = {
-        ui_ux: '#6366f1',
-        functional: '#8b5cf6',
+        ui_ux: '#2563eb',
+        functional: '#3b82f6',
         performance: '#ec4899',
         security: '#f43f5e',
         data_logic: '#f59e0b',

@@ -26,7 +26,7 @@ export function ThemeToggle() {
                 className={cn(
                     "p-2 rounded-xl transition-all duration-500",
                     theme === 'dark'
-                        ? "bg-[#6366f1] text-white shadow-[0_0_20px_rgba(99,102,241,0.4)] scale-100"
+                        ? "bg-[#2563eb] text-white shadow-[0_0_20px_rgba(99,102,241,0.4)] scale-100"
                         : "text-gray-500 hover:text-white hover:bg-white/5 scale-90"
                 )}
             >

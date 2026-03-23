@@ -15,6 +15,7 @@ import {
     Search
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { PremiumSelect } from '@/components/ui/PremiumSelect'
 
 export default function InsightsPage() {
     const [projects, setProjects] = useState<any[]>([])
@@ -69,18 +70,15 @@ export default function InsightsPage() {
                         <p className="text-gray-500 font-medium">Predictive analytics and project risk assessment.</p>
                     </div>
 
-                    <div className="relative min-w-[250px]">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                        <select
-                            value={selectedProjectId}
-                            onChange={(e) => setSelectedProjectId(e.target.value)}
-                            className="w-full pl-11 pr-4 py-3 bg-white border border-gray-100 shadow-lg rounded-2xl text-sm font-bold text-gray-700 appearance-none focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
-                        >
-                            {projects.map(p => (
-                                <option key={p.id} value={p.id}>{p.name}</option>
-                            ))}
-                        </select>
-                    </div>
+                    <PremiumSelect
+                        placeholder="Select project..."
+                        options={projects.map(p => ({ value: p.id, label: p.name, icon: <BarChart3 className="w-3.5 h-3.5" /> }))}
+                        value={selectedProjectId}
+                        onChange={(val) => setSelectedProjectId(val)}
+                        className="min-w-[280px]"
+                        showNone
+                        noneLabel="None (Deselect)"
+                    />
                 </div>
 
                 {isLoading ? (

@@ -4,6 +4,7 @@ import { DashboardLayout } from '@/components/layout/DashboardLayout'
 import { Users, Mail, UserPlus, Shield, MoreVertical } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
+import { PremiumSelect } from '@/components/ui/PremiumSelect'
 
 interface Profile {
     id: string
@@ -75,7 +76,7 @@ export default function TeamPage() {
                                     placeholder="John Doe"
                                     value={inviteData.name}
                                     onChange={e => setInviteData(prev => ({ ...prev, name: e.target.value }))}
-                                    className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:bg-white transition-all text-sm font-bold"
+                                    className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:bg-white transition-all text-sm font-bold"
                                 />
                             </div>
                             <div>
@@ -86,26 +87,27 @@ export default function TeamPage() {
                                     placeholder="john@example.com"
                                     value={inviteData.email}
                                     onChange={e => setInviteData(prev => ({ ...prev, email: e.target.value }))}
-                                    className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:bg-white transition-all text-sm font-bold"
+                                    className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:bg-white transition-all text-sm font-bold"
                                 />
                             </div>
-                            <div>
-                                <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1">Role</label>
-                                <select
-                                    value={inviteData.role}
-                                    onChange={e => setInviteData(prev => ({ ...prev, role: e.target.value }))}
-                                    className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:bg-white transition-all text-sm font-bold appearance-none cursor-pointer"
-                                >
-                                    <option value="tester">Tester</option>
-                                    <option value="developer">Developer</option>
-                                    <option value="manager">Manager</option>
-                                </select>
-                            </div>
+                            <PremiumSelect
+                                label="Role"
+                                placeholder="Select role..."
+                                options={[
+                                    { value: 'tester', label: 'Tester', icon: <Shield className="w-3.5 h-3.5" /> },
+                                    { value: 'developer', label: 'Developer', icon: <Shield className="w-3.5 h-3.5" /> },
+                                    { value: 'manager', label: 'Manager', icon: <Shield className="w-3.5 h-3.5" /> },
+                                ]}
+                                value={inviteData.role}
+                                onChange={(val) => setInviteData(prev => ({ ...prev, role: val }))}
+                                showNone
+                                noneLabel="No Role (None)"
+                            />
 
                             <button
                                 type="submit"
                                 disabled={isInviting}
-                                className="w-full mt-4 py-4 bg-gray-900 text-white rounded-2xl text-[13px] font-black tracking-widest uppercase hover:bg-black transition-all active:scale-[0.98] shadow-xl shadow-gray-200 flex items-center justify-center gap-3 disabled:opacity-50"
+                                className="w-full mt-4 py-4 bg-blue-600 text-white rounded-2xl text-[13px] font-black tracking-widest uppercase hover:bg-blue-700 transition-all active:scale-[0.98] shadow-xl shadow-blue-200 flex items-center justify-center gap-3 disabled:opacity-50"
                             >
                                 {isInviting ? (
                                     <>
@@ -132,7 +134,7 @@ export default function TeamPage() {
                     </div>
                     <button
                         onClick={() => setIsInviteModalOpen(true)}
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gray-900 text-white rounded-2xl font-bold hover:bg-black transition-all shadow-xl shadow-gray-200 active:scale-[0.98]"
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-xl shadow-blue-200 active:scale-[0.98]"
                     >
                         <UserPlus className="w-5 h-5" />
                         Invite Member
@@ -164,7 +166,7 @@ export default function TeamPage() {
                                         </div>
                                     </td>
                                     <td className="px-6 py-4 text-sm">
-                                        <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tight ${member.role === 'manager' ? 'bg-purple-50 text-purple-600' :
+                                        <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tight ${member.role === 'manager' ? 'bg-blue-50 text-blue-600' :
                                             member.role === 'developer' ? 'bg-primary/5 text-primary' :
                                                 'bg-emerald-50 text-emerald-600'
                                             }`}>

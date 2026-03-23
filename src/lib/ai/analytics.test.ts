@@ -30,7 +30,7 @@ describe('AnalyticsService', () => {
             const functional = result.find(r => r.category === 'functional')
 
             expect(uiUx?.count).toBe(2)
-            expect(uiUx?.color).toBe('#6366f1')
+            expect(uiUx?.color).toBe('#2563eb')
             expect(functional?.count).toBe(1)
         })
     })

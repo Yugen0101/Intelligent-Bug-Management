@@ -15,7 +15,7 @@ export function ResolutionRateGauge({ percentage, title = "Resolution Rate", sub
 
     const stats = [
         { label: 'Resolved', value: `${percentage}%`, color: 'text-emerald-600' },
-        { label: 'Target', value: '80%', color: 'text-indigo-600' },
+        { label: 'Target', value: '80%', color: 'text-blue-600' },
         { label: 'Remaining', value: `${80 - percentage}%`, color: 'text-amber-500' },
     ]
 
@@ -24,7 +24,7 @@ export function ResolutionRateGauge({ percentage, title = "Resolution Rate", sub
             {/* Header row */}
             <div className="flex items-center justify-between mb-4">
                 <h3 className="text-[11px] font-black text-gray-900 uppercase tracking-widest">{title}</h3>
-                <button className="text-[10px] font-black text-indigo-500 uppercase tracking-wider hover:text-indigo-700 transition-colors">
+                <button className="text-[10px] font-black text-blue-500 uppercase tracking-wider hover:text-blue-700 transition-colors">
                     Details →
                 </button>
             </div>
